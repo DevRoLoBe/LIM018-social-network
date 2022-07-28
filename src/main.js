@@ -1,5 +1,10 @@
-// Este es el punto de entrada de tu aplicacion
+import { changeView } from './viewControler/rutas.js';
 
-import { myFunction } from './lib/index.js';
+const init = () => {
+  window.addEventListener('hashchange', () => changeView(window.location.hash));
+};
+window.addEventListener('load', init);
 
-myFunction();
+changeView(window.location.hash);
+
+// sirve solo para cargar mis rutas
