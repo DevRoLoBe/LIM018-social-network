@@ -2,7 +2,8 @@ import { components } from '../componente/componentes.js';
 
 const changeView = (route) => {
   const container = document.querySelector('.container');
-  container.innerHTML = ' ';
+  
+  container.innerHTML = '';
   switch (route) {
     case '':
     case '#/login':
