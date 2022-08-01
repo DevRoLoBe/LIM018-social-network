@@ -1,10 +1,11 @@
 import { changeView } from './viewControler/rutas.js';
 
-const init = () => {
-  window.addEventListener('hashchange', () => changeView(window.location.hash));
-};
-window.addEventListener('load', init);
+// Cargando rutas al iniciar
+window.addEventListener('load', () => {
+  changeView(window.location.hash);
+});
 
-changeView(window.location.hash);
-
-// sirve solo para cargar mis rutas
+// Evento de cambio de las rutas
+window.addEventListener('hashchange', () => {
+  changeView(window.location.hash);
+});

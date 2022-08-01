@@ -1,0 +1,23 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+body{
+  height:100vh;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+.form-login , .form-registro{
+  /*position: relative;
+  width: 360px;
+  height: 800px;*/
+  background: linear-gradient(90deg, #77A1D3 0%, #79CBCA 50%, #E684AE 100%);
+}
+.logo{
+  width:50%;
+}
+.logo__login, .logo__registro{
+  max-width:100%;
+}
