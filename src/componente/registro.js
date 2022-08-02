@@ -39,7 +39,7 @@ export const registroview = () => {
 
       <div class="login-registrar">
         <span clas="login-registrar-text">¿Ya tienes una cuenta?</span>
-        <a href="#" class="login-registrar-text login-registrar__text--login">Inicia Sesión</a>
+        <a href="#/login" class="login-registrar__text login-registrar__text--registro">Inicia Sesion</a>
       </div>
     </div>
   </div>`;

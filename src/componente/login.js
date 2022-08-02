@@ -31,7 +31,7 @@ export const loginview = () => {
 
       <div class="login-registrar">
         <span clas="login-registrar-text">¿No tiene una cuenta?</span>
-        <a href="#/registro" class="login-registrar__text login-registrar__text--registro">Regístrate</a>
+        <a href="#/registro" class="login-registrar__text login-registrar__text--registro">Registrate</a>
       </div>
     </div>
   </div>`;

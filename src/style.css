@@ -29,7 +29,7 @@ body{
   font-size:14px;
 }
 /*forgot*/
-a.check-content__text{
+a.check-content__text , a.login-registrar__text{
   color: #4070f4;
   text-decoration: none;
 }
