@@ -6,19 +6,19 @@ export const registroview = () => {
         <img class="logo__registro" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
       </figure>
       <form action="#">
-        <div class="input-field">
+        <div class="campo-entrada">
           <input type="text" placeholder="Ingresar nombre" required>
           <i class="uil uil-user"></i>
         </div>
-        <div class="input-field">
+        <div class="campo-entrada">
           <input type="text" placeholder="Ingresar email" required>
           <i class="uil uil-envelope icon"></i>
         </div>
-        <div class="input-field">
+        <div class="campo-entrada">
           <input type="password" class="password" placeholder="Ingresar contraseña" required>
           <i class="uil uil-lock icon"></i>
         </div>
-        <div class="input-field">
+        <div class="campo-entrada">
           <input type="password" class="password" placeholder="Confirmar contraseña" required>
           <i class="uil uil-lock icon"></i>
           <i class="uil uil-eye-slash showHidePw"></i>
@@ -33,7 +33,7 @@ export const registroview = () => {
         </div>
 
         <div class="campo-entrada campo-entrada__boton">
-          <input class="form-login__boton" type="button" value="Iniciar Sesión">
+          <input id="btn-registrar" class="form-login__boton" type="button" value="Registrarse">
         </div>
       </form>
 
@@ -47,4 +47,5 @@ export const registroview = () => {
   const sectionRegistro = document.createElement('section');
   sectionRegistro.innerHTML = registro;
   return sectionRegistro;
+  // accediendo al dom
 };
