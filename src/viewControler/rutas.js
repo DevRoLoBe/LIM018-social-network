@@ -11,7 +11,8 @@ const changeView = (route) => {
     case '':
     case '#/login':
     {
-      return container.appendChild(components.login());
+      container.appendChild(components.login()); components.loginF();
+      break;
     }
     case '#/registro':
     {
