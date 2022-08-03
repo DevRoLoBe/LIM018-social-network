@@ -5,41 +5,99 @@
   padding:0;
   font-family: 'Poppins', sans-serif;
 }
+/* .logo{
+  width:50%;
+}
+.logo__login, .logo__registro{
+  max-width:100%;
+  position: relative;
+} */
 body{
   height:100vh;
   display:flex;
   align-items: center;
   justify-content:center;
+  background-color: aquamarine;
 }
-.form-login , .form-registro{
-  /*position: relative;
-  width: 360px;
-  height: 800px;*/
-  background: linear-gradient(90deg, #77A1D3 0%, #79CBCA 50%, #E684AE 100%);
+.container{
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+  /* overflow:hidden; */
 }
-.logo{
-  width:50%;
+.form{
+  /* width:50%; */
+  padding:30px;
+  /* background-color:#fff;
+  transition:margin-left 0.18s ease; */
 }
-.logo__login, .logo__registro{
-  max-width:100%;
+.form-title{
+  position: relative;
+  font-size: 27px;
+  font-weight: 600;
 }
-/*Remember*/
-.check-content__text{
-  color: #333;
-  font-size:14px;
+/*Campos de entrada*/
+.campo-entrada{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
 }
-/*forgot*/
-a.check-content__text , a.login-registrar__text{
+/*ocultas el rectangulo del campo de entrada*/
+.campo-entrada input{
+  position: absolute;
+  height:100%;
+  width:100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size:16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+}
+/*Activar las lineas azules al presionar un input*/
+.campo-entrada input:is(:focus, :valid){
+  border-bottom-color: blue;
+}
+/*Iconos*/
+.campo-entrada i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+}
+.campo-entrada i.icon{
+  left:0;
+}
+.campo-entrada i.showHidePw{
+  right:0;/*icono del ojo*/
+}
+.login-registrar{
+  display: flex;
+  justify-content: space-between;
+}
+.text{
+  display: flex;
+  justify-content: flex-end;/*olvidaste la contraseña*/
+  margin-top:20px;
+}
+/*Links*/
+.form a{
   color: #4070f4;
   text-decoration: none;
 }
-.check-remenber a:hover{
+.form a:hover{
   text-decoration: underline;
 }
-.form-login__boton{
+/*Button*/
+.campo-entrada__boton{
   margin-top: 35px;
 }
-.form-login__boton input{
+.campo-entrada__boton input{
   border: none;
   color: #fff;
   font-size: 17px;
@@ -50,9 +108,10 @@ a.check-content__text , a.login-registrar__text{
   cursor:pointer;
   transition: all 0.3s ease;
 }
-.campo-entrada{
-  position: relative;
-  height: 50px;
-  width: 100%;
-  margin-top: 30px;
+.campo-entrada__boton input:hover{
+  background-color: #265df2;
+}
+.form .login-registro{
+  margin-top:30px;
+  text-align: center;
 }
