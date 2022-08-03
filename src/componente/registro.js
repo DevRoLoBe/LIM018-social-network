@@ -12,19 +12,23 @@ export const registroview = () => {
         <div class="campo-entrada">
           <input type="text" placeholder="Ingresar nombre"  class= "userName" id="userName" required>
           <i class="uil uil-user"></i>
+          <span id="alertName"></span>
         </div>
         <div class="campo-entrada">
           <input type="email" placeholder="Ingresar email" required  class= "email" id= "userEmail">
           <i class="uil uil-envelope icon"></i>
+          <span id="alertEmail"></span>
         </div>
         <div class="campo-entrada">
           <input type="password" placeholder="Ingresar contraseña" required class="password" id= "userPassword">
           <i class="uil uil-lock icon"></i>
+          <span id="alertPassword"></span>
         </div>
         <div class="campo-entrada">
           <input type="password"  placeholder="Confirmar contraseña" required class="confirmarPassword" id= "userConfirmPassword">
           <i class="uil uil-lock icon"></i>
           <i class="uil uil-eye-slash showHidePw"></i>
+          <span id="alertConfirmPassword"></span>
         </div>
         <div class="campo-entrada campo-entrada__boton">
           <input id="btn-registrar" class="form-login__boton" type="button" value="Registrarse">
@@ -42,18 +46,22 @@ export const registroview = () => {
   sectionRegistro.innerHTML = registro;
   return sectionRegistro;
 };
-export const iteraciónDeRegistro = () => {
+export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
   console.log(btnRegistrar);
   // variables
-
+  const usernameInput = document.querySelector('#userName').value;
+  const emailInput = document.querySelector('#userEmail').value;
+  const passwordInput = document.querySelector('#userPassword').value;
+  const alertName = document.querySelector('#alertName');
+  // const alertEmail = document.querySelector('#alertEmail');
   btnRegistrar.addEventListener('click', () => {
-    // e.preventDefault();
-    // const usernameInput = sectionRegistro.querySelector('.userName').value;
-    const emailInput = document.querySelector('#userEmail').value;
-    const passwordInput = document.querySelector('#userPassword').value;
-    console.log(emailInput);
-    console.log(passwordInput);
+    if(usernameInput.length==0){
+   alertName.textContent = 'llena tu nombre';
+   alertName.innerHTML = '';
+   }
+
+   
     // const confirmPasswordInput = sectionRegistro.querySelector('.userConfirmPassword').value;
     register(emailInput, passwordInput)
       .then((userCredential) => {

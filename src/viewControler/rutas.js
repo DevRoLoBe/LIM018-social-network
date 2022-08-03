@@ -15,7 +15,7 @@ const changeView = (route) => {
     }
     case '#/registro':
     {
-      container.appendChild(components.registro()); components.iteraciónRegistro();
+      container.appendChild(components.registro()); components.registroF();
       break;
     }
     case '#/home':
