@@ -1,5 +1,6 @@
 export const loginview = () => {
-  const login = `
+  const login = /*html*/
+  `
   <div class="form">
     <div class="form-login">
       <figure class="logo">
