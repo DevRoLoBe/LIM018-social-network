@@ -2,13 +2,11 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import * as test from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
-
-console.log(initializeApp, getAuth, test);
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -27,4 +25,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
-console.log(register)
+export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);

@@ -1,5 +1,8 @@
+import { loginExistent } from '../firebaseconfig/firebase.js';
+
 export const loginview = () => {
-  const login = `
+  const login = 
+  /*html*/ ` 
   <div class="form">
     <div class="form-login">
       <figure class="logo">
@@ -7,25 +10,17 @@ export const loginview = () => {
       </figure>
       <form action="#">
         <div class="campo-entrada">
-          <input type="text" placeholder="Ingresar email" required>
+          <input type="text" placeholder="Ingresar email" id='userGmail' required>
           <i class="uil uil-envelope icon"></i>
         </div>
         <div class="campo-entrada">
-          <input type="password" class="password" placeholder="Ingresar contraseña" required>
+          <input type="password" class="password" placeholder="Ingresar contraseña" id='userPassword' required>
           <i class="uil uil-lock icon"></i>
           <i class="uil uil-eye-slash showHidePw"></i>
         </div>
-
-        <div class="check-remenber">
-          <div class="check-content">
-            <input type="checkbox" id="check-content__input">
-            <label for="check-content__input" class="check-content__text">Recordarme</label>
-          </div>
           <a href="#" class="check-content__text">¿Olvidaste tu contraseña?</a>
-        </div>
-
         <div class="campo-entrada campo-entrada__boton">
-          <input class="form-login__boton" type="button" value="Iniciar Sesión">
+          <input id="btn-login" type="button" value="Iniciar Sesión">
         </div>
       </form>
 
@@ -39,4 +34,22 @@ export const loginview = () => {
   const sectionLogin = document.createElement('section');
   sectionLogin.innerHTML = login;
   return sectionLogin;
+};
+export const loginDom = () => {  
+  const btnLogin = document.querySelector('#btn-login');
+  const gmailInput = document.querySelector('#userGmail');
+  const passwordInput = document.querySelector('#userPassword');
+
+  btnLogin.addEventListener('click', () => {
+    loginExistent(gmailInput.value, passwordInput.value)
+      .then((userCredential) => {
+      // Signed in
+        const user = userCredential.user;
+      // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  });
 };

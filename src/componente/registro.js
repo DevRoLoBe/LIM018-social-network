@@ -10,28 +10,28 @@ export const registroview = () => {
       </figure>
       <form action="#">
         <div class="campo-entrada">
-          <input type="text" placeholder="Ingresar nombre"  class= "userName" id="userName" required>
+          <input type="text" placeholder="Ingresar nombre"  class= "userName" id="userName" >
           <i class="uil uil-user"></i>
           <span id="alertName"></span>
         </div>
         <div class="campo-entrada">
-          <input type="email" placeholder="Ingresar email" required  class= "email" id= "userEmail">
+          <input type="email" placeholder="Ingresar email"  class= "email" id= "userEmail" required >
           <i class="uil uil-envelope icon"></i>
           <span id="alertEmail"></span>
         </div>
         <div class="campo-entrada">
-          <input type="password" placeholder="Ingresar contraseña" required class="password" id= "userPassword">
+          <input type="password" placeholder="Ingresar contraseña"  class="password" id= "userPassword" required>
           <i class="uil uil-lock icon"></i>
           <span id="alertPassword"></span>
         </div>
         <div class="campo-entrada">
-          <input type="password"  placeholder="Confirmar contraseña" required class="confirmarPassword" id= "userConfirmPassword">
+          <input type="password"  placeholder="Confirmar contraseña"  class="confirmarPassword" id= "userConfirmPassword" required>
           <i class="uil uil-lock icon"></i>
           <i class="uil uil-eye-slash showHidePw"></i>
           <span id="alertConfirmPassword"></span>
         </div>
         <div class="campo-entrada campo-entrada__boton">
-          <input id="btn-registrar" class="form-login__boton" type="button" value="Registrarse">
+          <input id="btn-registrar"  type="button" value="Registrarse">
         </div>
       </form>
 
@@ -48,33 +48,28 @@ export const registroview = () => {
 };
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
-  console.log(btnRegistrar);
   // variables
-  const usernameInput = document.querySelector('#userName').value;
-  const emailInput = document.querySelector('#userEmail').value;
-  const passwordInput = document.querySelector('#userPassword').value;
+  const usernameInput = document.querySelector('#userName');
+  console.log('funciona', usernameInput);
+  const emailInput = document.querySelector('#userEmail');
+  const passwordInput = document.querySelector('#userPassword');
   const alertName = document.querySelector('#alertName');
   // const alertEmail = document.querySelector('#alertEmail');
   btnRegistrar.addEventListener('click', () => {
-    if(usernameInput.length==0){
-   alertName.textContent = 'llena tu nombre';
-   alertName.innerHTML = '';
-   }
-
-   
+    if (usernameInput.length === 0) {
+      alertName.textContent = 'Tiene que completar sus datos';
+      alertName.innerHTML = '';
+    }
     // const confirmPasswordInput = sectionRegistro.querySelector('.userConfirmPassword').value;
-    register(emailInput, passwordInput)
+    register(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential);
-        const user = userCredential.user;
-        console.log(user);
+        userCredential.user;
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        error.code;
+        error.message;
       });
   });
 };
