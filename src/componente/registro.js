@@ -5,10 +5,9 @@ export const registroview = () => {
   <div class="container">
     <div class="forms">
       <div class="form registro">
-        <!--<figure class="logo">
+        <figure class="logo">
           <img class="logo__registro" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
-        </figure>-->
-        <span class="form-title">Registro</span>
+        </figure>
         <form action="#">
           <div class="campo-entrada">
             <input type="text" placeholder="Ingresar nombre"  class= "userName" id="userName" >
@@ -60,16 +59,16 @@ export const registroDom = () => {
   const alertName = document.querySelector('#alertName');
   const alertEmail = document.querySelector('#alertEmail');
   const alertPassword = document.querySelector('#alertPassword');
-  const confirmarPassword = document.querySelector('#alertConfirmPassword');
+  const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
   // Funciones de validacion
-  function showError(alertShow, mensaje) {
-    alertShow.style.color = 'red';
-    alertShow.style.fontSize = '11px';
-    alertShow.textContent = mensaje;
+  function showError(alerta, mensaje) {
+    alerta.style.color = 'red';
+    alerta.style.fontSize = '11px';
+    alerta.textContent = mensaje;
   }
-  function hideError(alertHide) {
-    alertHide.textContent = '';
+  function hideError(alerta) {
+    alerta.textContent = '';
   }
   function validateEmpty(valueInput, alerts, msj) {
     if (valueInput.length === 0) {
@@ -80,6 +79,9 @@ export const registroDom = () => {
   }
   btnRegistrar.addEventListener('click', () => {
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
+    validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
+    validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
+    validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     register(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
