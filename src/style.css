@@ -47,7 +47,7 @@ body{
 }
 /*ocultas el rectangulo del campo de entrada*/
 .campo-entrada input{
-  position: absolute;
+  /*position: absolute;*/
   height:100%;
   width:100%;
   padding: 0 35px;
@@ -70,11 +70,13 @@ body{
   color: #000;
   font-size: 23px;
   background-color: #94B49F;
+  left: 3px;
 }
 .campo-entrada i.icon{
   left:0;
 }
 .campo-entrada i.showHidePw{
+  left: auto;
   right:0;/*icono del ojo*/
 }
 .login-registrar{

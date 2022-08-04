@@ -50,19 +50,36 @@ export const registroview = () => {
 };
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
-  // variables
+  // Variablesde los inputs
   const usernameInput = document.querySelector('#userName');
-  console.log('funciona', usernameInput);
   const emailInput = document.querySelector('#userEmail');
   const passwordInput = document.querySelector('#userPassword');
+  const confirmPasswordInput = document.querySelector('#userConfirmPassword');
+
+  // Variables de Mensaje de Vacio
   const alertName = document.querySelector('#alertName');
-  // const alertEmail = document.querySelector('#alertEmail');
-  btnRegistrar.addEventListener('click', () => {
-    if (usernameInput.length === 0) {
-      alertName.textContent = 'Tiene que completar sus datos';
-      alertName.innerHTML = '';
+  const alertEmail = document.querySelector('#alertEmail');
+  const alertPassword = document.querySelector('#alertPassword');
+  const confirmarPassword = document.querySelector('#alertConfirmPassword');
+
+  // Funciones de validacion
+  function showError(alertShow, mensaje) {
+    alertShow.style.color = 'red';
+    alertShow.style.fontSize = '11px';
+    alertShow.textContent = mensaje;
+  }
+  function hideError(alertHide) {
+    alertHide.textContent = '';
+  }
+  function validateEmpty(valueInput, alerts, msj) {
+    if (valueInput.length === 0) {
+      showError(alerts, msj);
+    } else {
+      hideError(alerts);
     }
-    // const confirmPasswordInput = sectionRegistro.querySelector('.userConfirmPassword').value;
+  }
+  btnRegistrar.addEventListener('click', () => {
+    validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     register(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
