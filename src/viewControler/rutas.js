@@ -3,7 +3,7 @@ import { components } from '../componente/componentes.js';
 // Sirve para cambiar de vistas
 const changeView = (route) => {
   // Creamos variable del contenedor general
-  const container = document.querySelector('.container');
+  const container = document.querySelector('.contenedor');
   // Limpia la pantalla
   container.innerHTML = '';
   // Asignando los componentes a las rutas

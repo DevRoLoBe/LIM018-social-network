@@ -22,7 +22,7 @@ export const loginview = () => {
           </div>
             <a href="#" class="text">¿Olvidaste tu contraseña?</a>
           <div class="campo-entrada campo-entrada__boton">
-            <input id="btn-login" type="button" value="Iniciar Sesión">
+            <a href="#/home"><input id="btn-login" type="button" value="Iniciar Sesión"></a>
           </div>
         </form>
         <div class="login-registrar">
