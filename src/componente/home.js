@@ -31,6 +31,14 @@ export const homeView = () => {
     </div>
     <p class="tiempo">Hace 1 dia</p>
   </section>
+  <footer class="menu">
+    <nav class="menuInferior ">
+      <a href='#'><img src="imagenes/home.png"></a>
+      <a href='#'><img src="imagenes/buscar.png"></a>
+      <a href='#'><img src="imagenes/donarMano.png"></a>
+      <a href='#'><img src="imagenes/usuario.png"></a>
+    </nav>
+  </footer>
   `;
   const sectionHome = document.createElement('section');
   sectionHome.innerHTML = home;

@@ -1,4 +1,5 @@
 import { loginExistent } from '../firebaseconfig/firebase.js';
+import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
   const login = /*html*/ `
@@ -22,7 +23,7 @@ export const loginview = () => {
           </div>
             <a href="#" class="text">¿Olvidaste tu contraseña?</a>
           <div class="campo-entrada campo-entrada__boton">
-            <a href="#/home"><input id="btn-login" type="button" value="Iniciar Sesión"></a>
+            <input id="btn-login" type="button" value="Iniciar Sesión">
           </div>
         </form>
         <div class="login-registrar">
@@ -46,22 +47,6 @@ export const loginDom = () => {
   const alertGmail = document.querySelector('#alertgmail');
   const alertPassword = document.querySelector('#alertpassword');
 
-  //  funciones de validacion
-  function showError(alerta, mensaje) {
-    alerta.style.color = 'red';
-    alerta.style.fontSize = '12px';
-    alerta.textContent = mensaje;
-  } 
-  function hideError(alerta) {
-    alerta.textContent = '';
-  }
-  function validateEmpty (valueInput, alerts, msj) {
-    if (valueInput.length === 0) {
-      showError(alerts, msj);
-    } else {
-      hideError(alerts);
-    }
-  }
   btnLogin.addEventListener('click', () => {
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
@@ -69,9 +54,16 @@ export const loginDom = () => {
       .then((userCredential) => {
       // Signed in
         userCredential.user;
+        window.location.hash = '#/home';
       // ...
       })
       .catch((error) => {
+        if (error.code === 'auth/user-not-found') {
+          alertGmail.textContent = 'Email incorrecto';
+        }
+        if (error.code === 'auth/wrong-password') {
+          alertPassword.textContent = 'Contraseña incorrecta';
+        }
         error.code;
         error.message;
       });

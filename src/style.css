@@ -191,7 +191,7 @@ span.text{
   padding-right: 20px;
 }
 .guardar, .like{
-  background-color: #524646;
+  background-color: transparent;
   border:none;
 }
 /*Descripccion*/
@@ -207,4 +207,20 @@ span.text{
 }
 .tiempo, .comentarios{
   color: rgba(0, 0, 0, 0.6);
+}
+/*FOOTER*/
+.menu{
+  display: flex;
+  height: 30px;
+  justify-content: space-around;
+  position:absolute;
+  bottom: 0;
+}
+.menuInferior a{
+  padding: 0 40px 4px 15px;
+}
+.menuInferior img{
+  width: 25px;
+  max-width: 100%;
+  height: 25px;
 }

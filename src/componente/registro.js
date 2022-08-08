@@ -1,4 +1,5 @@
 import { register } from '../firebaseconfig/firebase.js';
+import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
   const registro = /*html*/`
@@ -61,22 +62,6 @@ export const registroDom = () => {
   const alertPassword = document.querySelector('#alertPassword');
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
-  // Funciones de validacion
-  function showError(alerta, mensaje) {
-    alerta.style.color = 'red';
-    alerta.style.fontSize = '11px';
-    alerta.textContent = mensaje;
-  }
-  function hideError(alerta) {
-    alerta.textContent = '';
-  }
-  function validateEmpty(valueInput, alerts, msj) {
-    if (valueInput.length === 0) {
-      showError(alerts, msj);
-    } else {
-      hideError(alerts);
-    }
-  }
   btnRegistrar.addEventListener('click', () => {
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
