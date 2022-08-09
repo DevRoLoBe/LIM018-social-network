@@ -3,10 +3,12 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import * as test from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+// eslint-disable-next-line import/no-unresolved
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -19,10 +21,22 @@ const firebaseConfig = {
   measurementId: 'G-ZPNZHM3T8W',
 };
 // aqui deben ir todo las funciones de firebase y firestore
+
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+// firestore
 
+const db = getFirestore(app);
 export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
 export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);
+
+export const saveName = (nombre) => {
+  addDoc(collection(db, 'name'), { nombre });
+};
+// listando datos de firestore
+export const getName = () => {
+  getDocs(collection(db, 'name'));
+};
