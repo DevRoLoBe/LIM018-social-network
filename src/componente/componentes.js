@@ -2,6 +2,7 @@
 import { homeView } from './home.js';
 import { loginview, loginDom } from './login.js';
 import { registroview, registroDom } from './registro.js';
+import { profileView } from './profile.js';
 
 const components = {
   home: homeView,
@@ -9,6 +10,7 @@ const components = {
   loginF: loginDom,
   registro: registroview,
   registroF: registroDom,
+  profile: profileView,
 
 };
 

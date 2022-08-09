@@ -1,11 +1,8 @@
-export const homeView = () => {
-  const home = /*Html*/`
-  <header class="logo-principal">
-    <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
-    <span>
+export const profileView = () => {
+  const profile = /*html*/ ` 
+    <header class="logo-perfil">
     <a href =""><img src="imagenes/agregar.png"></a>
     <a href =""><img src="imagenes/notificar.png"></a>
-    <a href =""><img src="imagenes/comentar.png"></a></span>
   </header>
   <section class="secc-noticias">
     <div>Noticias</div>
@@ -39,23 +36,9 @@ export const homeView = () => {
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
   </footer>
-  `;
-  const sectionHome = document.createElement('section');
-  sectionHome.innerHTML = home;
-  sectionHome.classList.add('seccion');
-  return sectionHome;
+    `;
+  const sectionProfile = document.createElement('section');
+  sectionProfile.innerHTML = profile;
+  sectionProfile.classList.add('seccion');
+  return sectionProfile;
 };
-// const querySnapshot = await getDocs(collection(db, "users"));
-// querySnapshot.forEach((doc) => {
-//   console.log(`${doc.id} => ${doc.data()}`);
-// });
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e);
-// }

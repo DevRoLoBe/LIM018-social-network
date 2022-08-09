@@ -5,6 +5,9 @@
   padding:0;
   font-family: 'Poppins', sans-serif;
 }
+main{
+  margin: auto;
+}
 .logo{
   width:80%;
   margin-left: 45px;
@@ -155,12 +158,12 @@ span.text{
 }
 /*Seccion de noticias*/
 .secc-noticias{
-  background-color: #601D1D;
+  background-color: #f0e7e7;
   height: 9%;
 }
 /*Seccion de nombre con los tres puntos*/
 .secc-nombre{
-  background-color: #dd5757;
+  background-color: #5f5c5c;
   height: 6%;
 }
 /*Foto y seccion de me gusta*/
@@ -172,7 +175,7 @@ span.text{
   justify-content: space-between;
 }
 .imagen{
-  background-color: rgb(139, 111, 18);
+  background-color: rgb(182, 175, 153);
   height: 80%;
 }
 .secc-like{
@@ -213,7 +216,7 @@ span.text{
   display: flex;
   height: 30px;
   justify-content: space-around;
-  position:absolute;
+  position:fixed;
   bottom: 0;
 }
 .menuInferior a{

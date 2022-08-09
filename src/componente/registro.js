@@ -1,4 +1,4 @@
-import { register } from '../firebaseconfig/firebase.js';
+import { register, saveName, getName } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
@@ -63,10 +63,13 @@ export const registroDom = () => {
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
   btnRegistrar.addEventListener('click', () => {
+    getName();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
+    saveName(usernameInput.value);
+    // uiserNameInput.reset()
     register(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
