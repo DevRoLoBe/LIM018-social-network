@@ -70,15 +70,14 @@ export const registroDom = () => {
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     saveName(usernameInput.value);
     // uiserNameInput.reset()
-    register(emailInput.value, passwordInput.value)
-      .then((userCredential) => {
-        // Signed in
-        userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        error.code;
-        error.message;
-      });
+    register(emailInput.value, passwordInput.value);
+    // .then((userCredential) => {
+    // Signed in
+    // userCredential.user;
+    // });
+    // .catch((error) => {
+    // error.code;
+    //  error.message;
+    // });
   });
 };

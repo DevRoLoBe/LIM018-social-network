@@ -243,20 +243,28 @@ span.text{
 .logo-perfil a{
   padding-right: 10px;
 }
-.secc-numSeguidores{
+.secc-perfilName{
   display: flex;
+  justify-content: space-around;
   background-color: #94B49F;
-  height:100px;
+}
+.secc-perfilName div img {
+  display: flex;
+  width: 50px;
+  max-width:100%;
+  border: 1px solid #000;
+  border-radius: 50%;
 }
 .editProfile{
   display: flex;
   height: 50px;
   justify-content: center;
+  padding-top: 10px;
 }
 .editProfile a{
   text-decoration: none;
   color: #000;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .editProfile button{
   align-items: center;
@@ -269,6 +277,7 @@ span.text{
   margin: .5rem 2rem;
   gap: 2rem;
   margin-top: 2rem;
+  padding-bottom: 15px;
 }
 .historias *{
   width: 50px;
@@ -276,6 +285,20 @@ span.text{
   border:1px solid #000;
   border-radius: 50%;
 }
-.historias img{
-  margin: 50%;
+.menuIntermedio{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px;
+  background-color: #94B49F;
+}
+.menuIntermedio a img{
+  width: 25px;
+  max-width:100%;
+  margin-top: 8px;
+}
+.publicaciones{
+  height:100px;
+}
+.publicaciones div{
+  background-color: pink;
 }
