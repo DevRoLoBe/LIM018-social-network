@@ -285,21 +285,6 @@ span.text{
   border:1px solid #000;
   border-radius: 50%;
 }
-
-.menuIntermedio{
-  display: flex;
-  justify-content: space-evenly;
-  padding: 2px;
-  background-color: #94B49F;
-}
-.menuIntermedio a img{
-  width: 25px;
-  max-width:100%;
-  margin-top: 8px;
-}
-.publicaciones{
-  height:100px;
-}
-.publicaciones div{
-  background-color: pink;
+.historias img{
+  margin: 50%;
 }
