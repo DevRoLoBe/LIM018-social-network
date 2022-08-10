@@ -1,32 +1,20 @@
 export const profileView = () => {
   const profile = /*html*/ ` 
     <header class="logo-perfil">
-    <a href =""><img src="imagenes/agregar.png"></a>
-    <a href =""><img src="imagenes/notificar.png"></a>
+    <a href =""><img src="imagenes/agregarFoto.png"></a>
+    <a href =""><img src="imagenes/bar.png"></a>
   </header>
-  <section class="secc-noticias">
-    <div>Noticias</div>
+  <section class="secc-numSeguidores">
+    <div>perfiles de seguidores</div>
   </section>
-  <section class="secc-nombre">
-    <div>Foto,Nombre y Tres puntos</div>
-  </section>
-  <section class="secc-publicacionFoto">
-    <div class="imagen">Foto del animal</div>
-    <nav class="secc-like">
-      <span class="spanLikeComent">
-        <button class="licogu like"><img src="imagenes/like.png"></button>
-        <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-      </span>
-      <button class="licogu guardar"><img src="imagenes/guardar.png"></button>
-    </nav>
-  </section>
-  <section class="secc-descripcion">
-    <p class="cantidad-likes"><span>23</span> Me gusta</p>
-    <div class="descrip">
-      <p class="nombre"><span class="nombre__span">Camila Vasquez</span>Descripcion encontre al perro en condiciones horribles</p>
-      <p class="comentarios">Ver los <span>23</span> comentarios</p>
-    </div>
-    <p class="tiempo">Hace 1 dia</p>
+    <p id="nameProfile"></p>
+    <section class= "editProfile">
+    <button> <a href='#/'>Editar perfil</a></button> 
+    </section>
+  <section class="historias">
+    <div id="historia"> <img src="imagenes/home.png"></div>
+    <div id="historia"><img src="imagenes/home.png"></div>
+    <div id="historia"><img src="imagenes/home.png"></div>
   </section>
   <footer class="menu">
     <nav class="menuInferior ">
