@@ -16,6 +16,10 @@ export const profileView = () => {
     <div id="historia"><img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
   </section>
+  <section class="menuIntermedio">
+    <a href =""><img src="imagenes/publicar.png"></a>
+    <a href =""><img src="imagenes/play.png"></a>
+  </section>
   <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>

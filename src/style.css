@@ -276,6 +276,8 @@ span.text{
   border:1px solid #000;
   border-radius: 50%;
 }
-.historias img{
-  margin: 50%;
+/*Menu Intermedio*/
+.menuIntermedio a img{
+  width:25px;
+  max-width:100%;
 }

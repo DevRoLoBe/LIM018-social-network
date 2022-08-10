@@ -48,6 +48,17 @@ export const registroview = () => {
   sectionRegistro.innerHTML = registro;
   return sectionRegistro;
 };
+export const registroFirebase = (emailValue, passwordValue) => {
+  register(emailValue, passwordValue).then((userCredential) => {
+    // Signed in
+    console.log(userCredential.user);
+    // ...
+  }).catch((error) => {
+    error.code;
+    error.message;
+  });
+};
+
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
   // Variablesde los inputs
@@ -55,13 +66,12 @@ export const registroDom = () => {
   const emailInput = document.querySelector('#userEmail');
   const passwordInput = document.querySelector('#userPassword');
   const confirmPasswordInput = document.querySelector('#userConfirmPassword');
-
+  // Variable del boton
   // Variables de Mensaje de Vacio
   const alertName = document.querySelector('#alertName');
   const alertEmail = document.querySelector('#alertEmail');
   const alertPassword = document.querySelector('#alertPassword');
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
-
   btnRegistrar.addEventListener('click', () => {
     getName();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
@@ -69,16 +79,6 @@ export const registroDom = () => {
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     saveName(usernameInput.value);
-    // uiserNameInput.reset()
-    register(emailInput.value, passwordInput.value)
-      .then((userCredential) => {
-        // Signed in
-        userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        error.code;
-        error.message;
-      });
+    registroFirebase(emailInput.value, passwordInput.value);
   });
 };

@@ -1,8 +1,13 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { registroFirebase, registroDom } from '../src/componente/registro.js';
 
 describe('myFunction', () => {
   it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+    expect(typeof registroFirebase).toBe('function');
+  });
+});
+describe('registroDom', () => {
+  it('debería ser una función', () => {
+    expect(typeof registroDom).toBe('function');
   });
 });
