@@ -79,6 +79,19 @@ export const registroDom = () => {
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     saveName(usernameInput.value);
+<<<<<<< HEAD
     registroFirebase(emailInput.value, passwordInput.value);
+=======
+    // uiserNameInput.reset()
+    register(emailInput.value, passwordInput.value);
+    // .then((userCredential) => {
+    // Signed in
+    // userCredential.user;
+    // });
+    // .catch((error) => {
+    // error.code;
+    //  error.message;
+    // });
+>>>>>>> a829f486525cf3237dcfcbf626b46bbcb222291f
   });
 };

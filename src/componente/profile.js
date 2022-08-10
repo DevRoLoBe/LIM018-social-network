@@ -4,10 +4,10 @@ export const profileView = () => {
     <a href =""><img src="imagenes/agregarFoto.png"></a>
     <a href =""><img src="imagenes/bar.png"></a>
   </header>
-  <section class="secc-numSeguidores">
-    <div>perfiles de seguidores</div>
+  <section class="secc-perfilName">
+  <div id="perfilPerson"><img src="imagenes/bar.png"></div>
+  <p id="nameProfile">Mario Rojas</p>
   </section>
-    <p id="nameProfile"></p>
     <section class= "editProfile">
     <button> <a href='#/'>Editar perfil</a></button> 
     </section>
@@ -15,11 +15,15 @@ export const profileView = () => {
     <div id="historia"> <img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
+    <div id="historia"><img src="imagenes/home.png"></div>
   </section>
   <section class="menuIntermedio">
-    <a href =""><img src="imagenes/publicar.png"></a>
+  <a href =""><img src="imagenes/publicar.png"></a>
     <a href =""><img src="imagenes/play.png"></a>
-  </section>
+   </section>
+   <section class="publicaciones">
+     <div>publicaciones jaladas del firestore</div>
+   </section>
   <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
