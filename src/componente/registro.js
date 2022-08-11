@@ -1,4 +1,4 @@
-import { register, saveName, getName } from '../firebaseconfig/firebase.js';
+import { register, saveName } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
@@ -66,27 +66,27 @@ const alertEmail = document.querySelector('#alertEmail');
 const alertPassword = document.querySelector('#alertPassword');
 const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 export const registroFirebase = (emailValue, passwordValue) => {
-  register(emailValue, passwordValue);
-  //     .then((userCredential) => {
-  //   // Signed in
-  //   console.log(userCredential.user);
-  //   // ...
-  // }).catch((error) => {
-  //   error.code;
-  //   error.message;
-  // });
+  register(emailValue, passwordValue).then((userCredential) => {
+    // Signed in
+    console.log(userCredential.user);
+    // ...
+  }).catch((error) => {
+    error.code;
+    error.message;
+  });
 };
 
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
   btnRegistrar.addEventListener('click', () => {
+    // getName();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     saveName(usernameInput.value);
-    // uiserNameInput.reset()
     registroFirebase(emailInput.value, passwordInput.value);
+    // uiserNameInput.reset()
   });
 };
 // QuerySnapshot hace referencia a los datos que existen en ese momento.
