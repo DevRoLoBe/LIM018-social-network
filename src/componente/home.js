@@ -3,7 +3,7 @@ export const homeView = () => {
   <header class="logo-principal">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
-    <a href =""><img src="imagenes/agregar.png"></a>
+    <a href ="#/post"><img src="imagenes/agregar.png"></a>
     <a href =""><img src="imagenes/notificar.png"></a>
     <a href =""><img src="imagenes/comentar.png"></a></span>
   </header>

@@ -302,3 +302,28 @@ span.text{
 .publicaciones div{
   background-color: pink;
 }
+/*postContainer*/
+.postContainer{
+  height: 55%;
+}
+.descripcion{
+  background-color: #94B49F;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textArea{
+  width:60%;
+  height:200px;
+}
+.botonesPost{
+  display:flex;
+  justify-content: space-around;
+}
+.botonesPost button{
+  display:flex;
+}
+.botonesPost a{
+  text-decoration: none;
+};

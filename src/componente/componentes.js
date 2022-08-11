@@ -3,6 +3,7 @@ import { homeView } from './home.js';
 import { loginview, loginDom } from './login.js';
 import { registroview, registroDom } from './registro.js';
 import { profileView } from './profile.js';
+import { postView } from './post.js';
 
 const components = {
   home: homeView,
@@ -11,6 +12,7 @@ const components = {
   registro: registroview,
   registroF: registroDom,
   profile: profileView,
+  post: postView,
 
 };
 
