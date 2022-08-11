@@ -48,50 +48,47 @@ export const registroview = () => {
   sectionRegistro.innerHTML = registro;
   return sectionRegistro;
 };
+// window.addEventListener('DOMContentLoaded', async () => {
+//   const querySnapshot = await getName();
+//   querySnapshot.forEach(doc => {
+//     console.log(doc);
+//   });
+// });
+// Variables de los inputs
+const usernameInput = document.querySelector('#userName');
+const emailInput = document.querySelector('#userEmail');
+const passwordInput = document.querySelector('#userPassword');
+const confirmPasswordInput = document.querySelector('#userConfirmPassword');
+
+// Variables de Mensaje de Vacio
+const alertName = document.querySelector('#alertName');
+const alertEmail = document.querySelector('#alertEmail');
+const alertPassword = document.querySelector('#alertPassword');
+const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 export const registroFirebase = (emailValue, passwordValue) => {
-  register(emailValue, passwordValue).then((userCredential) => {
-    // Signed in
-    console.log(userCredential.user);
-    // ...
-  }).catch((error) => {
-    error.code;
-    error.message;
-  });
+  register(emailValue, passwordValue);
+  //     .then((userCredential) => {
+  //   // Signed in
+  //   console.log(userCredential.user);
+  //   // ...
+  // }).catch((error) => {
+  //   error.code;
+  //   error.message;
+  // });
 };
 
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
-  // Variablesde los inputs
-  const usernameInput = document.querySelector('#userName');
-  const emailInput = document.querySelector('#userEmail');
-  const passwordInput = document.querySelector('#userPassword');
-  const confirmPasswordInput = document.querySelector('#userConfirmPassword');
-  // Variable del boton
-  // Variables de Mensaje de Vacio
-  const alertName = document.querySelector('#alertName');
-  const alertEmail = document.querySelector('#alertEmail');
-  const alertPassword = document.querySelector('#alertPassword');
-  const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
   btnRegistrar.addEventListener('click', () => {
-    getName();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     saveName(usernameInput.value);
-<<<<<<< HEAD
-    registroFirebase(emailInput.value, passwordInput.value);
-=======
     // uiserNameInput.reset()
-    register(emailInput.value, passwordInput.value);
-    // .then((userCredential) => {
-    // Signed in
-    // userCredential.user;
-    // });
-    // .catch((error) => {
-    // error.code;
-    //  error.message;
-    // });
->>>>>>> a829f486525cf3237dcfcbf626b46bbcb222291f
+    registroFirebase(emailInput.value, passwordInput.value);
   });
 };
+// QuerySnapshot hace referencia a los datos que existen en ese momento.
+// Podemos usar promesas o callbacks, pero se usa el codigo moderno await
+// const registroStore

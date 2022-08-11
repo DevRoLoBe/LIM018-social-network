@@ -5,7 +5,7 @@ export const profileView = () => {
     <a href =""><img src="imagenes/bar.png"></a>
   </header>
   <section class="secc-perfilName">
-  <div id="perfilPerson"><img src="imagenes/bar.png"></div>
+  <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
   <p id="nameProfile">Mario Rojas</p>
   </section>
     <section class= "editProfile">

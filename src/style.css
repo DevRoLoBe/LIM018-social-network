@@ -233,7 +233,7 @@ span.text{
 /* perfil  */
 .logo-perfil{
   display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 .logo-perfil a img{
   width: 25px;
@@ -285,6 +285,46 @@ span.text{
   border:1px solid #000;
   border-radius: 50%;
 }
-.historias img{
-  margin: 50%;
+.menuIntermedio{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px;
+  background-color: #94B49F;
 }
+.menuIntermedio a img{
+  width: 25px;
+  max-width:100%;
+  margin-top: 8px;
+}
+.publicaciones{
+  height: 55%;
+}
+.publicaciones div{
+  background-color: pink;
+  height: 100%;
+}
+/*postContainer*/
+.postContainer{
+  height: 55%;
+}
+.descripcion{
+  background-color: #94B49F;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textArea{
+  width:60%;
+  height:200px;
+}
+.botonesPost{
+  display:flex;
+  justify-content: space-around;
+}
+.botonesPost button{
+  display:flex;
+}
+.botonesPost a{
+  text-decoration: none;
+};

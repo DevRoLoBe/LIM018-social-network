@@ -3,12 +3,13 @@ export const homeView = () => {
   <header class="logo-principal">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
-    <a href =""><img src="imagenes/agregar.png"></a>
+    <a href ="#/post"><img src="imagenes/agregar.png"></a>
     <a href =""><img src="imagenes/notificar.png"></a>
     <a href =""><img src="imagenes/comentar.png"></a></span>
   </header>
-  <section class="secc-noticias">
-    <div>Noticias</div>
+  <section class="secc-perfilName">
+    <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
+    <p id="nameProfile">Hola <span>Mario Rojas</span></p>
   </section>
   <section class="secc-nombre">
     <div>Foto,Nombre y Tres puntos</div>
