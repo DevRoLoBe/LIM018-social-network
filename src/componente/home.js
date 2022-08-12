@@ -1,11 +1,15 @@
+import { savePost } from '../firebaseconfig/firebase.js';
+import { btnModales } from './utils.js';
+
 export const homeView = () => {
   const home = /*Html*/`
   <header class="logo-principal">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
-    <a href ="#/post"><img src="imagenes/agregar.png"></a>
-    <a href =""><img src="imagenes/notificar.png"></a>
-    <a href =""><img src="imagenes/comentar.png"></a></span>
+    <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
+    <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
+    <a class="btn-img" href =""><img src="imagenes/comentar.png"></a>
+    </span>
   </header>
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
@@ -32,11 +36,27 @@ export const homeView = () => {
     </div>
     <p class="tiempo">Hace 1 dia</p>
   </section>
+  <div class="container-modal">
+    <div class="content-modal">
+      <div class="tituloPublicacion">
+        <h2>Publicacion</h2>
+        <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
+      </div>
+      <div class="descripcion">
+        <img id="imgSeleccionada"class="imgSeleccionada"src="" alt="Imagen seleccionada">
+        <textarea id="descripcion"class="textArea"></textarea>
+      </div>
+      <section class= "botonesPost">
+        <input type="file" class="input-file"> 
+        <button id="btn-publicar">Publicar</button> 
+      </section>
+    </div>
+  </div>
   <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
       <a href='#'><img src="imagenes/buscar.png"></a>
-      <a href='#'><img src="imagenes/donarMano.png"></a>
+      <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
   </footer>
@@ -45,6 +65,19 @@ export const homeView = () => {
   sectionHome.innerHTML = home;
   sectionHome.classList.add('seccion');
   return sectionHome;
+};
+export const homeDom = () => {
+  const descripcion = document.querySelector('#descripcion');
+  const imagen = document.querySelector('#imgSeleccionada');
+  const btnPublicar = document.querySelector('#btn-publicar');
+  const ventanaModal = document.querySelector('.container-modal');
+  const btnAgregar = document.querySelector('#agregar');
+  const btnCerrar = document.querySelector('#btn-cerrar');
+  btnModales(btnAgregar, ventanaModal, 'flex');
+  btnModales(btnCerrar, ventanaModal, 'none');
+  btnPublicar.addEventListener('click', () => {
+    savePost(descripcion.value);
+  });
 };
 // const querySnapshot = await getDocs(collection(db, "users"));
 // querySnapshot.forEach((doc) => {

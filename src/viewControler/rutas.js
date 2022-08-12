@@ -21,15 +21,18 @@ const changeView = (route) => {
     }
     case '#/home':
     {
-      return container.appendChild(components.home());
+      container.appendChild(components.home()); components.homeF();
+      break;
     }
     case '#/profile':
     {
-      return container.appendChild(components.profile());
+      container.appendChild(components.profile()); components.profileF();
+      break;
     }
-    case '#/post':
+    case '#/servicio':
     {
-      return container.appendChild(components.post());
+      container.appendChild(components.servicio()); components.servicioF();
+      break;
     }
     default:
       break;

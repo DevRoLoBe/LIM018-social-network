@@ -38,7 +38,7 @@ export const loginview = () => {
   sectionLogin.innerHTML = login;
   return sectionLogin;
 };
-export const loginDom = () => {  
+export const loginDom = () => {
   const btnLogin = document.querySelector('#btn-login');
   const gmailInput = document.querySelector('#userGmail');
   const passwordInput = document.querySelector('#userPassword');
@@ -64,8 +64,11 @@ export const loginDom = () => {
         if (error.code === 'auth/wrong-password') {
           alertPassword.textContent = 'Contraseña incorrecta';
         }
-        error.code;
-        error.message;
+        if (error.code === 'auth/user-disabled') {
+          alertGmail.textContent = 'Usuario deshabilitado';
+        }
+        // error.code;
+        // error.message;
       });
   });
 };

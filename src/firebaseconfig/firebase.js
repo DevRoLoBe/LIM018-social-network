@@ -3,7 +3,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
-import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -33,10 +33,16 @@ const db = getFirestore(app);
 export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
 export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);
 
-export const saveName = (nombre) => {
-  addDoc(collection(db, 'name'), { nombre });
+// Guardando datos
+export const saveUsuario = (nombre, email) => {
+  addDoc(collection(db, 'datosUsuario'), { nombre, email });
 };
+export const savePost = (descripcion) => {
+  addDoc(collection(db, 'post'), { descripcion });
+};
+// export const saveUsuario = (nombre, email) => {
+//   addDoc(collection(db, 'datosUsuario'), { nombre, email });
+// };
 // listando datos de firestore
-export const getName = () => {
-  getDocs(collection(db, 'name'));
-};
+export const getName = () => getDocs(collection(db, 'name'));
+export const getServicios = () => getDocs(collection(db, 'servicio'));

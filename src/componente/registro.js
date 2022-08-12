@@ -1,4 +1,4 @@
-import { register, saveName, getName } from '../firebaseconfig/firebase.js';
+import { register, saveUsuario, getName } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
@@ -63,21 +63,31 @@ export const registroDom = () => {
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
   btnRegistrar.addEventListener('click', () => {
-    getName();
+    getName()
+      .then((docs)=>{
+        console.log(docs);
+      });
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
-    saveName(usernameInput.value);
     // uiserNameInput.reset()
-    register(emailInput.value, passwordInput.value);
-    // .then((userCredential) => {
-    // Signed in
-    // userCredential.user;
-    // });
-    // .catch((error) => {
-    // error.code;
-    //  error.message;
-    // });
+    register(emailInput.value, passwordInput.value)
+      .then((userCredential) => {
+        // Signed in
+        console.log(userCredential.user);
+        saveUsuario(usernameInput.value, emailInput.value);
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          alertEmail.textContent = 'Email existente, prueba con otro';
+        }
+        if (error.code === 'auth/weak-password') {
+          alertPassword.textContent = 'La contraseña debe tener al menos 6 caracteres';
+        }
+        console.log(error.code);
+        console.log(error.message);
+      });
   });
 };

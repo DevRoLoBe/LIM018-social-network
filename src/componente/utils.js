@@ -14,3 +14,9 @@ export const validateEmpty = (valueInput, alerts, msj) => {
     hideError(alerts);
   }
 };
+// Funcion para ocultar ventanas modales
+export const btnModales = (objeto, ventana, vista) => {
+  objeto.addEventListener('click', () => {
+    ventana.style.display = vista;
+  });
+};
