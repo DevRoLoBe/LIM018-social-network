@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 import { getFirestore, collection, addDoc, getDocs, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,8 +30,14 @@ const auth = getAuth(app);
 // firestore
 
 const db = getFirestore(app);
+// Función que crea usuarios en Firebase con correo y contraseña
 export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
+//  Función que  loguea usuarios con correo y contraseña
 export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);
+// Funcion de cierre de Sesion
+export const cerrarSesion = () => {
+  signOut(auth);
+};
 
 // Guardando datos
 export const saveUsuario = (nombre, email) => {
@@ -44,5 +50,6 @@ export const savePost = (descripcion) => {
 //   addDoc(collection(db, 'datosUsuario'), { nombre, email });
 // };
 // listando datos de firestore
-export const getName = () => getDocs(collection(db, 'name'));
+// export const getDatos = (email) => getDocs(collection(db, 'datosUsuario'));
+export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getServicios = () => getDocs(collection(db, 'servicio'));

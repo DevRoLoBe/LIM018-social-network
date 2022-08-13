@@ -53,7 +53,13 @@ export const loginDom = () => {
     loginExistent(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
       // Signed in
-        userCredential.user;
+      // getDatos(userCredential.user.email)
+      //   .then((docs) => {
+      //   docs.forEach((doc) => {
+      //     console.log(doc.data());
+      //   });
+      // });
+        console.log(userCredential);
         window.location.hash = '#/home';
       // ...
       })

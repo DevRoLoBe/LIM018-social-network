@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-
+import { cerrarSesion } from '../firebaseconfig/firebase.js';
 export const profileView = () => {
   const profile = /*html*/ ` 
     <header class="logo-perfil">
@@ -46,7 +46,7 @@ export const profileView = () => {
         <textarea></textarea>
       </div>
     <div class="cerrarSesion">
-      <button class="btn-sesion">Cerrar Sesion</button>
+      <button id ="cierreSesion" class="btn-sesion">Cerrar Sesion</button>
     </div>
     </div>
   </div>
@@ -68,6 +68,10 @@ export const profileDom = () => {
   const ventanaModal = document.querySelector('.container-modal');
   const btnCerrar = document.querySelector('#btn-cerrar');
   const btnEditar = document.querySelector('#btn-editar');
+  const btnCerrarSesion = document.querySelector('#cierreSesion');
+  btnCerrarSesion.addEventListener('click', () => {
+    cerrarSesion();
+  });
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
-}
+};
