@@ -43,7 +43,6 @@ export const loginDom = () => {
   const gmailInput = document.querySelector('#userGmail');
   const passwordInput = document.querySelector('#userPassword');
   // Variables de Mensaje de Vacio
-
   const alertGmail = document.querySelector('#alertgmail');
   const alertPassword = document.querySelector('#alertpassword');
 

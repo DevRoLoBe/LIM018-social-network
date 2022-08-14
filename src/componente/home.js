@@ -3,12 +3,12 @@ import { btnModales } from './utils.js';
 
 export const homeView = () => {
   const home = /*Html*/`
-  <header class="logo-principal">
+  <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
-    <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
-    <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
-    <a class="btn-img" href =""><img src="imagenes/comentar.png"></a>
+      <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
+      <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
+      <a class="btn-img" href =""><img src="imagenes/comentar.png"></a>
     </span>
   </header>
   <section class="secc-perfilName">
@@ -37,13 +37,13 @@ export const homeView = () => {
     <p class="tiempo">Hace 1 dia</p>
   </section>
   <div class="container-modal">
-    <div class="content-modal">
+    <div class="content-modal postModal">
       <div class="tituloPublicacion">
         <h2>Publicacion</h2>
         <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
       </div>
       <div class="descripcion">
-        <img id="imgSeleccionada"class="imgSeleccionada"src="" alt="Imagen seleccionada">
+        <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
         <textarea id="descripcion"class="textArea"></textarea>
       </div>
       <section class= "botonesPost">

@@ -19,13 +19,18 @@
 }
 
 .content-modal {
-  width: 100%;
+  width:90%;/* width: 100%; Pc */
   max-width: 400px;
   padding: 20px;
   background: #FFF;
   border-radius: 4px;
 }
-
+.editarModal{
+  height: 60%;
+}
+.postModal{
+  height: 70%;
+}
 .content-modal h2 {
   margin-bottom: 15px;
 }
@@ -55,6 +60,7 @@
 .content-modal .btn-cerrar label:hover {
   background: #185E83;
 }
+
 /*Home modal*/
 .tituloPublicacion{
   display:flex;
@@ -126,12 +132,43 @@
 .pre-descrip{
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 30%;/* height: 100px; */
 }
 .pre-descrip textarea{
-  width: 70%;
+  width: 65%;
 }
 .nombrePerfil{
   font-size: 13px;
   color:rgba(0, 0, 0, 0.39);
 }
+/*postContainer*/
+.postContainer{
+  height: 55%;
+}
+.descripcion{
+  background-color: #94B49F;
+  height: 80%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.imgSeleccionada{
+  width:50%;
+}
+.textArea{
+  width: 100%;
+  height: 80%;
+  /* width:60%;
+  height:200px; */
+}
+.botonesPost{
+  display:flex;
+  justify-content: space-around;
+}
+.botonesPost button{
+  display:flex;
+}
+.botonesPost a{
+  text-decoration: none;
+};

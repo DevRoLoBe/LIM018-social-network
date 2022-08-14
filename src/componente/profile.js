@@ -27,7 +27,7 @@ export const profileView = () => {
      <div>publicaciones jaladas del firestore</div>
   </section>
   <div class="container-modal">
-    <div class="content-modal">
+    <div class="content-modal editarModal">
       <div class="tituloEditar">
         <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-times"></i></div>
         <h2>Editar Perfil</h2>
@@ -45,7 +45,7 @@ export const profileView = () => {
         <span class="nombrePerfil"> Presentacion</span>
         <textarea></textarea>
       </div>
-    <div class="cerrarSesion">
+    <div>
       <button id ="cierreSesion" class="btn-sesion">Cerrar Sesion</button>
     </div>
     </div>
