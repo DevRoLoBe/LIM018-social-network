@@ -1,4 +1,4 @@
-import { savePost } from '../firebaseconfig/firebase.js';
+import { getPost, savePost } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
@@ -66,7 +66,13 @@ export const homeView = () => {
   sectionHome.classList.add('seccion');
   return sectionHome;
 };
-export const homeDom = () => {
+export const homeDom = async () => {
+  const sirve = await getPost();
+  sirve.forEach((doc) => {
+    // console.log(`${doc.id} => ${doc.data()}`);
+    console.log(doc.data());
+  });
+  console.log(sirve);
   const descripcion = document.querySelector('#descripcion');
   const imagen = document.querySelector('#imgSeleccionada');
   const btnPublicar = document.querySelector('#btn-publicar');
@@ -79,7 +85,7 @@ export const homeDom = () => {
     savePost(descripcion.value);
   });
 };
-// const querySnapshot = await getDocs(collection(db, "users"));
+// const querySnapshot = await getDocs(collection(db, 'post'));
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
 // });

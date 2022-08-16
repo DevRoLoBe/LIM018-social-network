@@ -2,8 +2,11 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
-import { getFirestore, collection, addDoc, getDocs, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
+import { getFirestore, collection, addDoc, getDocs, doc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -53,3 +56,13 @@ export const savePost = (descripcion) => {
 // export const getDatos = (email) => getDocs(collection(db, 'datosUsuario'));
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
+export const getPost = () => {
+  const probando = collection(db, 'post');
+  console.log(probando);
+  const querySnapshot = getDocs(probando);
+  return querySnapshot;
+  // querySnapshot.forEach((post) => {
+
+  //   console.log(post.id, ' =>', post.data());
+  // });
+};
