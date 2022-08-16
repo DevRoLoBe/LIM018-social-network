@@ -176,7 +176,16 @@ span.text{
 .secc-nombre{
   background-color: #5f5c5c;
   height: 6%;
+  display: flex;
 }
+.secc-nombre img{
+  display: flex;
+  width: 25px;
+  max-width:100%;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
   background-color: #524646;

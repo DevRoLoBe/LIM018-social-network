@@ -77,8 +77,8 @@ export const registroDom = () => {
     register(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential.user);
-        saveUsuario(usernameInput.value, emailInput.value);
+        const user = userCredential.user;
+        saveUsuario(usernameInput.value, emailInput.value, user.uid, user.photoURL);
         window.location.hash = '#/home';
       })
       .catch((error) => {
@@ -88,8 +88,8 @@ export const registroDom = () => {
         if (error.code === 'auth/weak-password') {
           alertPassword.textContent = 'La contraseña debe tener al menos 6 caracteres';
         }
-        console.log(error.code);
-        console.log(error.message);
+        // console.log(error.code);
+        // console.log(error.message);
       });
   });
 };

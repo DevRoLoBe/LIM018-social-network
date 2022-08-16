@@ -5,7 +5,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
-import { getFirestore, collection, addDoc, getDocs, doc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,7 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 // firestore
 
 const db = getFirestore(app);
@@ -43,26 +43,24 @@ export const cerrarSesion = () => {
 };
 
 // Guardando datos
-export const saveUsuario = (nombre, email) => {
-  addDoc(collection(db, 'datosUsuario'), { nombre, email });
-};
-export const savePost = (descripcion) => {
-  addDoc(collection(db, 'post'), { descripcion });
-};
 // export const saveUsuario = (nombre, email) => {
 //   addDoc(collection(db, 'datosUsuario'), { nombre, email });
 // };
-// listando datos de firestore
-// export const getDatos = (email) => getDocs(collection(db, 'datosUsuario'));
+export const savePost = (descripcion) => {
+  addDoc(collection(db, 'post'), { descripcion });
+};
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
 export const getPost = () => {
   const probando = collection(db, 'post');
-  console.log(probando);
   const querySnapshot = getDocs(probando);
   return querySnapshot;
-  // querySnapshot.forEach((post) => {
-
-  //   console.log(post.id, ' =>', post.data());
-  // });
 };
+// creando usuario i id
+export const saveUsuario = (nombre, email, uid, imgProfile) => {
+  addDoc(collection(db, 'datosUsuario'), { nombre, email, uid, imgProfile });
+};
+// Función para obtener al usuario al que pertenece cada post
+// export const getUser = (id) => getDoc(doc(db, 'users', id));
+// export const getUsuario = (uid) => getDoc(query(collection(db, "datosUsuario"),
+// where("uid", "==", uid)));
