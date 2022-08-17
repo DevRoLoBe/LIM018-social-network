@@ -2,8 +2,11 @@
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
-import { getFirestore, collection, addDoc, getDocs, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,11 +28,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Conecta nuestra app con la base de datos de firestore
+export const auth = getAuth(app);
+
 const db = getFirestore(app);
-
-// Obtiene la autenticacion de usuario
-const auth = getAuth(app);
-
 // Función que crea usuarios en Firebase con correo y contraseña
 export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
 
@@ -42,18 +43,27 @@ export const cerrarSesion = () => {
   window.location.hash = '';
 };
 
+// Guardando datos
+// export const saveUsuario = (nombre, email) => {
+//   addDoc(collection(db, 'datosUsuario'), { nombre, email });
+// };
+
 // Función para crear colleccion de Post
 export const savePost = (descripcion) => {
   addDoc(collection(db, 'post'), { descripcion });
 };
-
-// Funcion para crear colleccion de datosUsuario
-export const saveUsuario = (nombre, id, email) => {
-  addDoc(collection(db, 'datosUsuario'), { nombre, id, email });
-};
-
-// dejar la función sin responsabilidad más que para firestore
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
-// export const getPosts = () => getDocs(collection(db, 'post'));
-// export const getPost = (id) => getDoc(doc(db, 'post', id));
+export const getPost = () => {
+  const probando = collection(db, 'post');
+  const querySnapshot = getDocs(probando);
+  return querySnapshot;
+};
+// Funcion para crear colleccion de datosUsuario
+export const saveUsuario = (nombre, email, uid, imgProfile) => {
+  addDoc(collection(db, 'datosUsuario'), { nombre, email, uid, imgProfile });
+};
+// Función para obtener al usuario al que pertenece cada post
+// export const getUser = (id) => getDoc(doc(db, 'users', id));
+// export const getUsuario = (uid) => getDoc(query(collection(db, "datosUsuario"),
+// where("uid", "==", uid)));

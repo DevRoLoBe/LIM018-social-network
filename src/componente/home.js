@@ -1,36 +1,45 @@
-import { savePost } from '../firebaseconfig/firebase.js';
+import { getPost, savePost} from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
+//   getUser(auth.currentUser.uid)
+//     .then((user) => {
+//       console.log(user.data().name);
+// // const userImgProfile = userImage(user.data().imgProfile);
+// // userName = userName.split(' ', 2).join(' ');
+// });
+  // getUsuario(auth.currentUser).then(snap => {
+  //   snap.forEach(doc => console .log(doc.data()))
+  // })
   const home = /*Html*/`
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
       <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
-      <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
-      <a class="btn-img" href =""><img src="imagenes/comentar.png"></a>
+     <!-- <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
+      <a class="btn-img" href =""><img src="imagenes/comentar.png"></a> -->
     </span>
-  </header>
+  </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-    <p>Hola <span id="nameProfile"></span></p>
+    <p>Hola$ <span id="nameProfile">${'userName'}</span></p>
   </section>
   <section class="secc-nombre">
     <div><img src="imagenes/usuario.png"></div>
-    <span>Nombre</span>
+    <span >nombre del usuario</span>
   </section>
   <section class="secc-publicacionFoto">
-    <div class="texto"></div>
+    <!--<div class="texto"></div>
     <nav class="secc-like">
       <span class="spanLikeComent">
         <button class="licogu like"><img src="imagenes/like.png"></button>
         <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
       </span>
-      <button class="licogu guardar"><img src="imagenes/guardar.png"></button>
-    </nav>
+   <button class="licogu guardar"><img src="imagenes/guardar.png"></button> 
+    </nav> -->
   </section>
-  <!--<section class="secc-descripcion">
-    <p class="cantidad-likes"><span>23</span> Me gusta</p>
+   <!--<section class="secc-descripcion">
+   <p class="cantidad-likes"><span>23</span> Me gusta</p>
     <div class="descrip">
       <p class="nombre"><span class="nombre__span">Camila Vasquez</span>Descripcion encontre al perro en condiciones horribles</p>
       <p class="comentarios">Ver los <span>23</span> comentarios</p>
@@ -67,7 +76,26 @@ export const homeView = () => {
   sectionHome.classList.add('seccion');
   return sectionHome;
 };
-export const homeDom = () => {
+export const homeDom = async () => {
+  const Guardando = document.querySelector('.secc-publicacionFoto');
+  const sirve = await getPost();
+  let contenido = ' ';
+  sirve.forEach((doc) => {
+    const postpublic = /*Html*/ `
+    <p class="texto">${doc.data().descripcion}</p>
+    <nav class="secc-like">
+      <span class="spanLikeComent">
+        <button class="licogu like"><img src="imagenes/like.png"></button>
+        <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+      </span>
+     <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
+    </nav>
+    `;
+    contenido += postpublic;
+    Guardando.innerHTML = contenido;
+    console.log(doc.data().descripcion);
+  });
+  // console.log(sirve);
   const descripcion = document.querySelector('#descripcion');
   const imagen = document.querySelector('#imgSeleccionada');
   const btnPublicar = document.querySelector('#btn-publicar');
@@ -80,7 +108,14 @@ export const homeDom = () => {
     savePost(descripcion.value);
   });
 };
-// const querySnapshot = await getDocs(collection(db, "users"));
+// getUser(auth.currentUser.uid)
+//   .then((user) => {
+//     const userName = user.data().name;
+//   // const userImgProfile = userImage(user.data().imgProfile);
+//   // userName = userName.split(' ', 2).join(' ');
+// });
+
+// const querySnapshot = await getDocs(collection(db, 'post'));
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
 // });
