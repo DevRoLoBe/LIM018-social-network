@@ -76,7 +76,26 @@ export const homeView = () => {
   sectionHome.classList.add('seccion');
   return sectionHome;
 };
-export const homeDom = () => {
+export const homeDom = async () => {
+  const Guardando = document.querySelector('.secc-publicacionFoto');
+  const sirve = await getPost();
+  let contenido = ' ';
+  sirve.forEach((doc) => {
+    const postpublic = /*Html*/ `
+    <p class="texto">${doc.data().descripcion}</p>
+    <nav class="secc-like">
+      <span class="spanLikeComent">
+        <button class="licogu like"><img src="imagenes/like.png"></button>
+        <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+      </span>
+     <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
+    </nav>
+    `;
+    contenido += postpublic;
+    Guardando.innerHTML = contenido;
+    console.log(doc.data().descripcion);
+  });
+  // console.log(sirve);
   const descripcion = document.querySelector('#descripcion');
   const imagen = document.querySelector('#imgSeleccionada');
   const btnPublicar = document.querySelector('#btn-publicar');
