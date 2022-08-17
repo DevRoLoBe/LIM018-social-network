@@ -1,4 +1,4 @@
-import { loginExistent } from '../firebaseconfig/firebase.js';
+import { loginExistent} from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const loginview = () => {

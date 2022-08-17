@@ -27,8 +27,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Conecta nuestra app con la base de datos de firestore
-export const auth = getAuth(app);
+const auth = getAuth(app);
+// firestore
 
 const db = getFirestore(app);
 // Función que crea usuarios en Firebase con correo y contraseña
@@ -44,26 +44,16 @@ export const cerrarSesion = () => {
 };
 
 // Guardando datos
-// export const saveUsuario = (nombre, email) => {
-//   addDoc(collection(db, 'datosUsuario'), { nombre, email });
-// };
-
-// Función para crear colleccion de Post
+export const saveUsuario = (nombre, email) => {
+  addDoc(collection(db, 'datosUsuario'), { nombre, email });
+};
 export const savePost = (descripcion) => {
   addDoc(collection(db, 'post'), { descripcion });
 };
+// export const saveUsuario = (nombre, email) => {
+//   addDoc(collection(db, 'datosUsuario'), { nombre, email });
+// };
+// listando datos de firestore
+// export const getDatos = (email) => getDocs(collection(db, 'datosUsuario'));
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
-export const getPost = () => {
-  const probando = collection(db, 'post');
-  const querySnapshot = getDocs(probando);
-  return querySnapshot;
-};
-// Funcion para crear colleccion de datosUsuario
-export const saveUsuario = (nombre, email, uid, imgProfile) => {
-  addDoc(collection(db, 'datosUsuario'), { nombre, email, uid, imgProfile });
-};
-// Función para obtener al usuario al que pertenece cada post
-// export const getUser = (id) => getDoc(doc(db, 'users', id));
-// export const getUsuario = (uid) => getDoc(query(collection(db, "datosUsuario"),
-// where("uid", "==", uid)));
