@@ -3,9 +3,9 @@ import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
   const registro = /*html*/`
-  <div class="container">
+  <div class="container register">
     <div class="forms">
-      <div class="form registro">
+      <div class="form ">
         <figure class="logo">
           <img class="logo__registro" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
         </figure>

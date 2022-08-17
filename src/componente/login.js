@@ -3,9 +3,9 @@ import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
   const login = /*html*/ `
-  <div class="container"> 
+  <div class="container login"> 
     <div class="forms">
-      <div class="form login">
+      <div class="form">
         <figure class="logo">
           <img class="logo__login" src="imagenes/loginCompleto.png" class="logo hidden" alt="perro y gato abrazadose">
         </figure>

@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:wght@300&family=Koulen&family=Lora:ital,wght@1,700&family=Merriweather:wght@300&family=Poppins:wght@300;400;500;600;700&family=Shadows+Into+Light&family=Zen+Loop&display=swap');
 *{
   box-sizing: border-box;
-  margin:0;
-  padding:0;
   font-family: 'Poppins', sans-serif;
 }
 img{
@@ -38,9 +36,15 @@ body{
   max-width: 430px;
   width: 100%;
   border-radius: 10px;
-  background: #94B49F;
+  background: url('imagenes/amarillo.png');
+  background-size: contain;
+  background-repeat: round;
+  /* background: #94B49F; */
   box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
   /* overflow:hidden; */
+}
+.forms{
+  display:flex;
 }
 .form{
   /* width:50%; */
@@ -66,7 +70,8 @@ body{
   height:100%;
   width:100%;
   padding: 0 35px;
-  background-color: #94B49F;
+  background-color: transparent;
+  /* background-color: #94B49F; */
   border: none;
   outline: none;
   font-size:16px;
@@ -84,7 +89,7 @@ body{
   transform: translateY(-50%);
   color: #000;
   font-size: 23px;
-  background-color: #94B49F;
+  background-color: transparent;
   left: 3px;
 }
 .campo-entrada i.icon{
@@ -141,7 +146,7 @@ span.text{
   display: flex;
   /* justify-content: space-around; PC*/
   justify-content: space-between;
-  padding: 5px;
+  padding: 8px;/* padding: 5px; */
 }
 .logo-top{
   width: 130px;
@@ -176,6 +181,14 @@ span.text{
 .secc-nombre{
   background-color: #5f5c5c;
   height: 6%;
+  display: flex;
+}
+.secc-nombre img{
+  display: flex;
+  width: 25px;
+  max-width:100%;
+  border: 1px solid #000;
+  border-radius: 50%;
 }
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
@@ -187,12 +200,12 @@ span.text{
 }
 .imagen{
   background-color: rgb(182, 175, 153);
-  height: 80%;
+  height: 200px;/* height: 80%; */
 }
 .secc-like{
  display: flex;
  justify-content: space-between;
- padding: 10px;
+ padding: 2px;/* padding: 10px; */
 }
 .licogu img{
   width: 25px;
@@ -210,14 +223,21 @@ span.text{
 }
 /*Descripccion*/
 .secc-descripcion{
-  padding: 0px 10px 10px 10px;
+  padding: 0px 5px 5px 5px;
 }
 .cantidad-likes{
   font-weight: bold;
+  margin-top: 3px;
+}
+.nombre{
+  margin:4px 0px;
 }
 .nombre__span{
   font-weight: bold;
   padding-right: 5px;
+}
+.tiempo{
+  margin:4px 0px;
 }
 .tiempo, .comentarios{
   color: rgba(0, 0, 0, 0.6);
@@ -261,6 +281,7 @@ span.text{
   display: flex;
   justify-content: space-around;
   background-color: #94B49F;
+  padding: 5px;
 }
 .secc-perfilName div img {
   display: flex;

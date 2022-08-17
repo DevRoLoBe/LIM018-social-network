@@ -39,11 +39,13 @@ export const profileView = () => {
         </div>
         <span>Cambiar foto de perfil</span>
       </div>
-      <span class="nombrePerfil">Nombre</span>
-      <p>Camila Vazquez</p>
       <div class="pre-descrip">
-        <span class="nombrePerfil"> Presentacion</span>
-        <textarea></textarea>
+      <label for="nome">Nombre</label>
+        <input type="text" id="nome" class="input" >
+      </div>
+      <div class="pre-descrip">
+      <label for="descrip">Descripcion</label>
+        <textarea id="descrip" class="input"></textarea>
       </div>
     <div>
       <button id ="cierreSesion" class="btn-sesion">Cerrar Sesion</button>

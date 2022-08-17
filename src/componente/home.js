@@ -16,10 +16,11 @@ export const homeView = () => {
     <p>Hola <span id="nameProfile"></span></p>
   </section>
   <section class="secc-nombre">
-    <div>Foto,Nombre y Tres puntos</div>
+    <div><img src="imagenes/usuario.png"></div>
+    <span>Nombre</span>
   </section>
   <section class="secc-publicacionFoto">
-    <div class="imagen">Foto del animal</div>
+    <div class="texto"></div>
     <nav class="secc-like">
       <span class="spanLikeComent">
         <button class="licogu like"><img src="imagenes/like.png"></button>
@@ -28,14 +29,14 @@ export const homeView = () => {
       <button class="licogu guardar"><img src="imagenes/guardar.png"></button>
     </nav>
   </section>
-  <section class="secc-descripcion">
+  <!--<section class="secc-descripcion">
     <p class="cantidad-likes"><span>23</span> Me gusta</p>
     <div class="descrip">
       <p class="nombre"><span class="nombre__span">Camila Vasquez</span>Descripcion encontre al perro en condiciones horribles</p>
       <p class="comentarios">Ver los <span>23</span> comentarios</p>
     </div>
     <p class="tiempo">Hace 1 dia</p>
-  </section>
+  </section>-->
   <div class="container-modal">
     <div class="content-modal postModal">
       <div class="tituloPublicacion">
