@@ -67,15 +67,21 @@ export const homeDom = async () => {
   const promesaPosts = await getPost();
   let contenido = ' ';
   promesaPosts.forEach((doc) => {
-    const postpublic = /*Html*/ `
+    // muestra los post  en el home
+    const idUserPost = doc.data().uid;
+    getDato(idUserPost)
+      .then((userDoc) => {
+        const nombreUser = userDoc.data().nombre.toUpperCase();
+        console.log(userDoc);
+        const postpublic = /*Html*/ `
     <section class="postContainer">
       <section class="secc-nombre">
         <div><img src="imagenes/usuario.png"></div>
-        <span>
-          <span >${'nombre usuario'}</span>
+        <span id ="nameFecha">
+          <span >${nombreUser}</span>
           <!--<span id="hora">${'horaPost'}</span>-->
+          <span id="fecha">${fechaPost}</span>
         </span>
-        <span id="fecha">${fechaPost}</span>
       </section>
         <p class="texto">${doc.data().descripcion}</p>
         <nav class="secc-like">
@@ -88,14 +94,17 @@ export const homeDom = async () => {
       </nav>
     </section>
     `;
-    contenido += postpublic;
-    conainerPost.innerHTML = contenido;
+        contenido += postpublic;
+        conainerPost.innerHTML = contenido;
+      });
   });
+
   const id = getCurrentUser().uid;
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDato(id)
     .then((doc) => {
-      const nombreUser = doc.data().nombre;
+      // muestra el nombre del usuario en el home y perfil
+      const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/*Html*/ `
       <p>Hola <span id="nameProfile">${nombreUser}</span></p>
       `;

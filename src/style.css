@@ -177,6 +177,7 @@ span.text{
   height: 6%;
   display: flex;
 }
+
 .texto{
   color: white;
   font-weight: 500;
@@ -187,6 +188,10 @@ span.text{
   max-width:100%;
   border: 1px solid #000;
   border-radius: 50%;
+}
+#nameFecha{
+  display: flex;
+  flex-direction: column;
 }
 
 /*Foto y seccion de me gusta*/
