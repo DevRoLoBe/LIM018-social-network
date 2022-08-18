@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDato } from '../firebaseconfig/firebase.js';
 export const profileView = () => {
   const profile = /*html*/ ` 
     <header class="logo-perfil">
@@ -7,8 +7,8 @@ export const profileView = () => {
     <a href =""><img src="imagenes/bar.png"></a>
   </header>
   <section class="secc-perfilName">
-  <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-  <p id="nameProfile">Mario Rojas</p>
+  <!--<div id="perfilPerson"><img src="imagenes/usuario.png"></div>
+  <p id="nameProfile">Mario Rojas</p>-->
   </section>
     <section class= "editProfile">
     <button id="btn-editar"> Editar perfil</button> 
@@ -39,9 +39,9 @@ export const profileView = () => {
         </div>
         <span>Cambiar foto de perfil</span>
       </div>
-      <div class="pre-descrip">
-      <label for="nome">Nombre</label>
-        <input type="text" id="nome" class="input" >
+      <div class="pre-descrip nombreModal">
+      <!--<label for="nome">Nombre</label>
+        <input type="text" id="nome" class="input" >-->
       </div>
       <div class="pre-descrip">
       <label for="descrip">Descripcion</label>
@@ -67,6 +67,23 @@ export const profileView = () => {
   return sectionProfile;
 };
 export const profileDom = () => {
+  const id = getCurrentUser().uid;
+  const perfilNombre = document.querySelector('.secc-perfilName');
+  const nombreModal = document.querySelector('.nombreModal');
+
+  getDato(id)
+    .then((doc) => {
+      const nombreUser = doc.data().nombre;
+      const contenedorName =/*Html*/ `
+      <p id="nameProfile">${nombreUser}</p>
+      `;
+      const contenedorNombreModal =/*Html*/`
+      <label for="nome">Nombre</label>
+        <input type="text" id="nome" class="input" value=${nombreUser}>
+      </div>`;
+      perfilNombre.innerHTML = contenedorName;
+      nombreModal.innerHTML = contenedorNombreModal;
+    });
   const ventanaModal = document.querySelector('.container-modal');
   const btnCerrar = document.querySelector('#btn-cerrar');
   const btnEditar = document.querySelector('#btn-editar');

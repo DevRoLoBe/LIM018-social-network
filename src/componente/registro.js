@@ -1,4 +1,4 @@
-import { register, saveUsuario, getDatos } from '../firebaseconfig/firebase.js';
+import { register, saveUsuario } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
@@ -63,12 +63,12 @@ export const registroDom = () => {
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
   btnRegistrar.addEventListener('click', () => {
-    getDatos()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          console.log(doc.data());
-        });
-      });
+    // getDatos()
+    //   .then((docs) => {
+    //     docs.forEach((doc) => {
+    //       console.log(doc.data());
+    //     });
+    //   });
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
@@ -78,7 +78,7 @@ export const registroDom = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        saveUsuario(usernameInput.value, emailInput.value, user.uid, user.photoURL);
+        saveUsuario(usernameInput.value, emailInput.value, user.uid);
         window.location.hash = '#/home';
       })
       .catch((error) => {

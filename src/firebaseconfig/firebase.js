@@ -5,7 +5,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
-import { getFirestore, collection, addDoc, getDocs, getDoc, doc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -42,18 +42,25 @@ export const cerrarSesion = () => {
   signOut(auth);
   window.location.hash = '';
 };
-
+// Usar eñ currentUser para saber el usuario actual
+export const getCurrentUser = () => auth.currentUser;
 // Guardando datos
-export const saveUsuario = (nombre, email) => {
-  addDoc(collection(db, 'datosUsuario'), { nombre, email });
+export const saveUsuario = async (nombre, email, id) => {
+  await setDoc(doc(db, 'datosUsuario', id), { nombre, email, id });
 };
-export const savePost = (descripcion) => {
-  addDoc(collection(db, 'post'), { descripcion });
+// / Función para crear posts
+export const savePost = (uid, descripcion, datePost, likes) => {
+  addDoc(collection(db, 'post'), {uid, descripcion, datePost, likes});
 };
-// export const saveUsuario = (nombre, email) => {
-//   addDoc(collection(db, 'datosUsuario'), { nombre, email });
-// };
-// listando datos de firestore
-// export const getDatos = (email) => getDocs(collection(db, 'datosUsuario'));
+// Hol
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
+export const getDato = (id) => getDoc(doc(db, 'datosUsuario', id));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
+export const getPost = () => {
+  const probando = collection(db, 'post');
+  const querySnapshot = getDocs(probando);
+  return querySnapshot;
+};
+
+// Obtener un usario por su id
+// export const getUser = (id) => getDoc(doc(db, 'datosUsuario', id));

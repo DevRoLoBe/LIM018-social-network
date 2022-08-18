@@ -1,16 +1,7 @@
-import { getPost, savePost} from '../firebaseconfig/firebase.js';
+import { getPost, savePost, getCurrentUser, getDato } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
-//   getUser(auth.currentUser.uid)
-//     .then((user) => {
-//       console.log(user.data().name);
-// // const userImgProfile = userImage(user.data().imgProfile);
-// // userName = userName.split(' ', 2).join(' ');
-// });
-  // getUsuario(auth.currentUser).then(snap => {
-  //   snap.forEach(doc => console .log(doc.data()))
-  // })
   const home = /*Html*/`
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
@@ -22,21 +13,13 @@ export const homeView = () => {
   </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-    <p>Hola$ <span id="nameProfile">${'userName'}</span></p>
+    <!--<p>Hola <span id="nameProfile">${ 'userName' }</span></p>-->
   </section>
-  <section class="secc-nombre">
+  <!--<section class="secc-nombre">
     <div><img src="imagenes/usuario.png"></div>
     <span >nombre del usuario</span>
-  </section>
+  </section>-->
   <section class="secc-publicacionFoto">
-    <!--<div class="texto"></div>
-    <nav class="secc-like">
-      <span class="spanLikeComent">
-        <button class="licogu like"><img src="imagenes/like.png"></button>
-        <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-      </span>
-   <button class="licogu guardar"><img src="imagenes/guardar.png"></button> 
-    </nav> -->
   </section>
    <!--<section class="secc-descripcion">
    <p class="cantidad-likes"><span>23</span> Me gusta</p>
@@ -77,24 +60,47 @@ export const homeView = () => {
   return sectionHome;
 };
 export const homeDom = async () => {
-  const Guardando = document.querySelector('.secc-publicacionFoto');
-  const sirve = await getPost();
+  // traendo nombre del usuario en el home/descripcion
+  const conainerPost = document.querySelector('.secc-publicacionFoto');
+  // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
+  const fechaPost = new Date().toLocaleDateString();
+  const promesaPosts = await getPost();
   let contenido = ' ';
-  sirve.forEach((doc) => {
+  promesaPosts.forEach((doc) => {
     const postpublic = /*Html*/ `
-    <p class="texto">${doc.data().descripcion}</p>
-    <nav class="secc-like">
-      <span class="spanLikeComent">
-        <button class="licogu like"><img src="imagenes/like.png"></button>
-        <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-      </span>
-     <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
-    </nav>
+    <section class="postContainer">
+      <section class="secc-nombre">
+        <div><img src="imagenes/usuario.png"></div>
+        <span>
+          <span >${'nombre usuario'}</span>
+          <!--<span id="hora">${'horaPost'}</span>-->
+        </span>
+        <span id="fecha">${fechaPost}</span>
+      </section>
+        <p class="texto">${doc.data().descripcion}</p>
+        <nav class="secc-like">
+          <span class="spanLikeComent">
+            <button class="licogu like"><img src="imagenes/like.png"></button>
+            <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+            <p class="cantidad-likes"><span>23</span> Me gusta</p>
+        </span>
+      <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
+      </nav>
+    </section>
     `;
     contenido += postpublic;
-    Guardando.innerHTML = contenido;
-    console.log(doc.data().descripcion);
+    conainerPost.innerHTML = contenido;
   });
+  const id = getCurrentUser().uid;
+  const perfilNombre = document.querySelector('.secc-perfilName');
+  getDato(id)
+    .then((doc) => {
+      const nombreUser = doc.data().nombre;
+      const contenedorName =/*Html*/ `
+      <p>Hola <span id="nameProfile">${nombreUser}</span></p>
+      `;
+      perfilNombre.innerHTML = contenedorName;
+    });
   // console.log(sirve);
   const descripcion = document.querySelector('#descripcion');
   const imagen = document.querySelector('#imgSeleccionada');
@@ -105,27 +111,8 @@ export const homeDom = async () => {
   btnModales(btnAgregar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
   btnPublicar.addEventListener('click', () => {
-    savePost(descripcion.value);
+    // Creando los campos de savePost()cuando le demos al btn publicar
+    savePost(id, descripcion.value, fechaPost.toString(), []);
+    ventanaModal.style.display = 'none';
   });
 };
-// getUser(auth.currentUser.uid)
-//   .then((user) => {
-//     const userName = user.data().name;
-//   // const userImgProfile = userImage(user.data().imgProfile);
-//   // userName = userName.split(' ', 2).join(' ');
-// });
-
-// const querySnapshot = await getDocs(collection(db, 'post'));
-// querySnapshot.forEach((doc) => {
-//   console.log(`${doc.id} => ${doc.data()}`);
-// });
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e);
-// }

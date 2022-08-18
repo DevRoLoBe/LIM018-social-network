@@ -7,10 +7,9 @@ img{
   width: 100%;
 }
 main{
-  background-color: #F96A03;
+  background: #fff;
   margin: auto;
   width:100vw;
-  height: 100vh;
   max-width:800px;
 }
 .logo{
@@ -36,7 +35,7 @@ body{
   max-width: 430px;
   width: 100%;
   border-radius: 10px;
-  background: url('imagenes/amarillo.png');
+  background: url('imagenes/red.png');
   background-size: contain;
   background-repeat: round;
   /* background: #94B49F; */
@@ -166,12 +165,7 @@ span.text{
 .header a{
   padding-right: 10px;
 }
-/*Pantalla principal de celular*/
-.seccion{
-  /* width:360px;
-  height:800px; */
-  background-color: burlywood;
-}
+
 /*Seccion de noticias*/
 .secc-noticias{
   background-color: #f0e7e7;
@@ -179,9 +173,13 @@ span.text{
 }
 /*Seccion de nombre con los tres puntos*/
 .secc-nombre{
-  background-color: #5f5c5c;
+  background-color: #94B49F;
   height: 6%;
   display: flex;
+}
+.texto{
+  color: white;
+  font-weight: 500;
 }
 .secc-nombre img{
   display: flex;
@@ -193,7 +191,6 @@ span.text{
 
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
-  background-color: #524646;
   height: 40%;
   display: flex;
   flex-direction: column;
@@ -255,6 +252,8 @@ span.text{
 .menuInferior{
   display: flex;
   justify-content: space-evenly;
+  background: #fff;
+  padding-top: 5px;
 }
 /* .menuInferior a{
   display: flex;
@@ -281,8 +280,8 @@ span.text{
 .secc-perfilName{
   display: flex;
   justify-content: space-around;
-  background-color: #94B49F;
-  padding: 5px;
+  background-color: #000;
+  color: white;
 }
 .secc-perfilName div img {
   display: flex;
@@ -372,3 +371,11 @@ span.text{
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 /*Fianl del input File*/
+/*Post container*/
+.postContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #74878b;
+  margin: 10px 0px;
+  padding: 15px;
+}
