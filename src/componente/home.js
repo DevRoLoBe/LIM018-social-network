@@ -89,7 +89,7 @@ export const homeDom = () => {
             <span class="spanLikeComent">
               <button class="licogu like"><img src="imagenes/like.png"></button>
               <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-              <p class="cantidad-likes"><span>23</span> Me gusta</p>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
         </nav>
@@ -125,4 +125,7 @@ export const homeDom = () => {
     savePost(id, descripcion.value, fechaPost.toString(), []);
     ventanaModal.style.display = 'none';
   });
+  // Funcionalidad a like
+  const btnLike = document.querySelector('.like');
+  const btnContador = document.querySelector('#numeroLikes');
 };

@@ -1,4 +1,4 @@
-import { loginExistent} from '../firebaseconfig/firebase.js';
+import { loginExistent, googleInicioSesion, saveUsuario } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
@@ -24,6 +24,7 @@ export const loginview = () => {
             <a href="#" class="text">¿Olvidaste tu contraseña?</a>
           <div class="campo-entrada campo-entrada__boton">
             <input id="btn-login" type="button" value="Iniciar Sesión">
+            <input id="btn-google" type="button" value="Inicia Sesión con Google">
           </div>
         </form>
         <div class="login-registrar">
@@ -40,6 +41,7 @@ export const loginview = () => {
 };
 export const loginDom = () => {
   const btnLogin = document.querySelector('#btn-login');
+  const btnGoogle = document.querySelector('#btn-google');
   const gmailInput = document.querySelector('#userGmail');
   const passwordInput = document.querySelector('#userPassword');
   // Variables de Mensaje de Vacio
@@ -51,13 +53,6 @@ export const loginDom = () => {
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
     loginExistent(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
-      // Signed in
-      // getDatos(userCredential.user.email)
-      //   .then((docs) => {
-      //   docs.forEach((doc) => {
-      //     console.log(doc.data());
-      //   });
-      // });
         console.log(userCredential);
         window.location.hash = '#/home';
       // ...
@@ -74,6 +69,13 @@ export const loginDom = () => {
         }
         // error.code;
         // error.message;
+      });
+  });
+  btnGoogle.addEventListener('click', () => {
+    googleInicioSesion()
+      .then((userGoogle) => {
+        const usuario = userGoogle.user;
+        saveUsuario(usuario.displayName, usuario.email, usuario.uid);
       });
   });
 };

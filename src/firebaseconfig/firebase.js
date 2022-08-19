@@ -3,7 +3,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
 import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
@@ -36,13 +36,15 @@ export const register = (gmail, password) => createUserWithEmailAndPassword(auth
 
 //  Función que  loguea usuarios con correo y contraseña
 export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);
-
+// funcion para loguearse con cuenta gmail
+const provider = new GoogleAuthProvider();
+export const googleInicioSesion = () => signInWithPopup(auth, provider);
 // Funcion de cierre de Sesion
 export const cerrarSesion = () => {
   signOut(auth);
   window.location.hash = '';
 };
-// Usar eñ currentUser para saber el usuario actual
+// Usar el currentUser para saber el usuario actual
 export const getCurrentUser = () => auth.currentUser;
 // Guardando datos
 export const saveUsuario = async (nombre, email, id) => {
@@ -60,6 +62,4 @@ export const getPost = (callback) => {
   const probando = query(collection(db, 'post'), orderBy('datePost'));
   onSnapshot(probando, callback);
 };
-
-// Obtener un usario por su id
-// export const getUser = (id) => getDoc(doc(db, 'datosUsuario', id));
+// 
