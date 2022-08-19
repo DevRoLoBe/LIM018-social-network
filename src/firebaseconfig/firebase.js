@@ -5,7 +5,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
-import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -56,10 +56,9 @@ export const savePost = (uid, descripcion, datePost, likes) => {
 export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
 export const getDato = (id) => getDoc(doc(db, 'datosUsuario', id));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
-export const getPost = () => {
-  const probando = collection(db, 'post');
-  const querySnapshot = getDocs(probando);
-  return querySnapshot;
+export const getPost = (callback) => {
+  const probando = query(collection(db, 'post'), orderBy('datePost'));
+  onSnapshot(probando, callback);
 };
 
 // Obtener un usario por su id
