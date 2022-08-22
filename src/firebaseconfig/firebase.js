@@ -42,9 +42,9 @@ export const cerrarSesion = () => {
   signOut(auth);
   window.location.hash = '';
 };
-// Usar eñ currentUser para saber el usuario actual
+// Usar el currentUser para saber el usuario actual
 export const getCurrentUser = () => auth.currentUser;
-// Guardando datos
+// Funcion para crear post
 export const saveUsuario = async (nombre, email, id) => {
   await setDoc(doc(db, 'datosUsuario', id), { nombre, email, id });
 };
@@ -61,6 +61,3 @@ export const getPost = () => {
   const querySnapshot = getDocs(probando);
   return querySnapshot;
 };
-
-// Obtener un usario por su id
-// export const getUser = (id) => getDoc(doc(db, 'datosUsuario', id));
