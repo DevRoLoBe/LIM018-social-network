@@ -59,43 +59,53 @@ export const homeView = () => {
   sectionHome.classList.add('seccion');
   return sectionHome;
 };
-export const homeDom = async () => {
+export const homeDom = () => {
   // traendo nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
   const fechaPost = new Date().toLocaleDateString();
-  const promesaPosts = await getPost();
-  let contenido = ' ';
-  promesaPosts.forEach((doc) => {
-    const postpublic = /*Html*/ `
-    <section class="postContainer">
-      <section class="secc-nombre">
-        <div><img src="imagenes/usuario.png"></div>
-        <span>
-          <span >${'nombre usuario'}</span>
-          <!--<span id="hora">${'horaPost'}</span>-->
-        </span>
-        <span id="fecha">${fechaPost}</span>
+  // jalando una funcion para mostrar los posts
+  getPost((posts) => {
+    let contenido = ' ';
+    posts.forEach((doc) => {
+      // muestra los post  en el home
+      const idUserPost = doc.data().uid;
+      getDato(idUserPost)
+        .then((userDoc) => {
+          const nombreUser = userDoc.data().nombre.toUpperCase();
+          console.log(userDoc);
+          const postpublic = /*Html*/ `
+      <section class="postContainer">
+        <section class="secc-nombre">
+          <div><img src="imagenes/usuario.png"></div>
+          <span id ="nameFecha">
+            <span >${nombreUser}</span>
+            <!--<span id="hora">${'horaPost'}</span>-->
+            <span id="fecha">${fechaPost}</span>
+          </span>
+        </section>
+          <p class="texto">${doc.data().descripcion}</p>
+          <nav class="secc-like">
+            <span class="spanLikeComent">
+              <button class="licogu like"><img src="imagenes/like.png"></button>
+              <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+          </span>
+        <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
+        </nav>
       </section>
-        <p class="texto">${doc.data().descripcion}</p>
-        <nav class="secc-like">
-          <span class="spanLikeComent">
-            <button class="licogu like"><img src="imagenes/like.png"></button>
-            <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-            <p class="cantidad-likes"><span>23</span> Me gusta</p>
-        </span>
-      <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
-      </nav>
-    </section>
-    `;
-    contenido += postpublic;
-    conainerPost.innerHTML = contenido;
+      `;
+          contenido += postpublic;
+          conainerPost.innerHTML = contenido;
+        });
+    });
   });
   const id = getCurrentUser().uid;
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDato(id)
     .then((doc) => {
-      const nombreUser = doc.data().nombre;
+      // muestra el nombre del usuario en el home y perfil
+      const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/*Html*/ `
       <p>Hola <span id="nameProfile">${nombreUser}</span></p>
       `;
@@ -115,4 +125,7 @@ export const homeDom = async () => {
     savePost(id, descripcion.value, fechaPost.toString(), []);
     ventanaModal.style.display = 'none';
   });
+  // Funcionalidad a like
+  const btnLike = document.querySelector('.like');
+  const btnContador = document.querySelector('#numeroLikes');
 };
