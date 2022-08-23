@@ -27,39 +27,46 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// Inicializando la autenticacion
 const auth = getAuth(app);
-// firestore
 
+// Inicializando firestore
 const db = getFirestore(app);
+
 // Función que crea usuarios en Firebase con correo y contraseña
-export const register = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
+// eslint-disable-next-line max-len
+export const createRegister = (gmail, password) => createUserWithEmailAndPassword(auth, gmail, password);
 
 //  Función que  loguea usuarios con correo y contraseña
 export const loginExistent = (gmail, password) => signInWithEmailAndPassword(auth, gmail, password);
+
 // funcion para loguearse con cuenta gmail
 const provider = new GoogleAuthProvider();
 export const googleInicioSesion = () => signInWithPopup(auth, provider);
+
 // Funcion de cierre de Sesion
 export const cerrarSesion = () => {
   signOut(auth);
   window.location.hash = '';
 };
+
 // Usar el currentUser para saber el usuario actual
 export const getCurrentUser = () => auth.currentUser;
-// Guardando datos
-export const saveUsuario = async (nombre, email, id) => {
+
+// crea campos para usuarios en firestore
+export const createUser = async (nombre, email, id) => {
   await setDoc(doc(db, 'datosUsuario', id), { nombre, email, id });
 };
-// / Función para crear posts
-export const savePost = (uid, descripcion, datePost, likes) => {
-  addDoc(collection(db, 'post'), {uid, descripcion, datePost, likes});
+// / Crea campos en firestore para los posts
+export const createPost = (uid, descripcion, datePost, likes) => {
+  addDoc(collection(db, 'post'), { uid, descripcion, datePost, likes });
 };
-// Hol
-export const getDatos = () => getDocs(collection(db, 'datosUsuario'));
-export const getDato = (id) => getDoc(doc(db, 'datosUsuario', id));
+
+// Conseguiendo datos de firestore para mostrar en el home
+export const getDatoUser = (id) => getDoc(doc(db, 'datosUsuario', id));
 export const getServicios = () => getDocs(collection(db, 'servicio'));
-export const getPost = (callback) => {
+export const getDatoPost = (callback) => {
   const probando = query(collection(db, 'post'), orderBy('datePost'));
   onSnapshot(probando, callback);
 };
-// 
+//

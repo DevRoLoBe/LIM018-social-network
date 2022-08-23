@@ -1,5 +1,6 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDato } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost } from '../firebaseconfig/firebase.js';
+
 export const profileView = () => {
   const profile = /*html*/ ` 
     <header class="logo-perfil">
@@ -24,7 +25,6 @@ export const profileView = () => {
     <a href =""><img src="imagenes/play.png"></a>
   </section>
   <section class="publicaciones">
-     <div>publicaciones jaladas del firestore</div>
   </section>
   <div class="container-modal">
     <div class="content-modal editarModal">
@@ -71,7 +71,7 @@ export const profileDom = () => {
   const perfilNombre = document.querySelector('.secc-perfilName');
   const nombreModal = document.querySelector('.nombreModal');
 
-  getDato(id)
+  getDatoUser(id)
     .then((doc) => {
       const nombreUser = doc.data().nombre;
       const contenedorName =/*Html*/ `
@@ -93,4 +93,40 @@ export const profileDom = () => {
   });
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
+  getDatoPost((posts) => {
+    let contenido = ' ';
+    posts.forEach((doc) => {
+      // muestra los post  en el home
+      const idUserPost = doc.data().uid;
+      getDatoUser(idUserPost)
+        .then((userDoc) => {
+          const getFecha = doc.data().datePost;
+          const nombreUser = userDoc.data().nombre.toUpperCase();
+          const postpublic = /*Html*/ `
+      <section class="postContainer">
+        <section class="secc-nombre">
+          <div><img src="imagenes/usuario.png"></div>
+          <span id ="nameFecha">
+            <span >${nombreUser}</span>
+            <!--<span id="hora">${'horaPost'}</span>-->
+            <span id="fecha">${getFecha}</span>
+          </span>
+        </section>
+          <p class="texto">${doc.data().descripcion}</p>
+          <nav class="secc-like">
+            <span class="spanLikeComent">
+              <button class="licogu like"><img src="imagenes/like.png"></button>
+              <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+          </span>
+        <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
+        </nav>
+      </section>
+      `;
+          const containerPostPerfil = document.querySelector('.publicaciones');
+          contenido += postpublic;
+          containerPostPerfil.innerHTML = contenido;
+        });
+    });
+  });
 };

@@ -1,4 +1,4 @@
-import { getPost, savePost, getCurrentUser, getDato } from '../firebaseconfig/firebase.js';
+import { getDatoPost, createPost, getCurrentUser, getDatoUser } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
@@ -65,15 +65,15 @@ export const homeDom = () => {
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
   const fechaPost = new Date().toLocaleDateString();
   // jalando una funcion para mostrar los posts
-  getPost((posts) => {
+  getDatoPost((posts) => {
     let contenido = ' ';
     posts.forEach((doc) => {
       // muestra los post  en el home
       const idUserPost = doc.data().uid;
-      getDato(idUserPost)
+      getDatoUser(idUserPost)
         .then((userDoc) => {
+          const getFecha = doc.data().datePost;
           const nombreUser = userDoc.data().nombre.toUpperCase();
-          console.log(userDoc);
           const postpublic = /*Html*/ `
       <section class="postContainer">
         <section class="secc-nombre">
@@ -81,7 +81,7 @@ export const homeDom = () => {
           <span id ="nameFecha">
             <span >${nombreUser}</span>
             <!--<span id="hora">${'horaPost'}</span>-->
-            <span id="fecha">${fechaPost}</span>
+            <span id="fecha">${getFecha}</span>
           </span>
         </section>
           <p class="texto">${doc.data().descripcion}</p>
@@ -102,7 +102,7 @@ export const homeDom = () => {
   });
   const id = getCurrentUser().uid;
   const perfilNombre = document.querySelector('.secc-perfilName');
-  getDato(id)
+  getDatoUser(id)
     .then((doc) => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
@@ -122,7 +122,7 @@ export const homeDom = () => {
   btnModales(btnCerrar, ventanaModal, 'none');
   btnPublicar.addEventListener('click', () => {
     // Creando los campos de savePost()cuando le demos al btn publicar
-    savePost(id, descripcion.value, fechaPost.toString(), []);
+    createPost(id, descripcion.value, fechaPost.toString(), []);
     ventanaModal.style.display = 'none';
   });
   // Funcionalidad a like
