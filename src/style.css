@@ -176,14 +176,14 @@ span.text{
   background-color: #94B49F;
   height: 6%;
   display: flex;
-  justify-content: space-around;
+
 }
 
 .texto{
   color: white;
   font-weight: 500;
 }
-.secc-nombre div img{
+.secc-nombre div img , .secc-nombre2 .fotoPostPerfil img{
   display: flex;
   width: 25px;
   max-width:100%;
@@ -195,14 +195,25 @@ span.text{
   flex-direction: column;
 }
 /*Perfil botones en el post de Editar y Eliminar*/
+.secc-nombre2{
+  background-color: #94B49F;
+  height: 6%;
+  display: flex;
+}
 .btnEditarEliminar{
   display: flex;
-  width: 50px;
 }
-.btnEditarEliminar span img{
-  width:100%;
+#nameBtns{
+  display:flex;
 }
-
+#nameBtns span img{
+  width:25px;
+  max-width:100%;
+}
+.postHeaderPerfil{
+  display: flex;
+  flex-direction: column;
+}
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
   height: 40%;
@@ -259,8 +270,9 @@ span.text{
   /* display: flex;
   height: 30px;
   justify-content: space-around; */
-  width: 100%;
-  position:fixed;
+  width: 800px;
+  max-width: 100%;
+  position: fixed;
   bottom: 0;
 }
 .menuInferior{

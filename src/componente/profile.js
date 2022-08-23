@@ -105,15 +105,15 @@ export const profileDom = () => {
           const nombreUser = userDoc.data().nombre.toUpperCase();
           const postpublic = /*Html*/ `
             <section class="postContainer">
-            <section class="secc-nombre">
-              <div><img src="imagenes/usuario.png"></div>
-              <span id ="nameFecha">
-                <span >${nombreUser}</span>
+            <section class="secc-nombre2">
+              <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
+              <section class="postHeaderPerfil">
+                <div id ="nameBtns">
+                  <span >${nombreUser}</span>
+                  <span id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></span>
+                  <span id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
+                </div>
                 <span id="fecha">${getFecha}</span>
-              </span>
-              <section class="btnEditarEliminar">
-                <span id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></span>
-                <span id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
               </section>
             </section>
               <p class="texto">${doc.data().descripcion}</p>
