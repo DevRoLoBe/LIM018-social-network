@@ -13,7 +13,7 @@ export const homeView = () => {
   </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-    <!--<p>Hola <span id="nameProfile">${ 'userName' }</span></p>-->
+    <!--<p>Hola <span id="nameProfile">${'userName'}</span></p>-->
   </section>
   <!--<section class="secc-nombre">
     <div><img src="imagenes/usuario.png"></div>

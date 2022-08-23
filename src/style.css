@@ -176,13 +176,14 @@ span.text{
   background-color: #94B49F;
   height: 6%;
   display: flex;
+  justify-content: space-around;
 }
 
 .texto{
   color: white;
   font-weight: 500;
 }
-.secc-nombre img{
+.secc-nombre div img{
   display: flex;
   width: 25px;
   max-width:100%;
@@ -192,6 +193,14 @@ span.text{
 #nameFecha{
   display: flex;
   flex-direction: column;
+}
+/*Perfil botones en el post de Editar y Eliminar*/
+.btnEditarEliminar{
+  display: flex;
+  width: 50px;
+}
+.btnEditarEliminar span img{
+  width:100%;
 }
 
 /*Foto y seccion de me gusta*/

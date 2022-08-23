@@ -100,32 +100,47 @@ export const profileDom = () => {
       const idUserPost = doc.data().uid;
       getDatoUser(idUserPost)
         .then((userDoc) => {
+          // const idUserDatosUsuario = userDoc.data().id;
           const getFecha = doc.data().datePost;
           const nombreUser = userDoc.data().nombre.toUpperCase();
           const postpublic = /*Html*/ `
-      <section class="postContainer">
-        <section class="secc-nombre">
-          <div><img src="imagenes/usuario.png"></div>
-          <span id ="nameFecha">
-            <span >${nombreUser}</span>
-            <!--<span id="hora">${'horaPost'}</span>-->
-            <span id="fecha">${getFecha}</span>
-          </span>
-        </section>
-          <p class="texto">${doc.data().descripcion}</p>
-          <nav class="secc-like">
-            <span class="spanLikeComent">
-              <button class="licogu like"><img src="imagenes/like.png"></button>
-              <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
-          </span>
-        <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
-        </nav>
-      </section>
-      `;
+            <section class="postContainer">
+            <section class="secc-nombre">
+              <div><img src="imagenes/usuario.png"></div>
+              <span id ="nameFecha">
+                <span >${nombreUser}</span>
+                <span id="fecha">${getFecha}</span>
+              </span>
+              <section class="btnEditarEliminar">
+                <span id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></span>
+                <span id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
+              </section>
+            </section>
+              <p class="texto">${doc.data().descripcion}</p>
+              <nav class="secc-like">
+                <span class="spanLikeComent">
+                  <button class="licogu like"><img src="imagenes/like.png"></button>
+                  <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
+                  <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+              </span>
+            </nav>
+          </section>
+          `;
           const containerPostPerfil = document.querySelector('.publicaciones');
           contenido += postpublic;
           containerPostPerfil.innerHTML = contenido;
+          // const btnEditarPost = document.querySelector('#btnEditarPost');
+          // btnEditarPost.addEventListener('click', () => {
+          // });
+          const btnEliminarPost = document.getElementById(`${doc.id}`);
+          console.log(btnEliminarPost);
+          btnEliminarPost.addEventListener('click', () => {
+            console.log('entre');
+            // eliminarPost(doc.id)
+            //   .then(() => {
+            //     console.log('eliminando');
+            //   });
+          });
         });
     });
   });
