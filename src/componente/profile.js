@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost, deletePost } from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
   const profile = /*html*/ ` 
@@ -98,12 +98,12 @@ export const profileDom = () => {
     posts.forEach((doc) => {
       // muestra los post  en el home
       const idUserPost = doc.data().uid;
-      getDatoUser(idUserPost)
-        .then((userDoc) => {
-          // const idUserDatosUsuario = userDoc.data().id;
-          const getFecha = doc.data().datePost;
-          const nombreUser = userDoc.data().nombre.toUpperCase();
-          const postpublic = /*Html*/ `
+      getDatoUser(idUserPost).then((userDoc) => {
+        // Id del usuario en autentication
+        const idUserDatosUsuario = userDoc.data().id;
+        const getFecha = doc.data().datePost;
+        const nombreUser = userDoc.data().nombre.toUpperCase();
+        const postpublic = /*Html*/ `
             <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
@@ -111,7 +111,7 @@ export const profileDom = () => {
                 <div id ="nameBtns">
                   <span >${nombreUser}</span>
                   <span id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></span>
-                  <span id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
+                  <span class='deleteButton' id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
                 </div>
                 <span id="fecha">${getFecha}</span>
               </section>
@@ -126,22 +126,19 @@ export const profileDom = () => {
             </nav>
           </section>
           `;
-          const containerPostPerfil = document.querySelector('.publicaciones');
-          contenido += postpublic;
-          containerPostPerfil.innerHTML = contenido;
-          // const btnEditarPost = document.querySelector('#btnEditarPost');
-          // btnEditarPost.addEventListener('click', () => {
-          // });
-          const btnEliminarPost = document.getElementById(`${doc.id}`);
-          console.log(btnEliminarPost);
-          btnEliminarPost.addEventListener('click', () => {
-            console.log('entre');
-            // eliminarPost(doc.id)
-            //   .then(() => {
-            //     console.log('eliminando');
-            //   });
+        const containerPostPerfil = document.querySelector('.publicaciones');
+        contenido += postpublic;
+        containerPostPerfil.innerHTML = contenido;
+        // const btnEditarPost = document.querySelector('#btnEditarPost');
+        // btnEditarPost.addEventListener('click', () => {
+        // });
+        const btnEliminarPost = document.querySelectorAll('.deleteButton');
+        btnEliminarPost.forEach((e) => {
+          e.addEventListener('click', () => {
+            deletePost(e.id);
           });
         });
+      });
     });
   });
 };

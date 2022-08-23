@@ -71,4 +71,4 @@ export const getDatoPost = (callback) => {
 };
 
 // Eliminar un post de con respecto al postId
-export const eliminarPost = (postId) => deleteDoc(doc(db, 'post', postId));
+export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
