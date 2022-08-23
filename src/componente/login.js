@@ -1,4 +1,4 @@
-import { loginExistent, googleInicioSesion, saveUsuario } from '../firebaseconfig/firebase.js';
+import { loginExistent, googleInicioSesion, createUser } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
@@ -75,7 +75,8 @@ export const loginDom = () => {
     googleInicioSesion()
       .then((userGoogle) => {
         const usuario = userGoogle.user;
-        saveUsuario(usuario.displayName, usuario.email, usuario.uid);
+        createUser(usuario.displayName, usuario.email, usuario.uid);
+        window.location.hash = '#/home';
       });
   });
 };

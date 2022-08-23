@@ -1,4 +1,4 @@
-import { register, saveUsuario } from '../firebaseconfig/firebase.js';
+import { createRegister, createUser } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
@@ -74,11 +74,11 @@ export const registroDom = () => {
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     // uiserNameInput.reset()
-    register(emailInput.value, passwordInput.value)
+    createRegister(emailInput.value, passwordInput.value)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        saveUsuario(usernameInput.value, emailInput.value, user.uid);
+        createUser(usernameInput.value, emailInput.value, user.uid);
         window.location.hash = '#/home';
       })
       .catch((error) => {

@@ -331,13 +331,9 @@ span.text{
   max-width:100%;
   margin-top: 8px;
 }
-.publicaciones{
+/* .publicaciones{
   height: 55%;
-}
-.publicaciones div{
-  background-color: pink;
-  height: 100%;
-}
+} */
 /*SERVICIOS*/
 .servicioContainer{
   display: flex;
