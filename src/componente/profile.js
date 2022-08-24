@@ -93,7 +93,7 @@ export const profileDom = () => {
   });
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
- // getUserPost() llamar dentro el id del documento dentro , el foreach imprime el documento que filtras
+ // getUserPost()llamardentroeliddel documento dentro , el foreach imprime el documento que filtras
   getDatoPost((posts) => {
     let contenido = ' ';
     // const mostrar = posts.data().filter((document) => document.data().uid === id);
@@ -112,9 +112,11 @@ export const profileDom = () => {
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
               <section class="postHeaderPerfil">
                 <div id ="nameBtns">
-                  <span >${nombreUser}</span>
-                  <span id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></span>
-                  <span class='deleteButton' id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></span>
+                  <span>${nombreUser}</span>
+                  <span class="btnEditarBorrar">
+                    <div id="btnEditarPost"><img src="imagenes/editar.png" alt="boton de editar"></div>
+                    <div class='deleteButton' id='${doc.id}'><img src="imagenes/eliminar.png" alt="boton de eliminar"></div>
+                  </span>
                 </div>
                 <span id="fecha">${getFecha}</span>
               </section>

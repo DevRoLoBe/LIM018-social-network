@@ -174,21 +174,21 @@ span.text{
 /*Seccion de nombre con los tres puntos*/
 .secc-nombre{
   background-color: #94B49F;
-  height: 6%;
+  align-items: center;
   display: flex;
 
 }
-
 .texto{
   color: white;
   font-weight: 500;
 }
 .secc-nombre div img , .secc-nombre2 .fotoPostPerfil img{
   display: flex;
-  width: 25px;
-  max-width:100%;
+  width: 35px;
+  max-width: 100%;
   border: 1px solid #000;
   border-radius: 50%;
+  margin: 0 10px 0 10px;
 }
 #nameFecha{
   display: flex;
@@ -197,7 +197,7 @@ span.text{
 /*Perfil botones en el post de Editar y Eliminar*/
 .secc-nombre2{
   background-color: #94B49F;
-  height: 6%;
+  align-items: center;
   display: flex;
 }
 .btnEditarEliminar{
@@ -205,14 +205,21 @@ span.text{
 }
 #nameBtns{
   display:flex;
+  width: 680px;
+  justify-content: space-between;
 }
-#nameBtns span img{
+#nameBtns div img{
   width:25px;
   max-width:100%;
 }
 .postHeaderPerfil{
   display: flex;
   flex-direction: column;
+}
+.btnEditarBorrar{
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
 }
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
