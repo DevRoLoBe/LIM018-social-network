@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost, deletePost } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost, deletePost, getUserPost } from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
   const profile = /*html*/ ` 
@@ -93,8 +93,11 @@ export const profileDom = () => {
   });
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
+ // getUserPost() llamar dentro el id del documento dentro , el foreach imprime el documento que filtras
   getDatoPost((posts) => {
     let contenido = ' ';
+    // const mostrar = posts.data().filter((document) => document.data().uid === id);
+    console.log(posts);
     posts.forEach((doc) => {
       // muestra los post  en el home
       const idUserPost = doc.data().uid;

@@ -5,7 +5,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
-import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, onSnapshot, query, orderBy, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, onSnapshot, where, query, orderBy, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -69,6 +69,7 @@ export const getDatoPost = (callback) => {
   const probando = query(collection(db, 'post'), orderBy('datePost'));
   onSnapshot(probando, callback);
 };
+export const getUserPost = (postId, userId) => query(collection(db, 'post'), where(postId, '==', userId));
 
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
