@@ -69,7 +69,17 @@ export const getDatoPost = (callback) => {
   const probando = query(collection(db, 'post'), orderBy('datePost'));
   onSnapshot(probando, callback);
 };
-export const getUserPost = (postId, userId) => query(collection(db, 'post'), where(postId, '==', userId));
-
+export const getUserPost = (userId) => {
+  const userCollection = query(collection(db, 'post'), where('uid', '==', userId));
+  return getDocs(userCollection);
+};
+// getUserPost('b9EU9s9UZ1eNqG6fsq6K8WEMPq12').then((e) => {
+//   e.forEach((element) => {
+//     console.log(element.data());
+//   });
+// });
+// console.log(e.data()));
+// console.log(getUserPost('b9EU9s9UZ1eNqG6fsq6K8WEMPq12'));
+// .then((post) => console.log(post));
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
