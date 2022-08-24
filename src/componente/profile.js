@@ -1,8 +1,8 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, getDatoPost, deletePost, getUserPost } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost } from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
-  const profile = /*html*/ ` 
+  const profile = /* html */ ` 
     <header class="logo-perfil">
     <a href =""><img src="imagenes/agregarFoto.png"></a>
     <a href =""><img src="imagenes/bar.png"></a>
@@ -74,10 +74,10 @@ export const profileDom = () => {
   getDatoUser(id)
     .then((doc) => {
       const nombreUser = doc.data().nombre;
-      const contenedorName =/*Html*/ `
+      const contenedorName =/* Html */ `
       <p id="nameProfile">${nombreUser}</p>
       `;
-      const contenedorNombreModal =/*Html*/`
+      const contenedorNombreModal =/* Html */`
       <label for="nome">Nombre</label>
         <input type="text" id="nome" class="input" value=${nombreUser}>
       </div>`;
@@ -93,20 +93,21 @@ export const profileDom = () => {
   });
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
- // getUserPost() llamar dentro el id del documento dentro , el foreach imprime el documento que filtras
-  getDatoPost((posts) => {
-    let contenido = ' ';
-    // const mostrar = posts.data().filter((document) => document.data().uid === id);
-    console.log(posts);
-    posts.forEach((doc) => {
+  // getUserPost() llamar dentro el id del documento dentro , el foreach imprime el documento que filtras
+
+  getUserPost(id)
+    .then((posts) => {
+      let contenido = ' ';
+      // const mostrar = posts.data().filter((document) => document.data().uid === id);
+      console.log(posts);
+      posts.forEach((doc) => {
       // muestra los post  en el home
-      const idUserPost = doc.data().uid;
-      getDatoUser(idUserPost).then((userDoc) => {
+        const idUserPost = doc.data().uid;
+        getDatoUser(idUserPost).then((userDoc) => {
         // Id del usuario en autentication
-        const idUserDatosUsuario = userDoc.data().id;
-        const getFecha = doc.data().datePost;
-        const nombreUser = userDoc.data().nombre.toUpperCase();
-        const postpublic = /*Html*/ `
+          const getFecha = doc.data().datePost;
+          const nombreUser = userDoc.data().nombre.toUpperCase();
+          const postpublic = /* Html */ `
             <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
@@ -129,19 +130,20 @@ export const profileDom = () => {
             </nav>
           </section>
           `;
-        const containerPostPerfil = document.querySelector('.publicaciones');
-        contenido += postpublic;
-        containerPostPerfil.innerHTML = contenido;
-        // const btnEditarPost = document.querySelector('#btnEditarPost');
-        // btnEditarPost.addEventListener('click', () => {
-        // });
-        const btnEliminarPost = document.querySelectorAll('.deleteButton');
-        btnEliminarPost.forEach((e) => {
-          e.addEventListener('click', () => {
-            deletePost(e.id);
+          const containerPostPerfil = document.querySelector('.publicaciones');
+          contenido += postpublic;
+          containerPostPerfil.innerHTML = contenido;
+          // const btnEditarPost = document.querySelector('#btnEditarPost');
+          // btnEditarPost.addEventListener('click', () => {
+          // });
+          const btnEliminarPost = document.querySelectorAll('.deleteButton');
+          btnEliminarPost.forEach((e) => {
+            e.addEventListener('click', () => {
+              console.log(e.id);
+              deletePost(e.id);
+            });
           });
         });
       });
     });
-  });
 };
