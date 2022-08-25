@@ -73,6 +73,7 @@ export const homeDom = () => {
       getDatoUser(idUserPost)
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
+          console.log(typeof getFecha);
           const nombreUser = userDoc.data().nombre.toUpperCase();
           const postpublic = /*Html*/ `
       <section class="postContainer">
@@ -122,7 +123,7 @@ export const homeDom = () => {
   btnModales(btnCerrar, ventanaModal, 'none');
   btnPublicar.addEventListener('click', () => {
     // Creando los campos de savePost()cuando le demos al btn publicar
-    createPost(id, descripcion.value, fechaPost.toString(), []);
+    createPost(id, descripcion.value, fechaPost, []);
     ventanaModal.style.display = 'none';
   });
   // Funcionalidad a like

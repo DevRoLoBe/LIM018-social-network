@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser} from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser, updatePost } from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
   const profile = /* html */ ` 
@@ -107,7 +107,7 @@ export const profileDom = () => {
             const getFecha = doc.data().datePost;
             const nombreUser = userDoc.data().nombre.toUpperCase();
             const postpublic = /* Html */ `
-            <section class="postContainer">
+          <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
               <section class="postHeaderPerfil">
@@ -129,19 +129,40 @@ export const profileDom = () => {
                   <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
               </span>
             </nav>
+            <div class="container-modal">
+            <div class="content-modal postModal">
+              <div class="tituloPublicacion">
+                <h2>Publicacion</h2>
+                <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
+              </div>
+              <div class="descripcion">
+                <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
+                <textarea id="descripcion"class="textArea"></textarea>
+              </div>
+              <section class= "botonesPost">
+                <input type="file" class="input-file"> 
+                <button id="btn-publicar">Guardar</button> 
+              </section>
+            </div>
+          </div>
           </section>
           `;
             const containerPostPerfil = document.querySelector('.publicaciones');
             contenido += postpublic;
             containerPostPerfil.innerHTML = contenido;
-            // const btnEditarPost = document.querySelector('#btnEditarPost');
-            // btnEditarPost.addEventListener('click', () => {
-            // });
             const btnEliminarPost = document.querySelectorAll('.deleteButton');
             btnEliminarPost.forEach((e) => {
               e.addEventListener('click', () => {
                 deletePost(e.id);
               });
+            });
+            const ventanaModalEditar = document.querySelector('.container-modal');
+            const btnEditarPost = document.querySelector('#btnEditarPost');
+            // const btnGuardar = document.querySelector('#btn-publicar');
+            const btnCerar = document.querySelector('#btn-cerrar');
+            btnModales(btnCerar, ventanaModal, 'none');
+            btnEditarPost.addEventListener('click', () => {
+              ventanaModalEditar.style.display = 'flex';
             });
           });
         });
