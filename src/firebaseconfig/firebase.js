@@ -73,13 +73,8 @@ export const getUserPost = (userId) => {
   const userCollection = query(collection(db, 'post'), where('uid', '==', userId));
   return getDocs(userCollection);
 };
-// getUserPost('b9EU9s9UZ1eNqG6fsq6K8WEMPq12').then((e) => {
-//   e.forEach((element) => {
-//     console.log(element.data());
-//   });
-// });
-// console.log(e.data()));
-// console.log(getUserPost('b9EU9s9UZ1eNqG6fsq6K8WEMPq12'));
-// .then((post) => console.log(post));
+export const onGetPostUser = async (callback) => {
+  await onSnapshot(collection(db, 'post'), (callback));
+};
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));

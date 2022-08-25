@@ -52,8 +52,7 @@ export const loginDom = () => {
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
     loginExistent(gmailInput.value, passwordInput.value)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
         window.location.hash = '#/home';
       // ...
       })

@@ -1,5 +1,5 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost } from '../firebaseconfig/firebase.js';
+import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser} from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
   const profile = /* html */ ` 
@@ -94,19 +94,19 @@ export const profileDom = () => {
   btnModales(btnEditar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
   // getUserPost()llamardentroeliddel documento dentro , el foreach imprime el documento que filtras
-  getUserPost(id)
-    .then((posts) => {
-      let contenido = ' ';
-      // const mostrar = posts.data().filter((document) => document.data().uid === id);
-      console.log(posts);
-      posts.forEach((doc) => {
-      // muestra los post  en el home
-        const idUserPost = doc.data().uid;
-        getDatoUser(idUserPost).then((userDoc) => {
-        // Id del usuario en autentication
-          const getFecha = doc.data().datePost;
-          const nombreUser = userDoc.data().nombre.toUpperCase();
-          const postpublic = /* Html */ `
+  const postPerfil = () => {
+    getUserPost(id)
+      .then((posts) => {
+        let contenido = ' ';
+        // const mostrar = posts.data().filter((document) => document.data().uid === id);
+        posts.forEach((doc) => {
+        // muestra los post  en el home
+          const idUserPost = doc.data().uid;
+          getDatoUser(idUserPost).then((userDoc) => {
+          // Id del usuario en autentication
+            const getFecha = doc.data().datePost;
+            const nombreUser = userDoc.data().nombre.toUpperCase();
+            const postpublic = /* Html */ `
             <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
@@ -131,20 +131,21 @@ export const profileDom = () => {
             </nav>
           </section>
           `;
-          const containerPostPerfil = document.querySelector('.publicaciones');
-          contenido += postpublic;
-          containerPostPerfil.innerHTML = contenido;
-          // const btnEditarPost = document.querySelector('#btnEditarPost');
-          // btnEditarPost.addEventListener('click', () => {
-          // });
-          const btnEliminarPost = document.querySelectorAll('.deleteButton');
-          btnEliminarPost.forEach((e) => {
-            e.addEventListener('click', () => {
-              console.log(e.id);
-              deletePost(e.id);
+            const containerPostPerfil = document.querySelector('.publicaciones');
+            contenido += postpublic;
+            containerPostPerfil.innerHTML = contenido;
+            // const btnEditarPost = document.querySelector('#btnEditarPost');
+            // btnEditarPost.addEventListener('click', () => {
+            // });
+            const btnEliminarPost = document.querySelectorAll('.deleteButton');
+            btnEliminarPost.forEach((e) => {
+              e.addEventListener('click', () => {
+                deletePost(e.id);
+              });
             });
           });
         });
       });
-    });
+  };
+  onGetPostUser(postPerfil);
 };

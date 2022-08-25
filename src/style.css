@@ -28,7 +28,7 @@ body{
   /* display:flex;
   align-items: center;
   justify-content:center; */
-  background-color: bisque;
+  background-color: #f5f3f0;
 }
 .container{
   position: absolute;
@@ -205,7 +205,6 @@ span.text{
 }
 #nameBtns{
   display:flex;
-  width: 680px;
   justify-content: space-between;
 }
 #nameBtns div img{
@@ -220,6 +219,9 @@ span.text{
   display: flex;
   justify-content: space-around;
   width: 100px;
+}
+.deleteButton{
+  cursor:pointer;
 }
 /*Foto y seccion de me gusta*/
 .secc-publicacionFoto{
