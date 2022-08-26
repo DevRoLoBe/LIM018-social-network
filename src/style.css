@@ -207,7 +207,7 @@ span.text{
   display:flex;
   justify-content: space-between;
 }
-#nameBtns div img{
+#nameBtns span img{
   width:25px;
   max-width:100%;
 }
