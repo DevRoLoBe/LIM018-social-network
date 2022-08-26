@@ -63,7 +63,7 @@ export const homeDom = () => {
   // traendo nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
-  const fechaPost = new Date().toLocaleDateString();
+  const fechaPost = new Date().toLocaleString();
   // jalando una funcion para mostrar los posts
   getDatoPost((posts) => {
     let contenido = ' ';
@@ -125,6 +125,8 @@ export const homeDom = () => {
     // Creando los campos de savePost()cuando le demos al btn publicar
     createPost(id, descripcion.value, fechaPost, []);
     ventanaModal.style.display = 'none';
+    const descripcionText = document.querySelector('.textArea');
+    descripcionText.value = '';
   });
   // Funcionalidad a like
   const btnLike = document.querySelector('.like');

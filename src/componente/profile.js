@@ -173,14 +173,16 @@ export const profileDom = () => {
                 miModalsito.style.display = 'flex';
               });
             });
-            // const btnGuardar = document.querySelectorAll('.guardar');
-            // btnGuardar.forEach((e) => {
-            //   e.addEventListener('click', () => {
-            //     console.log(e.dataset.id);
-            //     const otroModalsito = btnGuardar.closest('.container-modal');
-            //     otroModalsito.style.display = 'flex';
-            //   });
-            // });
+            const btnGuardar = document.querySelectorAll('.guardar');
+            btnGuardar.forEach((e) => {
+              e.addEventListener('click', (event) => {
+                // console.log(e.dataset.id);
+                const docId = event.target.dataset.id;
+                const miModalsito = document.querySelector(`.container-modal[data-id="${docId}"]`);
+                miModalsito.style.display = 'none';
+                updatePost(miModalsito, `${doc.data().descripcion}`);
+              });
+            });
           });
         });
       });
