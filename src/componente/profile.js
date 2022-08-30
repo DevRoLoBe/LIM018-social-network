@@ -63,7 +63,7 @@ export const profileView = () => {
     `;
   const sectionProfile = document.createElement('section');
   sectionProfile.innerHTML = profile;
-  sectionProfile.classList.add('seccion');
+  sectionProfile.classList.add('seccionPrincipal');
   return sectionProfile;
 };
 export const profileDom = () => {
@@ -97,7 +97,7 @@ export const profileDom = () => {
   const postPerfil = () => {
     getUserPost(id)
       .then((posts) => {
-        let contenido = '';
+        let content = '';
         // const mostrar = posts.data().filter((document) => document.data().uid === id);
         posts.forEach((doc) => {
         // muestra los post  en el home
@@ -106,7 +106,7 @@ export const profileDom = () => {
           // Id del usuario en autentication
             const getFecha = doc.data().datePost;
             const nombreUser = userDoc.data().nombre.toUpperCase();
-            const postpublic = /* Html */ `
+            const postPerfil = /* Html */ `
           <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
@@ -137,7 +137,7 @@ export const profileDom = () => {
               </div>
               <div class="descripcion">
                 <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
-                <textarea id="description" class="textArea">${doc.data().descripcion}</textarea>
+                <textarea id='id-${doc.id}' class="textArea">${doc.data().descripcion}</textarea>
               </div>
               <section class= "botonesPost">
                 <input type="file" class="input-file"> 
@@ -148,8 +148,8 @@ export const profileDom = () => {
           </section>
           `;
             const containerPostPerfil = document.querySelector('.publicaciones');
-            contenido += postpublic;
-            containerPostPerfil.innerHTML = contenido;
+            content += postPerfil;
+            containerPostPerfil.innerHTML = content;
             // containerPostPerfil.innerHTML = 'Hola';
             const btnEliminarPost = document.querySelectorAll('.deleteButton');
             btnEliminarPost.forEach((e) => {
@@ -178,9 +178,11 @@ export const profileDom = () => {
               e.addEventListener('click', (event) => {
                 // console.log(e.dataset.id);
                 const docId = event.target.dataset.id;
+                const descripcionText = document.querySelector(`#id-${docId}`).value;
+                updatePost(docId, descripcionText);
                 const miModalsito = document.querySelector(`.container-modal[data-id="${docId}"]`);
+                // console.log(miModalsito);
                 miModalsito.style.display = 'none';
-                updatePost(miModalsito, `${doc.data().descripcion}`);
               });
             });
           });

@@ -3,9 +3,7 @@ import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
   const login = /*html*/ `
-  <div class="container login"> 
-    <div class="forms">
-      <div class="form">
+      <div class="form login">
         <figure class="logo">
           <img class="logo__login" src="imagenes/loginCompleto.png" class="logo hidden" alt="perro y gato abrazadose">
         </figure>
@@ -23,19 +21,18 @@ export const loginview = () => {
           </div>
             <a href="#" class="text">¿Olvidaste tu contraseña?</a>
           <div class="campo-entrada campo-entrada__boton">
-            <input id="btn-login" type="button" value="Iniciar Sesión">
-            <input id="btn-google" type="button" value="Inicia Sesión con Google">
+            <button id="btn-login">Iniciar Sesión</button>
+            <button id="btn-google"><img src="imagenes/google.png">Inicia Sesion</button>
+          </div>
+          <div class="login-registrar">
+            <span class="text">¿No tiene una cuenta?</span>
+            <a href="#/registro" class="text login-registrar__text--registro">Registrate</a>
           </div>
         </form>
-        <div class="login-registrar">
-          <span class="text">¿No tiene una cuenta?</span>
-          <a href="#/registro" class="text login-registrar__text--registro">Registrate</a>
-        </div>
-      </div>
-    </div>
-  </div>`;
+      </div>`;
 
   const sectionLogin = document.createElement('section');
+  sectionLogin.classList.add('container');
   sectionLogin.innerHTML = login;
   return sectionLogin;
 };

@@ -35,7 +35,7 @@ export const servicioView = () => {
   </footer>`;
   const sectionServicios = document.createElement('section');
   sectionServicios.innerHTML = servicios;
-  sectionServicios.classList.add('seccion');
+  sectionServicios.classList.add('seccionPrincipal');
   return sectionServicios;
 };
 

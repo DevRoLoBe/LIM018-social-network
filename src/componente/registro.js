@@ -3,11 +3,9 @@ import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
   const registro = /*html*/`
-  <div class="container register">
-    <div class="forms">
-      <div class="form ">
-        <figure class="logo">
-          <img class="logo__registro" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
+    <div class="form register">
+        <figure class="logoRegistro">
+          <img src="imagenes/titulo.png" class=" hidden" alt="perro y gato abrazadose">
         </figure>
         <form action="#">
           <div class="campo-entrada">
@@ -32,19 +30,18 @@ export const registroview = () => {
             <span id="alertConfirmPassword"></span>
           </div>
           <div class="campo-entrada campo-entrada__boton">
-            <input id="btn-registrar"  type="button" value="Registrarse">
+            <button id="btn-registrar"> Registrarse</button>
           </div>
         </form>
         <div class="login-registrar">
           <span class="text">¿Ya tienes una cuenta?</span>
           <a href="#/login" class="text login-registrar__text--registro">Inicia Sesion</a>
         </div>
-      </div>
-    </div>
-  </div>`;
+      </div>`;
 
   // Creando la seccion que contendra al registro
   const sectionRegistro = document.createElement('section');
+  sectionRegistro.classList.add('container');
   sectionRegistro.innerHTML = registro;
   return sectionRegistro;
 };

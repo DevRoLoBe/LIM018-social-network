@@ -55,6 +55,7 @@ export const homeView = () => {
   </footer>
   `;
   const sectionHome = document.createElement('section');
+  sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
   sectionHome.classList.add('seccion');
   return sectionHome;
@@ -66,14 +67,13 @@ export const homeDom = () => {
   const fechaPost = new Date().toLocaleString();
   // jalando una funcion para mostrar los posts
   getDatoPost((posts) => {
-    let contenido = ' ';
+    let contenido = '';
     posts.forEach((doc) => {
       // muestra los post  en el home
       const idUserPost = doc.data().uid;
       getDatoUser(idUserPost)
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
-          console.log(typeof getFecha);
           const nombreUser = userDoc.data().nombre.toUpperCase();
           const postpublic = /*Html*/ `
       <section class="postContainer">

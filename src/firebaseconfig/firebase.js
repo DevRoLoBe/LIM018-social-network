@@ -78,4 +78,12 @@ export const onGetPostUser = async (callback) => {
 };
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
-export const updatePost = (id, postData) => updateDoc(doc(db, 'post', id), postData);
+export const updatePost = (id, campoText) => updateDoc(doc(db, 'post', id), { descripcion: campoText });
+
+// Para actualizar arreglo de likes
+export const subirLikes = async (idPost, dataLikes) => {
+  const docId = doc(db, 'posts', idPost);
+  await updateDoc(docId, {
+    likes: dataLikes,
+  });
+};
