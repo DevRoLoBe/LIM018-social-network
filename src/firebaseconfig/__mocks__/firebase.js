@@ -5,8 +5,8 @@
 //     }
 //   );
 // }
-export const createRegister = () => Promise.resolve({
-  user: {
-    uid: '123',
-  },
-});
+// export const createRegister = () => Promise.resolve({
+//   user: {
+//     uid: '123',
+//   },
+// });
