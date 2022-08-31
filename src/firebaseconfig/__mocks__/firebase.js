@@ -5,8 +5,9 @@
 //     }
 //   );
 // }
-// export const createRegister = () => Promise.resolve({
-//   user: {
-//     uid: '123',
-//   },
-// });
+// Mock de la propiedad que necesitamos de UserCredential, el uid
+export const createRegister = () => Promise.resolve({
+  user: {
+    uid: '123',
+  },
+});

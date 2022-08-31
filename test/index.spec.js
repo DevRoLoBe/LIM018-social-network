@@ -1,15 +1,18 @@
 /**
  * @jest-environment jsdom
  */
+// Esta instruciion le dice a jest que cree el objeto document
 
 // importamos la funcion que vamos a testear
 // import { registroFirebase, registroDom } from '../src/componente/registro.js';
+import { loginview } from '../src/componente/login.js';
 import { registroview } from '../src/componente/registro.js';
-jest.mock("../src/firebaseconfig/firebase.js");
 
-// Codigo hecho con David
+jest.mock('../src/firebaseconfig/firebase.js'); // Modulo a mockear
+
+// Inicio de codigo D
 // describe('registro', () => {
-//   it('se pinte el formulario de registro', () => { 
+//   it('se pinte el formulario de registro', () => {
 //     const mainH = document.createElement('main');
 //     mainH.id = 'contenedor';
 //     document.body.append(mainH);
@@ -26,15 +29,20 @@ jest.mock("../src/firebaseconfig/firebase.js");
 // });
 // Fin del codigo
 
-// describe('myFunction', () => {
-//   it('debería ser una función', () => {
-//     expect(typeof registroFirebase).toBe('function');
-//   });
-// });
 describe('registro', () => {
   it('dar click al boton registro', () => {
-    document.body.append(registroview());
-    const btnRegistrar = document.querySelector('#btn-registrar');
+    document.body.appendChild(registroview());
+    const btnRegistrar = document.getElementById('btn-registrar');
+    expect(btnRegistrar instanceof HTMLElement).toBe(true);
     btnRegistrar.click();
+    console.log(window.location);
+  });
+});
+describe('Login', () => {
+  it('dar click al boton login', () => {
+    document.body.appendChild(loginview());
+    const btnLogin = document.getElementById('btn-login');
+    expect(btnLogin instanceof HTMLElement).toBe(true);
+    btnLogin.click();
   });
 });

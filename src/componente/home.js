@@ -90,7 +90,7 @@ export const homeDom = () => {
           <p class="texto">${doc.data().descripcion}</p>
           <nav class="secc-like">
             <span class="spanLikeComent">
-              <button class="licogu like"><img src="imagenes/like.png"></button>
+              <button id ="${idUserPost}"class="licogu like"><img src="imagenes/like.png"></button>
               <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
               <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
           </span>
@@ -100,6 +100,13 @@ export const homeDom = () => {
       `;
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
+          // Funcionalidad a like
+          const btnLike = contenido.querySelector('.like');
+          console.log(btnLike);
+          // const btnContador = document.querySelector('#numeroLikes');
+          // btnLike.addEventListener('click', (e) => {
+          //   console.log(e.target.id);
+          // });
         });
     });
   });
@@ -130,7 +137,4 @@ export const homeDom = () => {
     const descripcionText = document.querySelector('.textArea');
     descripcionText.value = '';
   });
-  // Funcionalidad a like
-  // const btnLike = document.querySelector('.like');
-  // const btnContador = document.querySelector('#numeroLikes');
 };
