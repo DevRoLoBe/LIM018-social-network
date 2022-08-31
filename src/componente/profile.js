@@ -6,7 +6,7 @@ import {
 export const profileView = () => {
   const profile = /* html */ ` 
     <header class="logo-perfil">
-    <a href =""><img src="imagenes/agregarFoto.png"></a>
+    <!--<a href =""><img src="imagenes/agregarFoto.png"></a>-->
     <a href =""><img src="imagenes/bar.png"></a>
   </header>
   <section class="secc-perfilName">
@@ -16,15 +16,15 @@ export const profileView = () => {
     <section class= "editProfile">
     <button id="btn-editar"> Editar perfil</button> 
     </section>
-  <section class="historias">
+  <!--<section class="historias">
     <div id="historia"> <img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
     <div id="historia"><img src="imagenes/home.png"></div>
-  </section>
+  </section>-->
   <section class="menuIntermedio">
-    <a href =""><img src="imagenes/publicar.png"></a>
-    <a href =""><img src="imagenes/play.png"></a>
+    <!--<a href =""><img src="imagenes/publicar.png"></a>
+    <a href =""><img src="imagenes/play.png"></a>-->
   </section>
   <section class="publicaciones">
   </section>

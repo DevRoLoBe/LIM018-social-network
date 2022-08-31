@@ -141,8 +141,10 @@ span.text{
   cursor:pointer;
 }
 .campo-entrada__boton #btn-login, #btn-registrar{
-  color: #F96A03;
-  background-color:rgba(0, 0, 0, 0.81);
+  /* color: #F96A03;
+  background-color:rgba(0, 0, 0, 0.81); */
+  color: #000000;
+  background-color: #b7b3a5;
 }
 .campo-entrada__boton #btn-google{
   display: flex;
@@ -360,7 +362,7 @@ span.text{
   border-radius: 10px;
   width: 70%;
 }
-.historias{
+/* .historias{
   display: flex;
   margin: .5rem 2rem;
   gap: 2rem;
@@ -372,21 +374,21 @@ span.text{
   height: 50px;
   border:1px solid #000;
   border-radius: 50%;
-}
+} */
 .menuIntermedio{
   display: flex;
   justify-content: space-evenly;
   padding: 2px;
-  background-color: #94B49F;
+  background-color: #0e0e0e8f;
+  height: 20px;
+  margin-top: 10px;
 }
-.menuIntermedio a img{
+/* .menuIntermedio a img{
   width: 25px;
   max-width:100%;
   margin-top: 8px;
-}
-/* .publicaciones{
-  height: 55%;
 } */
+
 /*SERVICIOS*/
 .servicioContainer{
   display: flex;
