@@ -1,3 +1,4 @@
+
 .container-modal {
   width: 100%;
   height: 100vh;
@@ -11,6 +12,22 @@
   align-items: center;
   z-index: 100;
   /*sirve para que este sobreencima de lso elemntos.*/
+}
+/*Dando estilos al input*/
+
+.pre-descrip label{
+  color: rgb(100,100,100);
+  cursor:text;
+  transition: all 0.5s ease-in-out;
+}
+.pre-descrip .input{
+  width: 100%;
+  padding: 20px 0 0;
+  border: 0;
+  border-bottom: 2px solid rgb(200,200,200);
+  outline: 0;
+  font-size: 14px;
+  transition: all 0.5s ease-in-out;
 }
 
 /*hacer que nuestra ventana se abra y se cierre*/
@@ -169,20 +186,4 @@
 }
 .botonesPost a{
   text-decoration: none;
-};
-/*Dando estilos al input*/
-
-.pre-descrip label{
-  color: rgb(100,100,100);
-  cursor:text;
-  transition: all 0.5s ease-in-out;
-}
-.pre-descrip .input{
-  width: 100%;
-  padding: 20px 0 0;
-  border: 0;
-  border-bottom: 2px solid rgb(200,200,200);
-  outline: 0;
-  font-size: 14px;
-  transition: all 0.5s ease-in-out;
 }

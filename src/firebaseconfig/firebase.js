@@ -1,11 +1,18 @@
+/* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 // eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js';
 // eslint-disable-next-line import/no-unresolved
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signOut, signInWithPopup, GoogleAuthProvider,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js';
 
-import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, onSnapshot, where, query, orderBy, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
+import {
+  getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc,
+  onSnapshot, where, query, orderBy, deleteDoc, updateDoc,
+} from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -59,7 +66,9 @@ export const createUser = async (nombre, email, id) => {
 };
 // / Crea campos en firestore para los posts
 export const createPost = (uid, descripcion, datePost, likes) => {
-  addDoc(collection(db, 'post'), { uid, descripcion, datePost, likes });
+  addDoc(collection(db, 'post'), {
+    uid, descripcion, datePost, likes,
+  });
 };
 
 // Conseguiendo datos de firestore para mostrar en el home
@@ -79,11 +88,3 @@ export const onGetPostUser = async (callback) => {
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
 export const updatePost = (id, campoText) => updateDoc(doc(db, 'post', id), { descripcion: campoText });
-
-// Para actualizar arreglo de likes
-export const subirLikes = async (idPost, dataLikes) => {
-  const docId = doc(db, 'posts', idPost);
-  await updateDoc(docId, {
-    likes: dataLikes,
-  });
-};

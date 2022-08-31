@@ -2,7 +2,7 @@ import { createRegister, createUser } from '../firebaseconfig/firebase.js';
 import { validateEmpty } from './utils.js';
 
 export const registroview = () => {
-  const registro = /*html*/`
+  const registro = /* html */`
     <div class="form register">
         <figure class="logoRegistro">
           <img src="imagenes/titulo.png" class=" hidden" alt="perro y gato abrazadose">

@@ -1,5 +1,7 @@
 import { btnModales } from './utils.js';
-import { cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser, updatePost } from '../firebaseconfig/firebase.js';
+import {
+  cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser, updatePost,
+} from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
   const profile = /* html */ ` 
@@ -74,10 +76,10 @@ export const profileDom = () => {
   getDatoUser(id)
     .then((doc) => {
       const nombreUser = doc.data().nombre;
-      const contenedorName =/* Html */ `
+      const contenedorName = /* Html */ `
       <p id="nameProfile">${nombreUser}</p>
       `;
-      const contenedorNombreModal =/* Html */`
+      const contenedorNombreModal = /* Html */`
       <label for="nome">Nombre</label>
         <input type="text" id="nome" class="input" value=${nombreUser}>
       </div>`;
@@ -106,7 +108,7 @@ export const profileDom = () => {
           // Id del usuario en autentication
             const getFecha = doc.data().datePost;
             const nombreUser = userDoc.data().nombre.toUpperCase();
-            const postPerfil = /* Html */ `
+            const postPerfiles = /* Html */ `
           <section class="postContainer">
             <section class="secc-nombre2">
               <div class="fotoPostPerfil"><img src="imagenes/usuario.png"></div>
@@ -148,7 +150,7 @@ export const profileDom = () => {
           </section>
           `;
             const containerPostPerfil = document.querySelector('.publicaciones');
-            content += postPerfil;
+            content += postPerfiles;
             containerPostPerfil.innerHTML = content;
             // containerPostPerfil.innerHTML = 'Hola';
             const btnEliminarPost = document.querySelectorAll('.deleteButton');

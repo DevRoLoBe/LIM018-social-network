@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 //  funciones de validacion
 export const showError = (alerta, mensaje) => {
   alerta.style.color = 'red';

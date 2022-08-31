@@ -1,8 +1,10 @@
-import { getDatoPost, createPost, getCurrentUser, getDatoUser } from '../firebaseconfig/firebase.js';
+import {
+  getDatoPost, createPost, getCurrentUser, getDatoUser,
+} from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
-  const home = /*Html*/`
+  const home = /* Html */`
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
@@ -75,7 +77,7 @@ export const homeDom = () => {
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
           const nombreUser = userDoc.data().nombre.toUpperCase();
-          const postpublic = /*Html*/ `
+          const postpublic = /* Html */ `
       <section class="postContainer">
         <section class="secc-nombre">
           <div><img src="imagenes/usuario.png"></div>
@@ -107,14 +109,14 @@ export const homeDom = () => {
     .then((doc) => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
-      const contenedorName =/*Html*/ `
+      const contenedorName =/* Html */ `
       <p>Hola <span id="nameProfile">${nombreUser}</span></p>
       `;
       perfilNombre.innerHTML = contenedorName;
     });
-  // console.log(sirve);
+
   const descripcion = document.querySelector('#descripcion');
-  const imagen = document.querySelector('#imgSeleccionada');
+  // const imagen = document.querySelector('#imgSeleccionada');
   const btnPublicar = document.querySelector('#btn-publicar');
   const ventanaModal = document.querySelector('.container-modal');
   const btnAgregar = document.querySelector('#agregar');
@@ -129,6 +131,6 @@ export const homeDom = () => {
     descripcionText.value = '';
   });
   // Funcionalidad a like
-  const btnLike = document.querySelector('.like');
-  const btnContador = document.querySelector('#numeroLikes');
+  // const btnLike = document.querySelector('.like');
+  // const btnContador = document.querySelector('#numeroLikes');
 };

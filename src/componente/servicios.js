@@ -1,8 +1,8 @@
-import { getServicios } from '../firebaseconfig/firebase.js';
+// import { getServicios } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
 export const servicioView = () => {
-  const servicios = /*html*/ ` 
+  const servicios = /* html */ ` 
     <section class="serviciosContainer">
       <div class="div-veterinaria">
        <p class="nombre">Veterinaria Refiasa</p>
@@ -40,11 +40,11 @@ export const servicioView = () => {
 };
 
 export const servicioDom = async () => {
-  const querySnapshot = await getServicios();
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
-  });
+  // const querySnapshot = await getServicios();
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.id, ' => ', doc.data());
+  // });
   // const divVeterinaria = document.querySelector('.div-veterinaria');
   const serviciosContainer = document.querySelector('.serviciosContainer');
   const ventanaModal = document.querySelector('.container-modal');

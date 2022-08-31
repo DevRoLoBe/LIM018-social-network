@@ -2,7 +2,7 @@ import { loginExistent, googleInicioSesion, createUser } from '../firebaseconfig
 import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
-  const login = /*html*/ `
+  const login = /* html */ `
       <div class="form login">
         <figure class="logo">
           <img class="logo__login" src="imagenes/loginCompleto.png" class="logo hidden" alt="perro y gato abrazadose">
