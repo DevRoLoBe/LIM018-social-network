@@ -46,12 +46,12 @@ export const loginDom = () => {
   const alertPassword = document.querySelector('#alertpassword');
 
   btnLogin.addEventListener('click', () => {
+    console.log('me dieron un click!');
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
     loginExistent(gmailInput.value, passwordInput.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user.emailVerified);
+      .then(() => {
+        console.log('HOLAAAAAAAAAAAAAAAAA');
         window.location.hash = '#/home';
       // ...
       })

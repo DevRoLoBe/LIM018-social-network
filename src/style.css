@@ -62,7 +62,7 @@ body{
 /*Campos de entrada*/
 .campo-entrada{
   position: relative;
-  /* height: 50px; */
+  height: 50px;
   width: 100%;
   margin-top: 30px;
 }
@@ -198,13 +198,12 @@ span.text{
 }
 /*Seccion de nombre con los tres puntos*/
 .secc-nombre{
-  background-color: #94B49F;
+  background-color: #e7b982;
   align-items: center;
   display: flex;
 
 }
 .texto{
-  color: white;
   font-weight: 500;
 }
 .secc-nombre div img , .secc-nombre2 .fotoPostPerfil img{
@@ -221,7 +220,7 @@ span.text{
 }
 /*Perfil botones en el post de Editar y Eliminar*/
 .secc-nombre2{
-  background-color: #94B49F;
+  background-color: #e7b982;
   align-items: center;
   display: flex;
 }
@@ -262,7 +261,8 @@ span.text{
 .secc-like{
  display: flex;
  justify-content: space-between;
- padding: 2px;/* padding: 10px; */
+ padding: 3px;
+ border-top: solid 1px #00000052;
 }
 .licogu img{
   width: 25px;
@@ -284,7 +284,8 @@ span.text{
 }
 .cantidad-likes{
   font-weight: bold;
-  margin-top: 3px;
+  margin: 3px 0 0 0;
+  color: sienna;
 }
 .nombre{
   margin:4px 0px;
@@ -340,7 +341,7 @@ span.text{
 .secc-perfilName{
   display: flex;
   justify-content: space-around;
-  background-color: #000;
+  background-color: #8b4812;
   color: white;
 }
 .secc-perfilName div img {
@@ -358,9 +359,10 @@ span.text{
 }
 .editProfile button{
   align-items: center;
-  background-color: #f7f0f0;
+  background-color: #e7b982;
   border-radius: 10px;
   width: 70%;
+  font-size: 16px;
 }
 /* .historias{
   display: flex;
@@ -379,7 +381,7 @@ span.text{
   display: flex;
   justify-content: space-evenly;
   padding: 2px;
-  background-color: #0e0e0e8f;
+  background-color: #894b1a;;
   height: 20px;
   margin-top: 10px;
 }
@@ -431,7 +433,7 @@ span.text{
 .postContainer{
   display: flex;
   flex-direction: column;
-  background-color: #74878b;
-  margin: 10px 0px;
-  padding: 15px;
+  background-color: #f7c89c;
+  margin: 5px 0px;
+  padding: 10px;
 }

@@ -75,7 +75,7 @@ export const profileDom = () => {
 
   getDatoUser(id)
     .then((doc) => {
-      const nombreUser = doc.data().nombre;
+      const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName = /* Html */ `
       <p id="nameProfile">${nombreUser}</p>
       `;
@@ -104,6 +104,7 @@ export const profileDom = () => {
         posts.forEach((doc) => {
         // muestra los post  en el home
           const idUserPost = doc.data().uid;
+          console.log(doc.id);
           getDatoUser(idUserPost).then((userDoc) => {
           // Id del usuario en autentication
             const getFecha = doc.data().datePost;

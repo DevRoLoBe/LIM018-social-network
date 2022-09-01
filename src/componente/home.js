@@ -15,7 +15,6 @@ export const homeView = () => {
   </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-    <!--<p>Hola <span id="nameProfile">${'userName'}</span></p>-->
   </section>
   <!--<section class="secc-nombre">
     <div><img src="imagenes/usuario.png"></div>
@@ -23,14 +22,6 @@ export const homeView = () => {
   </section>-->
   <section class="secc-publicacionFoto">
   </section>
-   <!--<section class="secc-descripcion">
-   <p class="cantidad-likes"><span>23</span> Me gusta</p>
-    <div class="descrip">
-      <p class="nombre"><span class="nombre__span">Camila Vasquez</span>Descripcion encontre al perro en condiciones horribles</p>
-      <p class="comentarios">Ver los <span>23</span> comentarios</p>
-    </div>
-    <p class="tiempo">Hace 1 dia</p>
-  </section>-->
   <div class="container-modal">
     <div class="content-modal postModal">
       <div class="tituloPublicacion">
@@ -63,15 +54,19 @@ export const homeView = () => {
   return sectionHome;
 };
 export const homeDom = () => {
+  // Usuario activo
+  const id = getCurrentUser().uid;
   // traendo nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
   const fechaPost = new Date().toLocaleString();
   // jalando una funcion para mostrar los posts
   getDatoPost((posts) => {
+    console.log(posts)
     let contenido = '';
     posts.forEach((doc) => {
       // muestra los post  en el home
+      console.log(doc.data());
       const idUserPost = doc.data().uid;
       getDatoUser(idUserPost)
         .then((userDoc) => {
@@ -90,9 +85,9 @@ export const homeDom = () => {
           <p class="texto">${doc.data().descripcion}</p>
           <nav class="secc-like">
             <span class="spanLikeComent">
-              <button id ="${idUserPost}"class="licogu like"><img src="imagenes/like.png"></button>
-              <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+              <button class="licogu like"><img data-id ="${doc.id}" src="imagenes/likeRojo.png"></button>
+              <button class="licogu" href=""><img src="imagenes/comentar.png"></button>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
         </nav>
@@ -101,23 +96,25 @@ export const homeDom = () => {
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
           // Funcionalidad a like
-          const btnLike = contenido.querySelector('.like');
-          console.log(btnLike);
-          // const btnContador = document.querySelector('#numeroLikes');
-          // btnLike.addEventListener('click', (e) => {
-          //   console.log(e.target.id);
-          // });
+          const btnLike = document.querySelectorAll('.like');
+          // const likeActive = doc.data().likes.includes(getCurrentUser().uid);
+          // const likeActive = doc.data().likes.includes(id);
+          // console.log(likeActive);
+          btnLike.forEach((i) => {
+            i.addEventListener('click', (e) => {
+              console.log(e.target.dataset.id);
+            });
+          });
         });
     });
   });
-  const id = getCurrentUser().uid;
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDatoUser(id)
     .then((doc) => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/* Html */ `
-      <p>Hola <span id="nameProfile">${nombreUser}</span></p>
+      <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
       `;
       perfilNombre.innerHTML = contenedorName;
     });

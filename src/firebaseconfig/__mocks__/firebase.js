@@ -1,10 +1,5 @@
-// export const loginExistent = (gmail, password) => {
-//   return Promise.resolve(
-//     user : {
+export const loginExistent = jest.fn(() => Promise.resolve());
 
-//     }
-//   );
-// }
 // Mock de la propiedad que necesitamos de UserCredential, el uid
 export const createRegister = () => Promise.resolve({
   user: {
