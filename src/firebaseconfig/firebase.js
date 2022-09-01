@@ -58,7 +58,7 @@ export const cerrarSesion = () => {
 };
 
 // Usar el currentUser para saber el usuario actual
-export const getCurrentUser = () => auth.currentUser;
+// export const getCurrentUser = () => auth.currentUser;
 
 // crea campos para usuarios en firestore
 export const createUser = async (nombre, email, id) => {

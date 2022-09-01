@@ -1,5 +1,5 @@
 import {
-  getDatoPost, createPost, getCurrentUser, getDatoUser,
+  getDatoPost, createPost, getDatoUser,
 } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
@@ -101,8 +101,8 @@ export const homeDom = () => {
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
           // Funcionalidad a like
-          const btnLike = contenido.querySelector('.like');
-          console.log(btnLike);
+          // const btnLike = contenido.querySelector('.like');
+          // console.log(btnLike);
           // const btnContador = document.querySelector('#numeroLikes');
           // btnLike.addEventListener('click', (e) => {
           //   console.log(e.target.id);
@@ -110,7 +110,8 @@ export const homeDom = () => {
         });
     });
   });
-  const id = getCurrentUser().uid;
+  // const id = getCurrentUser().uid;
+  const id = JSON.parse(sessionStorage.getItem('idUser'));
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDatoUser(id)
     .then((doc) => {

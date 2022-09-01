@@ -46,12 +46,14 @@ export const loginDom = () => {
   const alertPassword = document.querySelector('#alertpassword');
 
   btnLogin.addEventListener('click', () => {
+    sessionStorage.clear();
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
     loginExistent(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user.emailVerified);
+        console.log(user.uid);
+        sessionStorage.setItem('idUser', JSON.stringify(user.uid));
         window.location.hash = '#/home';
       // ...
       })
@@ -65,15 +67,15 @@ export const loginDom = () => {
         if (error.code === 'auth/user-disabled') {
           alertGmail.textContent = 'Usuario deshabilitado';
         }
-        // error.code;
-        // error.message;
       });
   });
   btnGoogle.addEventListener('click', () => {
+    sessionStorage.clear();
     googleInicioSesion()
       .then((userGoogle) => {
         const usuario = userGoogle.user;
         createUser(usuario.displayName, usuario.email, usuario.uid);
+        sessionStorage.setItem('idUser', JSON.stringify(usuario.uid));
         window.location.hash = '#/home';
       });
   });
