@@ -1,5 +1,5 @@
 import {
-  getDatoPost, createPost, getCurrentUser, getDatoUser,
+  getDatoPost, createPost, getDatoUser,
 } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
@@ -54,8 +54,6 @@ export const homeView = () => {
   return sectionHome;
 };
 export const homeDom = () => {
-  // Usuario activo
-  const id = getCurrentUser().uid;
   // traendo nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
@@ -96,18 +94,16 @@ export const homeDom = () => {
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
           // Funcionalidad a like
-          const btnLike = document.querySelectorAll('.like');
-          // const likeActive = doc.data().likes.includes(getCurrentUser().uid);
-          // const likeActive = doc.data().likes.includes(id);
-          // console.log(likeActive);
-          btnLike.forEach((i) => {
-            i.addEventListener('click', (e) => {
-              console.log(e.target.dataset.id);
-            });
-          });
+          const btnLike = contenido.querySelector('.like');
+          console.log(btnLike);
+          // const btnContador = document.querySelector('#numeroLikes');
+          // btnLike.addEventListener('click', (e) => {
+          //   console.log(e.target.id);
+          // });
         });
     });
   });
+  const id = JSON.parse(sessionStorage.getItem('idUser'));
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDatoUser(id)
     .then((doc) => {

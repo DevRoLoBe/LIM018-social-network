@@ -1,6 +1,6 @@
 import { btnModales } from './utils.js';
 import {
-  cerrarSesion, getCurrentUser, getDatoUser, deletePost, getUserPost, onGetPostUser, updatePost,
+  cerrarSesion, getDatoUser, deletePost, getUserPost, onGetPostUser, updatePost,
 } from '../firebaseconfig/firebase.js';
 
 export const profileView = () => {
@@ -69,7 +69,8 @@ export const profileView = () => {
   return sectionProfile;
 };
 export const profileDom = () => {
-  const id = getCurrentUser().uid;
+  // const id = getCurrentUser().uid;
+  const id = JSON.parse(sessionStorage.getItem('idUser'));
   const perfilNombre = document.querySelector('.secc-perfilName');
   const nombreModal = document.querySelector('.nombreModal');
 
