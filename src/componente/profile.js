@@ -182,7 +182,7 @@ export const profileDom = () => {
                 // console.log(e.dataset.id);
                 const docId = event.target.dataset.id;
                 const descripcionText = document.querySelector(`#id-${docId}`).value;
-                updatePost(docId, descripcionText);
+                updatePost(docId, { descripcion: descripcionText });
                 const miModalsito = document.querySelector(`.container-modal[data-id="${docId}"]`);
                 // console.log(miModalsito);
                 miModalsito.style.display = 'none';
