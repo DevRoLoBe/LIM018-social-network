@@ -1,5 +1,5 @@
 import {
-  getDatoPost, createPost, getDatoUser,
+  getDatoPost, createPost, getDatoUser, updatePost,
 } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
@@ -8,8 +8,8 @@ export const homeView = () => {
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span>
-      <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
-     <!-- <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
+    <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
+    <!-- <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
       <a class="btn-img" href =""><img src="imagenes/comentar.png"></a> -->
     </span>
   </header> 
@@ -20,29 +20,29 @@ export const homeView = () => {
   </section>
   <div class="container-modal">
     <div class="content-modal postModal">
-      <div class="tituloPublicacion">
-        <h2>Publicacion</h2>
-        <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
-      </div>
-      <div class="descripcion">
-        <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
-        <textarea id="descripcion"class="textArea"></textarea>
-      </div>
-      <section class= "botonesPost">
-        <input type="file" class="input-file"> 
-        <button id="btn-publicar">Publicar</button> 
-      </section>
+    <div class="tituloPublicacion">
+    <h2>Publicacion</h2>
+    <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
     </div>
-  </div>
-  <footer class="menu">
+    <div class="descripcion">
+    <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
+    <textarea id="descripcion"class="textArea"></textarea>
+    </div>
+    <section class= "botonesPost">
+    <input type="file" class="input-file"> 
+    <button id="btn-publicar">Publicar</button> 
+    </section>
+    </div>
+    </div>
+    <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
       <!--<a href='#'><img src="imagenes/buscar.png"></a>-->
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
-  </footer>
-  `;
+    </footer>
+    `;
   const sectionHome = document.createElement('section');
   sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
@@ -50,6 +50,7 @@ export const homeView = () => {
   return sectionHome;
 };
 export const homeDom = () => {
+  const id = JSON.parse(sessionStorage.getItem('idUser'));
   // traendo nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
@@ -90,19 +91,25 @@ export const homeDom = () => {
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
           // Funcionalidad a like
-          const btnLike = document.querySelectorAll('.like');
-          // const likeActive = doc.data().likes.includes(getCurrentUser().uid);
-          // const likeActive = doc.data().likes.includes(id);
-          // console.log(likeActive);
-          btnLike.forEach((i) => {
-            i.addEventListener('click', (e) => {
-              console.log(e.target.dataset.id);
+          const likeImagen = document.querySelectorAll('.like');
+          likeImagen.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+              const docId = e.target.dataset.id;
+              const docPost = doc.data();
+              if (docPost.likes.includes(id)) {
+                const filterLikes = docPost.likes.filter((idLike) => idLike !== id);
+                updatePost(docId, { likes: filterLikes });
+                console.log('siin like p ');
+              } else {
+                updatePost(docId, { likes: [...docPost.likes, id] });
+                console.log('incluyendo like');
+              }
             });
           });
         });
     });
   });
-  const id = JSON.parse(sessionStorage.getItem('idUser'));
+  // const id = getCurrentUser().uid;
   const perfilNombre = document.querySelector('.secc-perfilName');
   getDatoUser(id)
     .then((doc) => {
