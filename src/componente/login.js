@@ -52,7 +52,6 @@ export const loginDom = () => {
     loginExistent(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user.uid);
         sessionStorage.setItem('idUser', JSON.stringify(user.uid));
         window.location.hash = '#/home';
       // ...

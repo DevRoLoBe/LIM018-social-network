@@ -16,10 +16,6 @@ export const homeView = () => {
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
   </section>
-  <!--<section class="secc-nombre">
-    <div><img src="imagenes/usuario.png"></div>
-    <span >nombre del usuario</span>
-  </section>-->
   <section class="secc-publicacionFoto">
   </section>
   <div class="container-modal">
@@ -41,7 +37,7 @@ export const homeView = () => {
   <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
-      <a href='#'><img src="imagenes/buscar.png"></a>
+      <!--<a href='#'><img src="imagenes/buscar.png"></a>-->
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
@@ -94,12 +90,15 @@ export const homeDom = () => {
           contenido += postpublic;
           conainerPost.innerHTML = contenido;
           // Funcionalidad a like
-          const btnLike = contenido.querySelector('.like');
-          console.log(btnLike);
-          // const btnContador = document.querySelector('#numeroLikes');
-          // btnLike.addEventListener('click', (e) => {
-          //   console.log(e.target.id);
-          // });
+          const btnLike = document.querySelectorAll('.like');
+          // const likeActive = doc.data().likes.includes(getCurrentUser().uid);
+          // const likeActive = doc.data().likes.includes(id);
+          // console.log(likeActive);
+          btnLike.forEach((i) => {
+            i.addEventListener('click', (e) => {
+              console.log(e.target.dataset.id);
+            });
+          });
         });
     });
   });

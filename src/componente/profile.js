@@ -105,7 +105,6 @@ export const profileDom = () => {
         posts.forEach((doc) => {
         // muestra los post  en el home
           const idUserPost = doc.data().uid;
-          console.log(doc.id);
           getDatoUser(idUserPost).then((userDoc) => {
           // Id del usuario en autentication
             const getFecha = doc.data().datePost;
