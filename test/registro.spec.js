@@ -11,14 +11,8 @@ describe('registro', () => {
     // CUANDO - ejecutar una funcion especifica para nuestra prueba
 
     // ENTONCES
-    expect(document.querySelector('.form.register')).not.toBeNull();
+    setTimeout(() => {
+      expect(document.querySelector('.form.register')).not.toBeNull();
+    }, 1000);
   });
-
-  // it('dar click al boton registro', () => {
-  //   document.body.appendChild(registroview());
-  //   const btnRegistrar = document.getElementById('btn-registrar');
-  //   expect(btnRegistrar instanceof HTMLElement).toBe(true);
-  //   btnRegistrar.click();
-  //   console.log(window.location);
-  // });
 });

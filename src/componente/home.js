@@ -57,12 +57,13 @@ export const homeDom = () => {
   const fechaPost = new Date().toLocaleString();
   // jalando una funcion para mostrar los posts
   getDatoPost((posts) => {
-    console.log(posts)
     let contenido = '';
     posts.forEach((doc) => {
       // muestra los post  en el home
-      console.log(doc.data());
+      console.log(doc.data()); // post
       const idUserPost = doc.data().uid;
+      // Activar el like
+      const likeActive = doc.data().likes.includes(id);
       getDatoUser(idUserPost)
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
@@ -77,10 +78,10 @@ export const homeDom = () => {
             <span id="fecha">${getFecha}</span>
           </span>
         </section>
-          <p class="texto">${doc.data().descripcion}</p>
+          <p class="descripcion-texto">${doc.data().descripcion}</p>
           <nav class="secc-like">
             <span class="spanLikeComent">
-              <button class="licogu like"><img data-id ="${doc.id}" src="imagenes/likeRojo.png"></button>
+              <button class="licogu like"><img data-id ="${doc.id}" src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
               <button class="licogu" href=""><img src="imagenes/comentar.png"></button>
               <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
           </span>
@@ -101,7 +102,7 @@ export const homeDom = () => {
                 updatePost(docId, { likes: filterLikes });
                 console.log('siin like p ');
               } else {
-                updatePost(docId, { likes: [...docPost.likes, id] });
+                updatePost(docId, { likes: docPost.likes.concat(id) });
                 console.log('incluyendo like');
               }
             });

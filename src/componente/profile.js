@@ -16,12 +16,6 @@ export const profileView = () => {
     <section class= "editProfile">
     <button id="btn-editar"> Editar perfil</button> 
     </section>
-  <!--<section class="historias">
-    <div id="historia"> <img src="imagenes/home.png"></div>
-    <div id="historia"><img src="imagenes/home.png"></div>
-    <div id="historia"><img src="imagenes/home.png"></div>
-    <div id="historia"><img src="imagenes/home.png"></div>
-  </section>-->
   <section class="menuIntermedio">
     <!--<a href =""><img src="imagenes/publicar.png"></a>
     <a href =""><img src="imagenes/play.png"></a>-->
@@ -101,10 +95,11 @@ export const profileDom = () => {
     getUserPost(id)
       .then((posts) => {
         let content = '';
-        // const mostrar = posts.data().filter((document) => document.data().uid === id);
         posts.forEach((doc) => {
         // muestra los post  en el home
           const idUserPost = doc.data().uid;
+          // Activar el like
+          const likeActive = doc.data().likes.includes(id);
           getDatoUser(idUserPost).then((userDoc) => {
           // Id del usuario en autentication
             const getFecha = doc.data().datePost;
@@ -127,9 +122,9 @@ export const profileDom = () => {
               <p class="texto">${doc.data().descripcion}</p>
               <nav class="secc-like">
                 <span class="spanLikeComent">
-                  <button class="licogu like"><img src="imagenes/like.png"></button>
+                  <button class="licogu like"><img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
                   <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-                  <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+                  <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
               </span>
             </nav>
             <div class="container-modal" data-id='${doc.id}'>

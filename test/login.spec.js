@@ -50,14 +50,25 @@ describe('login', () => {
     }, 1000);
   });
 
-  it('deberia arrojar contraseña', () => {
+  it('deberia arrojar contraseña incorrecta', () => {
     const gmailInput = document.querySelector('#userGmail');
-    gmailInput.value = 'noexist@gmail.com';
+    gmailInput.value = 'wrongpas@gmail.com';
+
+    document.querySelector('#btn-login').click();
+    const alertPassword = document.querySelector('#alertpassword');
+    setTimeout(() => {
+      expect(alertPassword.textContent).toBe('Contraseña incorrecta');
+    }, 1000);
+  });
+
+  it('deberia arrojar usuario deshabilitado', () => {
+    const gmailInput = document.querySelector('#userGmail');
+    gmailInput.value = 'wrongpas@gmail.com';
 
     document.querySelector('#btn-login').click();
     const alertGmail = document.querySelector('#alertgmail');
     setTimeout(() => {
-      expect(alertGmail.textContent).toBe('Email incorrecto');
+      expect(alertGmail.textContent).toBe('Usuario deshabilitado');
     }, 1000);
   });
 });

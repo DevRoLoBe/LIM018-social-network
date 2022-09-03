@@ -5,7 +5,7 @@ export const registroview = () => {
   const registro = /* html */`
     <div class="form register">
         <figure class="logoRegistro">
-          <img src="imagenes/titulo.png" class=" hidden" alt="perro y gato abrazadose">
+          <img src="imagenes/titulo.png" alt="perro y gato abrazadose">
         </figure>
         <form action="#">
           <div class="campo-entrada">
@@ -35,7 +35,7 @@ export const registroview = () => {
         </form>
         <div class="login-registrar">
           <span class="text">¿Ya tienes una cuenta?</span>
-          <a href="#/login" class="text login-registrar__text--registro">Inicia Sesion</a>
+          <a href="#/login" class="text">Inicia Sesion</a>
         </div>
       </div>`;
 
