@@ -1,5 +1,5 @@
 import {
-  getDatoPost, createPost, getDatoUser, updatePost,
+  getDatoPost, createPost, getDatoUser, updateLike,
 } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
@@ -60,10 +60,11 @@ export const homeDom = () => {
     let contenido = '';
     posts.forEach((doc) => {
       // muestra los post  en el home
-      console.log(doc.data()); // post
+      // console.log(doc.data()); // post
       const idUserPost = doc.data().uid;
       // Activar el like
       const likeActive = doc.data().likes.includes(id);
+      // const likeActive = false;
       getDatoUser(idUserPost)
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
@@ -97,12 +98,16 @@ export const homeDom = () => {
             btn.addEventListener('click', (e) => {
               const docId = e.target.dataset.id;
               const docPost = doc.data();
+              // console.log(id);
+              console.log(docPost.likes);
               if (docPost.likes.includes(id)) {
                 const filterLikes = docPost.likes.filter((idLike) => idLike !== id);
-                updatePost(docId, { likes: filterLikes });
+                console.log(filterLikes);
+                updateLike(docId, filterLikes);
                 console.log('siin like p ');
               } else {
-                updatePost(docId, { likes: docPost.likes.concat(id) });
+                const arrayLikes = docPost.likes.concat(id);
+                updateLike(docId, arrayLikes);
                 console.log('incluyendo like');
               }
             });
@@ -118,7 +123,7 @@ export const homeDom = () => {
       const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/* Html */ `
       <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
-      `;
+z      `;
       perfilNombre.innerHTML = contenedorName;
     });
 
@@ -132,7 +137,8 @@ export const homeDom = () => {
   btnModales(btnCerrar, ventanaModal, 'none');
   btnPublicar.addEventListener('click', () => {
     // Creando los campos de savePost()cuando le demos al btn publicar
-    createPost(id, descripcion.value, fechaPost, []);
+    const like = [];
+    createPost(id, descripcion.value, fechaPost, like);
     ventanaModal.style.display = 'none';
     const descripcionText = document.querySelector('.textArea');
     descripcionText.value = '';
