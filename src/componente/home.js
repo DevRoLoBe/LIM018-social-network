@@ -15,22 +15,9 @@ export const homeView = () => {
   </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
-    <!--<p>Hola <span id="nameProfile">${'userName'}</span></p>-->
   </section>
-  <!--<section class="secc-nombre">
-    <div><img src="imagenes/usuario.png"></div>
-    <span >nombre del usuario</span>
-  </section>-->
   <section class="secc-publicacionFoto">
   </section>
-   <!--<section class="secc-descripcion">
-   <p class="cantidad-likes"><span>23</span> Me gusta</p>
-    <div class="descrip">
-      <p class="nombre"><span class="nombre__span">Camila Vasquez</span>Descripcion encontre al perro en condiciones horribles</p>
-      <p class="comentarios">Ver los <span>23</span> comentarios</p>
-    </div>
-    <p class="tiempo">Hace 1 dia</p>
-  </section>-->
   <div class="container-modal">
     <div class="content-modal postModal">
     <div class="tituloPublicacion">
@@ -49,10 +36,10 @@ export const homeView = () => {
     </div>
     <footer class="menu">
     <nav class="menuInferior ">
-    <a href='#/home'><img src="imagenes/home.png"></a>
-    <a href='#'><img src="imagenes/buscar.png"></a>
-    <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
-    <a href='#/profile'><img src="imagenes/usuario.png"></a>
+      <a href='#/home'><img src="imagenes/home.png"></a>
+      <!--<a href='#'><img src="imagenes/buscar.png"></a>-->
+      <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
+      <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
     </footer>
     `;
@@ -73,7 +60,10 @@ export const homeDom = () => {
     let contenido = '';
     posts.forEach((doc) => {
       // muestra los post  en el home
+      console.log(doc.data()); // post
       const idUserPost = doc.data().uid;
+      // Activar el like
+      const likeActive = doc.data().likes.includes(id);
       getDatoUser(idUserPost)
         .then((userDoc) => {
           const getFecha = doc.data().datePost;
@@ -88,13 +78,12 @@ export const homeDom = () => {
             <span id="fecha">${getFecha}</span>
           </span>
         </section>
-          <p class="texto">${doc.data().descripcion}</p>
+          <p class="descripcion-texto">${doc.data().descripcion}</p>
           <nav class="secc-like">
             <span class="spanLikeComent">
-              <button class="licogu like"><img data-id ="${doc.id}" src="imagenes/like.png"></button>
-              <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}
-              </span> Me gusta</p>
+              <button class="licogu like"><img data-id ="${doc.id}" src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
+              <button class="licogu" href=""><img src="imagenes/comentar.png"></button>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
         </nav>
@@ -128,7 +117,7 @@ export const homeDom = () => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/* Html */ `
-      <p>Hola <span id="nameProfile">${nombreUser}</span></p>
+      <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
       `;
       perfilNombre.innerHTML = contenedorName;
     });

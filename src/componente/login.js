@@ -5,7 +5,7 @@ export const loginview = () => {
   const login = /* html */ `
       <div class="form login">
         <figure class="logo">
-          <img class="logo__login" src="imagenes/loginCompleto.png" class="logo hidden" alt="perro y gato abrazadose">
+          <img src="imagenes/loginCompleto.png" alt="perro y gato abrazadose">
         </figure>
         <form action="#">
           <div class="campo-entrada">
@@ -26,7 +26,7 @@ export const loginview = () => {
           </div>
           <div class="login-registrar">
             <span class="text">¿No tiene una cuenta?</span>
-            <a href="#/registro" class="text login-registrar__text--registro">Registrate</a>
+            <a href="#/registro" class="text">Registrate</a>
           </div>
         </form>
       </div>`;
@@ -52,7 +52,6 @@ export const loginDom = () => {
     loginExistent(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user.uid);
         sessionStorage.setItem('idUser', JSON.stringify(user.uid));
         window.location.hash = '#/home';
       // ...
