@@ -93,7 +93,8 @@ export const homeDom = () => {
             <span class="spanLikeComent">
               <button class="licogu like"><img data-id ="${doc.id}" src="imagenes/like.png"></button>
               <a class="licogu" href=""><img src="imagenes/comentar.png"></a>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>23</span> Me gusta</p>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}
+              </span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
         </nav>
@@ -112,7 +113,7 @@ export const homeDom = () => {
                 updatePost(docId, { likes: filterLikes });
                 console.log('siin like p ');
               } else {
-                updatePost(docId, { likes: [...docPost.likes, id] });
+                updatePost(docId, { likes: docPost.likes.concat(id) });
                 console.log('incluyendo like');
               }
             });
