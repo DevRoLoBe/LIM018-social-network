@@ -11,7 +11,7 @@ import {
 
 import {
   getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc,
-  onSnapshot, where, query, orderBy, deleteDoc, updateDoc,
+  onSnapshot, where, query, orderBy, deleteDoc, updateDoc, arrayRemove, arrayUnion,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -88,3 +88,4 @@ export const onGetPostUser = async (callback) => {
 // Eliminar un post de con respecto al postId
 export const deletePost = (postId) => deleteDoc(doc(db, 'post', postId));
 export const updatePost = (id, newData) => updateDoc(doc(db, 'post', id), newData);
+export { arrayRemove, arrayUnion };

@@ -1,5 +1,5 @@
 import {
-  getDatoPost, createPost, getDatoUser, updatePost,
+  getDatoPost, createPost, getDatoUser, updatePost, arrayRemove, arrayUnion,
 } from '../firebaseconfig/firebase.js';
 import { btnModales } from './utils.js';
 
@@ -97,14 +97,18 @@ export const homeDom = () => {
             btn.addEventListener('click', (e) => {
               const docId = e.target.dataset.id;
               const docPost = doc.data();
+              let newLike;
               if (docPost.likes.includes(id)) {
-                const filterLikes = docPost.likes.filter((idLike) => idLike !== id);
-                updatePost(docId, { likes: filterLikes });
+                // const filterLikes = docPost.likes.filter((idLike) => idLike !== id);
+                newLike = { likes: arrayRemove(id) };
+                // updatePost(docId, { likes: arrayRemove(id) });
                 console.log('siin like p ');
               } else {
-                updatePost(docId, { likes: docPost.likes.concat(id) });
+                newLike = { likes: arrayUnion(id) };
+                // updatePost(docId, { likes: arrayUnion(id) });
                 console.log('incluyendo like');
               }
+              updatePost(docId, newLike);
             });
           });
         });
