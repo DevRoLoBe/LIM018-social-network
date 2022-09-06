@@ -1,12 +1,12 @@
-# PAtitas Preciosas
+# Patitas Preciosas
 
 # # Una Red Social creada para las personas amantes de los Animales 
 
 Esta red social es creada como una iniciativa para fomentar que menos animales se encuentren
 sufriendo en las calles, los principales usuarios son las personas amantes de estos. 
-Permite a cualquier usuario registrarse a la <red social> una vez echo , ya cuenta 
+Permite a cualquier usuario registrarse a la red social una vez echo, ya cuenta 
 con un correo y contraseña, tambien se puede registrar con una cuenta de google y acceder al 
-home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la publicacion y botpon de cerrar sesion. <veterinarias cercanas>   
+home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la publicacion, tambien contará con un espacio para ver informacion de las veterinarias cercanas y el boton de cerrar sesion. 
 
 # # # Producto Final de la red social 
 
@@ -29,7 +29,7 @@ Un ejemplo es de un usuario que visualiza cachorros abandonados pasando pena, es
 
 #### ¿Cómo mi producto resuelve un problema o necesidad?
 
-Mas usuarios tendrían la oprtunidad de poder adoptar, por ende disminuiría la población callejera 
+Mas usuarios tendrían la oportunidad de poder adoptar, por ende disminuiría la población callejera 
 de los animales y tendrian un hogar donde vivir.
 
 #### prototipos de baja fidelidad   
@@ -55,7 +55,7 @@ Yo como usuario de Patitas Preciosas
 Quiero acceder a una página amigable, donde pueda pueda visualizar las opciones de 
 logueo con facilidad.
 
-criterios de aceptación:
+Criterios de aceptación:
 
 * Tiene que existir un interfaz amigable y facil de acceder.
 * Debe tener opciones de registro y de loguin.
@@ -66,9 +66,9 @@ criterios de aceptación:
 
 Yo como usuario amante de los animales
 Quiero poder registrarme fácilmente con un correo electrónico y contraseña, 
-de tal forma poder loguearme siempre. 
+de tal forma que pueda loguearme siempre. 
 
-criterios de aceptación:
+Criterios de aceptación:
 
 * Tiene que tener un enlace que me dirija a la sección de registro.
 * Tiene que existir campos vacíos especificando al usuario para que ingrese
@@ -92,7 +92,7 @@ Criterios de aceptación:
 * El usuario tendrá una vista amigable de login.
 * Tiene que tener una imagen con respecto a la red social.
 * Debe tener campos vacíos donde el usuario debe ingresar su correo y contraseña.
-* Debe tener un boton que ingresará directamente con su cuenta de google. 
+* Debe tener un boton con el logo de Google que le permitira loguearse con su cuenta de google directamente al home.
 * No debe dejar loguearse si el correo o la contraseña son incorrectos. 
 * Debe marcar un texto de error en caso de que no complete correctamente los datos
  o alguno de los campos esté vacío.
@@ -161,12 +161,12 @@ Para hacerles saber que me gustaron sus publicaciones.
 
 Criterios de aceptación: 
 
-* Al momento de presionar al botó like este debe pintarse e incrementar
+* Al momento de presionar al boton like este debe pintarse e incrementar
  la cantidad de likes.
 * Si se desea quitar el like, este debe despintarse el color y la cantidad 
  de números debe descender automáticamente.
 
-####  HU 9: cerrar sesión 
+####  HU 9: Cerrar sesión 
 
 Yo como usuario fans de los animales
 Quiero poder cerrar sesión con facilidad 
