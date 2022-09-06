@@ -18,7 +18,9 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ![pantalla de servicios](imgReadme/ref.f.jpeg)
 ![pantalla de perfil](imgReadme/perfil.f.jpeg) 
 ![pantalla de editar y borrar](imgReadme/editar%20y%20borrar.f.jpeg)
-![versión mobile]
+
+![versión mobile](imgReadme/versionmovile.1.jpeg)
+![version mobile ](imgReadme/versionmovile.2.jpeg)
 
 #### ¿Quiénes son los principales usuarios del producto?
 
