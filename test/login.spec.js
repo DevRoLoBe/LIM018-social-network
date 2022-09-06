@@ -2,6 +2,7 @@
 
 // importamos la funcion que vamos a testear
 // import { registroFirebase, registroDom } from '../src/componente/registro.js';
+
 import { loginview, loginDom } from '../src/componente/login.js';
 
 jest.mock('../src/firebaseconfig/firebase.js'); // Modulo a mockear
@@ -23,7 +24,7 @@ describe('login', () => {
   it('hacer un login exitoso', () => {
     // DADO - mocks, pintar en el dom que necesitemos, agregamos los eventos necesarios
     const loginSection = loginview();
-    document.body.appendChild(loginSection);
+    document.body.replaceChildren(loginSection);
     loginDom();
 
     const gmailInput = document.querySelector('#userGmail');
@@ -40,6 +41,8 @@ describe('login', () => {
   });
 
   it('deberia arrojar email incorrecto', () => {
+    document.body.replaceChildren(loginview());
+    loginDom();
     const gmailInput = document.querySelector('#userGmail');
     gmailInput.value = 'noexist@gmail.com';
 
@@ -47,10 +50,12 @@ describe('login', () => {
     const alertGmail = document.querySelector('#alertgmail');
     setTimeout(() => {
       expect(alertGmail.textContent).toBe('Email incorrecto');
-    }, 1000);
+    }, 0);
   });
 
   it('deberia arrojar contraseña incorrecta', () => {
+    document.body.replaceChildren(loginview());
+    loginDom();
     const gmailInput = document.querySelector('#userGmail');
     gmailInput.value = 'wrongpas@gmail.com';
 
@@ -58,17 +63,28 @@ describe('login', () => {
     const alertPassword = document.querySelector('#alertpassword');
     setTimeout(() => {
       expect(alertPassword.textContent).toBe('Contraseña incorrecta');
-    }, 1000);
+    }, 0);
   });
 
   it('deberia arrojar usuario deshabilitado', () => {
+    document.body.replaceChildren(loginview());
+    loginDom();
     const gmailInput = document.querySelector('#userGmail');
-    gmailInput.value = 'wrongpas@gmail.com';
+    gmailInput.value = 'disabled@gmail.com';
 
     document.querySelector('#btn-login').click();
     const alertGmail = document.querySelector('#alertgmail');
     setTimeout(() => {
       expect(alertGmail.textContent).toBe('Usuario deshabilitado');
-    }, 1000);
+    }, 0);
+  });
+  it('Verificar la existencia del boton de google ', () => {
+    const mainH = document.createElement('main');
+    mainH.id = 'contenedor';
+    document.body.appendChild(mainH);
+    mainH.replaceChildren(loginview());
+    loginDom();
+    const btnGoogle = document.querySelector('#btn-google');
+    expect(btnGoogle instanceof HTMLElement).toBe(true);
   });
 });

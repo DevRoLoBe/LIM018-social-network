@@ -7,11 +7,7 @@ export const homeView = () => {
   const home = /* Html */`
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
-    <span>
     <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
-    <!-- <a class="btn-img" href =""><img src="imagenes/notificar.png"></a>
-      <a class="btn-img" href =""><img src="imagenes/comentar.png"></a> -->
-    </span>
   </header> 
   <section class="secc-perfilName">
     <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
@@ -20,33 +16,33 @@ export const homeView = () => {
   </section>
   <div class="container-modal">
     <div class="content-modal postModal">
-    <div class="tituloPublicacion">
-    <h2>Publicacion</h2>
-    <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i></div>
+      <div class="tituloPublicacion">
+        <h2>Publicacion</h2>
+        <div id="btn-cerrar" class="btn-cerrarRed"><i class="uil uil-multiply"></i>
+        </div>
+      </div>
+      <div class="descripcion">
+        <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
+        <textarea id="descripcion"class="textArea"></textarea>
+      </div>
+      <section class= "botonesPost">
+        <input type="file" class="input-file"> 
+        <button id="btn-publicar">Publicar</button> 
+      </section>
     </div>
-    <div class="descripcion">
-    <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
-    <textarea id="descripcion"class="textArea"></textarea>
-    </div>
-    <section class= "botonesPost">
-    <input type="file" class="input-file"> 
-    <button id="btn-publicar">Publicar</button> 
-    </section>
-    </div>
-    </div>
-    <footer class="menu">
+  </div>
+  <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
       <!--<a href='#'><img src="imagenes/buscar.png"></a>-->
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
-    </footer>
+  </footer>
     `;
   const sectionHome = document.createElement('section');
   sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
-  sectionHome.classList.add('seccion');
   return sectionHome;
 };
 export const homeDom = () => {
@@ -122,7 +118,8 @@ export const homeDom = () => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/* Html */ `
-      <p>HOLA <span id="nameProfile">${nombreUser}</span></p> `;
+      <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
+     `;
       perfilNombre.innerHTML = contenedorName;
     });
 

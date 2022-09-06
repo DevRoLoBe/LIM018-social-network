@@ -28,7 +28,6 @@ export const servicioView = () => {
     <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
-      <a href='#'><img src="imagenes/buscar.png"></a>
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
