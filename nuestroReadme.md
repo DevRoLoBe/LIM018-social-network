@@ -29,7 +29,7 @@ Un ejemplo es de un usuario que visualiza cachorros abandonados pasando pena, es
 
 #### ¿Cómo mi producto resuelve un problema o necesidad?
 
-Mas usuarios tendrían la oprtunidad de poder adoptar, por ende disminuiría la población callejera 
+Mas usuarios tendrían la oportunidad de poder adoptar, por ende disminuiría la población callejera 
 de los animales y tendrian un hogar donde vivir.
 
 #### prototipos de baja fidelidad   
