@@ -60,12 +60,6 @@ export const registroDom = () => {
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
   btnRegistrar.addEventListener('click', () => {
-    // getDatos()
-    //   .then((docs) => {
-    //     docs.forEach((doc) => {
-    //       console.log(doc.data());
-    //     });
-    //   });
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');

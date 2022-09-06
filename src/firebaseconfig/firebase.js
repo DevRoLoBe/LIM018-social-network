@@ -11,7 +11,7 @@ import {
 
 import {
   getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc,
-  onSnapshot, where, query, orderBy, deleteDoc, updateDoc, arrayRemove, arrayUnion,
+  onSnapshot, where, query, orderBy, deleteDoc, updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
