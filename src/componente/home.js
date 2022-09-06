@@ -122,8 +122,7 @@ export const homeDom = () => {
       // muestra el nombre del usuario en el home y perfil
       const nombreUser = doc.data().nombre.toUpperCase();
       const contenedorName =/* Html */ `
-      <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
-z      `;
+      <p>HOLA <span id="nameProfile">${nombreUser}</span></p> `;
       perfilNombre.innerHTML = contenedorName;
     });
 
