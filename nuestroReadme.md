@@ -10,15 +10,14 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 
 # # # Producto Final de la red social 
 
-![pantalla de welcome]( )
 
-![pantalla de login]( )
+![pantalla de login](imgReadme/login.png)
 
-![pantalla de registro]( )
+![pantalla de registro](imgReadme/register.png)
 
-![pantalla de home]( )
+![pantalla de home](imgReadme/home.png)
 
-![versión mobile]( )
+![versión mobile]
 
 #### ¿Quiénes son los principales usuarios del producto?
 
@@ -32,7 +31,7 @@ de los animales y tendrian un hogar donde vivir.
 
 #### prototipos de baja fidelidad   
 
-![ Primer Prototipo]( )
+![ Primer Prototipo](imgReadme/social-Login.png)
 
  #### Prototipos de alta fidelidad
 
