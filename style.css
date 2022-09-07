@@ -1,58 +1,413 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Josefin+Sans:wght@300&family=Koulen&family=Lora:ital,wght@1,700&family=Merriweather:wght@300&family=Poppins:wght@300;400;500;600;700&family=Shadows+Into+Light&family=Zen+Loop&display=swap');
 *{
   box-sizing: border-box;
-  margin:0;
-  padding:0;
   font-family: 'Poppins', sans-serif;
 }
 body{
+  margin: 0;
+  padding: 0;
   height:100vh;
-  display:flex;
-  align-items: center;
-  justify-content:center;
+  background-color: #e9e6e1;
 }
-.form-login , .form-registro{
-  /*position: relative;
-  width: 360px;
-  height: 800px;*/
-  background: linear-gradient(90deg, #77A1D3 0%, #79CBCA 50%, #E684AE 100%);
+/* .container{
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
+} */
+.form{
+  background: url('imagenes/beige.png');
+  background-size: contain;
+  background-repeat: round;
+  padding:25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: inherit;
+}
+.register form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .logo{
-  width:50%;
+  width:80%;
+  margin-left: 45px;
+  display: flex;
 }
-.logo__login, .logo__registro{
-  max-width:100%;
+.form figure img{
+  width: 100%;
 }
-/*Remember*/
-.check-content__text{
-  color: #333;
-  font-size:14px;
+.logoRegistro{
+  display: flex;
+  align-items: stretch;
+  margin:40px 0 0 0;
 }
-/*forgot*/
-a.check-content__text{
-  color: #4070f4;
-  text-decoration: none;
-}
-.check-remenber a:hover{
-  text-decoration: underline;
-}
-.form-login__boton{
-  margin-top: 35px;
-}
-.form-login__boton input{
-  border: none;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  border-radius: 6px;
-  background-color: #4070f4;
-  cursor:pointer;
-  transition: all 0.3s ease;
-}
+/*Campos de entrada*/
 .campo-entrada{
   position: relative;
   height: 50px;
   width: 100%;
   margin-top: 30px;
+}
+/*ocultas el rectangulo del campo de entrada*/
+.campo-entrada input{
+  height:100%;
+  width:100%;
+  padding: 0 35px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size:16px;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid transparent;
+}
+/*Activar las lineas azules al presionar un input*/
+.campo-entrada input:is(:focus, :valid){
+  border-bottom-color: #917703;
+}
+/*Iconos*/
+.campo-entrada i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 23px;
+  background-color: transparent;
+  left: 3px;
+}
+.campo-entrada i.icon{
+  left:0;
+}
+.campo-entrada i.showHidePw{
+  left: auto;
+  right:0;/*icono del ojo*/
+}
+.login-registrar{
+  display: flex;
+}
+span.text{
+  color:rgba(20, 20, 20, 0.425);
+}
+.text{
+  display: flex;
+  justify-content: flex-end;/*olvidaste la contraseña*/
+  margin-top:20px;
+}
+/*Links*/
+.form a.text{
+  color: #601D1D;
+  text-decoration: none;
+}
+.form a.text:hover{
+  text-decoration: underline;
+}
+/*Button*/
+.campo-entrada__boton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.campo-entrada__boton button{
+  width: 100%;
+  border:none;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  cursor:pointer;
+}
+.campo-entrada__boton #btn-login, #btn-registrar{
+  color: #000000;
+  background-color: #b7b3a5;
+}
+.campo-entrada__boton #btn-google{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: snow;
+  margin-top: 15px;
+  height: 40%;
+}
+.campo-entrada__boton #btn-google img{
+  width: 25px;
+}
+.campo-entrada__boton input:hover{
+  background-color: #000;
+}
+
+.seccionPrincipal{
+  margin: auto;
+  max-width: 800px;
+  background: #fff;
+}
+/*Cabecera*/
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+.logo-top{
+  width: 130px;
+  max-width: 100%;
+  height: 34px;
+  left: 7px;
+  top: 14px;
+}
+.header .btn-img img{
+  width: 25px;
+  max-width:100%;
+  height: 25px;
+  left: 260px;
+  top: 18px;
+  cursor: pointer;
+}
+/* .header a{
+  padding-right: 10px;
+} */
+
+/*Seccion de noticias*/
+/* .secc-noticias{
+  background-color: #f0e7e7;
+  height: 9%;
+} */
+/*Seccion de nombre con los tres puntos*/
+.secc-nombre{
+  background-color: #e7b982;
+  align-items: center;
+  display: flex;
+}
+.descripcion-texto{
+  font-weight: 500;
+}
+.secc-nombre div img , .secc-nombre2 .fotoPostPerfil img{
+  display: flex;
+  width: 35px;
+  max-width: 100%;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: 0 10px 0 10px;
+}
+#nameFecha{
+  display: flex;
+  flex-direction: column;
+}
+/*Perfil botones en el post de Editar y Eliminar*/
+.secc-nombre2{
+  background-color: #e7b982;
+  align-items: center;
+  display: flex;
+}
+.btnEditarEliminar{
+  display: flex;
+}
+#nameBtns{
+  display:flex;
+  justify-content: space-between;
+}
+#nameBtns span img{
+  width:25px;
+  max-width:100%;
+}
+.postHeaderPerfil{
+  display: flex;
+  flex-direction: column;
+}
+.btnEditarBorrar{
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+}
+.deleteButton{
+  cursor:pointer;
+}
+/*Foto y seccion de me gusta*/
+.secc-publicacionFoto{
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.imagen{
+  background-color: rgb(182, 175, 153);
+  height: 200px;/* height: 80%; */
+}
+.secc-like{
+ display: flex;
+ justify-content: space-between;
+ padding: 3px;
+ border-top: solid 1px #00000052;
+}
+.licogu img{
+  width: 25px;
+  max-width:100%;
+  height: 25px;
+  left: 260px;
+  top: 18px;
+}
+.licogu{
+  padding-right: 20px;
+  border: none;
+  background: transparent;
+}
+.like{
+  background-color: transparent;
+  border:none;
+}
+/*Descripccion*/
+.secc-descripcion{
+  padding: 0px 5px 5px 5px;
+}
+.cantidad-likes{
+  font-weight: bold;
+  margin: 3px 0 0 0;
+  color: sienna;
+}
+.nombre{
+  margin:4px 0px;
+}
+.nombre__span{
+  font-weight: bold;
+  padding-right: 5px;
+}
+.tiempo{
+  margin:4px 0px;
+}
+.tiempo, .comentarios{
+  color: rgba(0, 0, 0, 0.6);
+}
+/*FOOTER*/
+.menu{
+  /* display: flex;
+  height: 30px;
+  justify-content: space-around; */
+  width: 800px;
+  max-width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+.menuInferior{
+  display: flex;
+  justify-content: space-evenly;
+  background: #fff;
+  padding-top: 5px;
+}
+/* .menuInferior a{
+  display: flex;
+  padding: 0 40px 4px 15px;
+} */
+.menuInferior img{
+  width: 25px;
+  max-width: 100%;
+  height: 25px;
+}
+/* perfil  */
+.logo-perfil{
+  display: flex;
+  justify-content: flex-end;
+}
+.logo-perfil a img{
+  width: 25px;
+  max-width:100%;
+  margin-top: 8px;
+}
+.logo-perfil a{
+  padding-right: 10px;
+}
+.secc-perfilName{
+  display: flex;
+  justify-content: space-around;
+  background-color: #8b4812;
+  color: white;
+}
+.secc-perfilName div img {
+  display: flex;
+  width: 50px;
+  max-width:100%;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+.editProfile{
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  padding-top: 10px;
+}
+.editProfile button{
+  align-items: center;
+  background-color: #e7b982;
+  border-radius: 10px;
+  width: 70%;
+  font-size: 16px;
+}
+/* .historias{
+  display: flex;
+  margin: .5rem 2rem;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 15px;
+}
+.historias *{
+  width: 50px;
+  height: 50px;
+  border:1px solid #000;
+  border-radius: 50%;
+} */
+.menuIntermedio{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px;
+  background-color: #894b1a;;
+  height: 20px;
+  margin-top: 10px;
+}
+/* .menuIntermedio a img{
+  width: 25px;
+  max-width:100%;
+  margin-top: 8px;
+} */
+
+/*SERVICIOS*/
+.servicioContainer{
+  display: flex;
+}
+.div-veterinaria{
+  padding: 8px;
+  border-bottom:1px solid #000000;
+  cursor: pointer;
+}
+.div-veterinaria .lugar{
+  font-size:13px;
+}
+/*Input File*/
+.input-file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.input-file::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.input-file:hover::before {
+  border-color: black;
+}
+.input-file:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+/*Fianl del input File*/
+/*Post container*/
+.postContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #f7c89c;
+  margin: 5px 0px;
+  padding: 10px;
 }

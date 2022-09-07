@@ -3,7 +3,7 @@ import { components } from '../componente/componentes.js';
 // Sirve para cambiar de vistas
 const changeView = (route) => {
   // Creamos variable del contenedor general
-  const container = document.querySelector('.container');
+  const container = document.querySelector('#contenedor');
   // Limpia la pantalla
   container.innerHTML = '';
   // Asignando los componentes a las rutas
@@ -11,15 +11,28 @@ const changeView = (route) => {
     case '':
     case '#/login':
     {
-      return container.appendChild(components.login());
+      container.appendChild(components.login()); components.loginF();
+      break;
     }
     case '#/registro':
     {
-      return container.appendChild(components.registro());
+      container.appendChild(components.registro()); components.registroF();
+      break;
     }
     case '#/home':
     {
-      return container.appendChild(components.home());
+      container.appendChild(components.home()); components.homeF();
+      break;
+    }
+    case '#/profile':
+    {
+      container.appendChild(components.profile()); components.profileF();
+      break;
+    }
+    case '#/servicio':
+    {
+      container.appendChild(components.servicio()); components.servicioF();
+      break;
     }
     default:
       break;
