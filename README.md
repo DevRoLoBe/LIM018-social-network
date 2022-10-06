@@ -1,6 +1,6 @@
 # Patitas Preciosas
 
-# # Una Red Social creada para las personas amantes de los Animales 
+## Una Red Social creada para las personas amantes de los Animales 
 
 Esta red social es creada como una iniciativa para fomentar que menos animales se encuentren
 sufriendo en las calles, los principales usuarios son las personas amantes de estos. 
@@ -8,7 +8,7 @@ Permite a cualquier usuario registrarse a la red social una vez echo, ya cuenta
 con un correo y contraseña, tambien se puede registrar con una cuenta de google y acceder al 
 home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la publicacion, tambien contará con un espacio para ver informacion de las veterinarias cercanas y el boton de cerrar sesion. 
 
-# # # Producto Final de la red social 
+### Producto Final de la red social 
 
 
 ![pantalla de login](imgReadme/login.Final.jpeg) 
