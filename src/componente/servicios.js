@@ -3,6 +3,10 @@ import { btnModales } from './utils.js';
 
 export const servicioView = () => {
   const servicios = /* html */ ` 
+  <header class="logo-perfil veterinaria">
+  <!--<a href =""><img src="imagenes/agregarFoto.png"></a>-->
+  <a href =""><img src="imagenes/agregarFoto.png"></a>
+</header>
     <section class="serviciosContainer">
       <div class="div-veterinaria">
        <p class="nombre">Veterinaria Refiasa</p>
@@ -35,6 +39,7 @@ export const servicioView = () => {
   const sectionServicios = document.createElement('section');
   sectionServicios.innerHTML = servicios;
   sectionServicios.classList.add('seccionPrincipal');
+  sectionServicios.classList.add('seccVeterinaria');
   return sectionServicios;
 };
 

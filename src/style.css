@@ -139,6 +139,9 @@ span.text{
   max-width: 800px;
   background: #fff;
 }
+.seccVeterinaria{
+  height: 100vh;
+}
 /*Cabecera*/
 .header{
   display: flex;
@@ -210,6 +213,7 @@ span.text{
 .postHeaderPerfil{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .btnEditarBorrar{
   display: flex;
@@ -311,6 +315,9 @@ span.text{
 }
 .logo-perfil a{
   padding-right: 10px;
+}
+.veterinaria{
+  background-color: #8b4812;;
 }
 .secc-perfilName{
   display: flex;

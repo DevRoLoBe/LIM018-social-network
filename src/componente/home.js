@@ -79,7 +79,7 @@ export const homeDom = () => {
           <nav class="secc-like">
             <span class="spanLikeComent">
               <button class="licogu like"><img data-id ="${doc.id}" src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
-              <button class="licogu" href=""><img src="imagenes/comentar.png"></button>
+             <!-- <button class="licogu" href=""><img src="imagenes/comentar.png"></button>-->
               <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->

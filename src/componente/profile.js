@@ -59,6 +59,7 @@ export const profileView = () => {
   const sectionProfile = document.createElement('section');
   sectionProfile.innerHTML = profile;
   sectionProfile.classList.add('seccionPrincipal');
+  // sectionProfile.classList.add('secc-profile');
   return sectionProfile;
 };
 export const profileDom = () => {
