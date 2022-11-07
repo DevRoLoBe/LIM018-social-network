@@ -47,7 +47,7 @@ export const homeView = () => {
 };
 export const homeDom = () => {
   const id = JSON.parse(sessionStorage.getItem('idUser'));
-  // traendo nombre del usuario en el home/descripcion
+  // nombre del usuario en el home/descripcion
   const conainerPost = document.querySelector('.secc-publicacionFoto');
   // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
   const fechaPost = new Date().toLocaleString();

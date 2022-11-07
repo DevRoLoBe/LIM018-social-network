@@ -45,7 +45,8 @@ export const loginDom = () => {
   const alertGmail = document.querySelector('#alertgmail');
   const alertPassword = document.querySelector('#alertpassword');
 
-  btnLogin.addEventListener('click', () => {
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
     sessionStorage.clear();
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
@@ -68,7 +69,8 @@ export const loginDom = () => {
         }
       });
   });
-  btnGoogle.addEventListener('click', () => {
+  btnGoogle.addEventListener('click', (event) => {
+    event.preventDefault();
     sessionStorage.clear();
     googleInicioSesion()
       .then((userGoogle) => {

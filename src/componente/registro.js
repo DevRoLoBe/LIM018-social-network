@@ -59,7 +59,8 @@ export const registroDom = () => {
   const alertPassword = document.querySelector('#alertPassword');
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
-  btnRegistrar.addEventListener('click', () => {
+  btnRegistrar.addEventListener('click', (event) => {
+    event.preventDefault();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
@@ -79,8 +80,6 @@ export const registroDom = () => {
         if (error.code === 'auth/weak-password') {
           alertPassword.textContent = 'La contraseña debe tener al menos 6 caracteres';
         }
-        // console.log(error.code);
-        // console.log(error.message);
       });
   });
 };
