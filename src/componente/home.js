@@ -7,13 +7,13 @@ import {
 } from '../firebaseconfig/post.js';
 import { getCurrentUser } from '../firebaseconfig/auth.js';
 import { userInfoView } from '../lib/index.js';
-import { btnModales } from './utils.js';
+import { btnModales, limpiarInputs, limpiarLabels } from './utils.js';
 
 export const homeView = () => {
   const home = /* Html */`
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
-    <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
+    <span id="agregar" class="btn-img">Crear <img src="imagenes/agregar.png"></span>
   </header> 
   <section class="secc-perfilName"> <!--Container Info-->
   <!--User info es el div que contiene la imagen y el nombre-->
@@ -60,7 +60,7 @@ export const homeView = () => {
   return sectionHome;
 };
 export const homeDom = () => {
-  const userPost = document.querySelector('#descripcion');
+  const descripcionText = document.querySelector('#descripcion');
   const buttonPost = document.querySelector('#btn-publicar');
   const ventanaModal = document.querySelector('.container-modal');
   const btnAgregar = document.querySelector('#agregar');
@@ -156,16 +156,20 @@ export const homeDom = () => {
   btnModales(btnAgregar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
 
+  // Para limpiar los campos cuando cerramos
+  limpiarInputs(btnCerrar, descripcionText);
+  limpiarLabels(btnCerrar, msg);
+
   buttonPost.addEventListener('click', () => {
     // const postContainer = document.querySelector('.descripcion');
     // evaluar contenido que ingresó el usuario en textarea
-    if (userPost.value !== '') {
+    if (descripcionText.value !== '') {
       msg.classList.remove('errorMessage');
       msg.textContent = '';
       // Creando los campos de savePost()cuando le demos al btn publicar
       createPost({
         userName: getCurrentUser().displayName,
-        content: userPost.value,
+        content: descripcionText.value,
         userId: getCurrentUser().uid,
         fechaPost,
         likes: [],
@@ -173,19 +177,19 @@ export const homeDom = () => {
       })
         .then((docRef) => {
           // eslint-disable-next-line no-console
-          console.log(docRef);
+          console.log('que es ', docRef);
           // postContainer.reset();
         })// eslint-disable-next-line no-console
         .catch((e) => {
           // eslint-disable-next-line no-console
           console.log(e);
         });
+      // Cierra la ventana modal y limpia el textArea para la proxima publicacion
+      ventanaModal.style.display = 'none';
+      descripcionText.value = '';
     } else {
       msg.textContent = 'Por favor, escribe un comentario';
       msg.classList.add('errorMessage');
     }
-    ventanaModal.style.display = 'none';
-    const descripcionText = document.querySelector('.textArea');
-    descripcionText.value = '';
   });
 };

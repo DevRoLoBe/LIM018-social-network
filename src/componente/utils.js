@@ -21,3 +21,14 @@ export const btnModales = (boton, ventana, vista) => {
     ventana.style.display = vista;
   });
 };
+
+export const limpiarInputs = (boton, elemento) => {
+  boton.addEventListener('click', () => {
+    elemento.value = '';
+  });
+};
+export const limpiarLabels = (boton, elemento) => {
+  boton.addEventListener('click', () => {
+    elemento.textContent = '';
+  });
+};
