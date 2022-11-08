@@ -2,7 +2,7 @@
 import { homeView, homeDom } from './home.js';
 import { loginview, loginDom } from './login.js';
 import { registroview, registroDom } from './registro.js';
-import { profileView, profileDom } from './profile.js';
+// import { profileView, profileDom } from './profile.js';
 import { servicioView, servicioDom } from './servicios.js';
 
 const components = {
@@ -12,8 +12,8 @@ const components = {
   loginF: loginDom,
   registro: registroview,
   registroF: registroDom,
-  profile: profileView,
-  profileF: profileDom,
+  // profile: profileView,
+  // profileF: profileDom,
   servicio: servicioView,
   servicioF: servicioDom,
 };

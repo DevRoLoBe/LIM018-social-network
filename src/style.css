@@ -320,8 +320,6 @@ span.text{
   background-color: #8b4812;;
 }
 .secc-perfilName{
-  display: flex;
-  justify-content: space-around;
   background-color: #8b4812;
   color: white;
 }
@@ -331,6 +329,16 @@ span.text{
   max-width:100%;
   border: 1px solid #000;
   border-radius: 50%;
+}
+.userInfo{
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+.userInfo p {
+  letter-spacing: 4px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .editProfile{
   display: flex;
@@ -417,4 +425,8 @@ span.text{
   background-color: #f7c89c;
   margin: 5px 0px;
   padding: 10px;
+}
+.post-imagen-msj{
+  display: flex;
+  justify-content: space-evenly;
 }

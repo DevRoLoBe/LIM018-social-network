@@ -1,6 +1,12 @@
 import {
-  getDatoPost, createPost, getDatoUser, updateLike,
-} from '../firebaseconfig/firebase.js';
+  getPosts,
+  getPost,
+  createPost,
+  onGetPosts,
+  updatePost,
+} from '../firebaseconfig/post.js';
+import { getCurrentUser } from '../firebaseconfig/auth.js';
+import { userInfoView } from '../lib/index.js';
 import { btnModales } from './utils.js';
 
 export const homeView = () => {
@@ -9,8 +15,11 @@ export const homeView = () => {
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span id="agregar" class="btn-img"><img src="imagenes/agregar.png"></span>
   </header> 
-  <section class="secc-perfilName">
-    <div id="perfilPerson"><img src="imagenes/usuario.png"></div>
+  <section class="secc-perfilName"> <!--Container Info-->
+  <!--User info es el div que contiene la imagen y el nombre-->
+    <div id="perfilPerson"> <!--User Image -->
+      <img src="imagenes/usuario.png">
+    </div>
   </section>
   <section class="secc-publicacionFoto">
   </section>
@@ -22,7 +31,10 @@ export const homeView = () => {
         </div>
       </div>
       <div class="descripcion">
+        <section class="post-imagen-msj">
         <img id="imgSeleccionada"class="imgSeleccionada"src="imagenes/loginAbrazo.png" alt="Imagen seleccionada">
+        <p id='msg'></p>
+        </section>
         <textarea id="descripcion"class="textArea"></textarea>
       </div>
       <section class= "botonesPost">
@@ -43,98 +55,135 @@ export const homeView = () => {
   const sectionHome = document.createElement('section');
   sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
+  const userInfoContainer = sectionHome.querySelector('secc-perfilName');
+  userInfoView(userInfoContainer);
   return sectionHome;
 };
 export const homeDom = () => {
-  const id = JSON.parse(sessionStorage.getItem('idUser'));
-  // nombre del usuario en el home/descripcion
-  const conainerPost = document.querySelector('.secc-publicacionFoto');
-  // const horaPost = new Date().toLocaleTimeString(); // toLocaleDateString()//toLocaleString()
+  const userPost = document.querySelector('#descripcion');
+  const buttonPost = document.querySelector('#btn-publicar');
+  const ventanaModal = document.querySelector('.container-modal');
+  const btnAgregar = document.querySelector('#agregar');
+  const btnCerrar = document.querySelector('#btn-cerrar');
   const fechaPost = new Date().toLocaleString();
-  // jalando una funcion para mostrar los posts
-  getDatoPost((posts) => {
-    let contenido = '';
-    posts.forEach((doc) => {
-      // muestra los post  en el home
-      // console.log(doc.data()); // post
-      const idUserPost = doc.data().uid;
-      // Activar el like
-      const likeActive = doc.data().likes.includes(id);
-      // const likeActive = false;
-      getDatoUser(idUserPost)
-        .then((userDoc) => {
-          const getFecha = doc.data().datePost;
-          const nombreUser = userDoc.data().nombre.toUpperCase();
-          const postpublic = /* Html */ `
+  const containerPosts = document.querySelector('.secc-publicacionFoto');
+  const msg = document.querySelector('#msg');
+
+  const generatePostContent = (post) => {
+    console.log(post.data());
+    const likeActive = post.data().likes.includes(getCurrentUser().uid);
+    const userImage = post.data().photoUser !== null ? post.data().photoUser : './imagenes/usuario.png';
+    const postContent = `
       <section class="postContainer">
         <section class="secc-nombre">
-          <div><img src="imagenes/usuario.png"></div>
+          <div>
+            <img src='${userImage}' referrerpolicy='no-referrer'>
+          </div>
           <span id ="nameFecha">
-            <span >${nombreUser}</span>
-            <!--<span id="hora">${'horaPost'}</span>-->
-            <span id="fecha">${getFecha}</span>
+            <span >${post.data().userName !== null ? post.data().userName : 'Usuario'}</span>
+            <span id="fecha">${post.data().fechaPost}</span>
           </span>
         </section>
-          <p class="descripcion-texto">${doc.data().descripcion}</p>
+          <p id=${post.id} class="descripcion-texto">${post.data().content}</p>
           <nav class="secc-like">
-            <span class="spanLikeComent">
-              <button class="licogu like"><img data-id ="${doc.id}" src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
-             <!-- <button class="licogu" href=""><img src="imagenes/comentar.png"></button>-->
-              <p class="cantidad-likes"><span id= 'numeroLikes'>${doc.data().likes.length}</span> Me gusta</p>
+            <span data-id=${post.id} class="spanLikeComent">
+              <button data-id ="${post.id}" class="licogu like"> <img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
+              <p class="cantidad-likes"><span id= 'numeroLikes'>${post.data().likes.length}</span> Me gusta</p>
           </span>
         <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
         </nav>
       </section>
-      `;
-          contenido += postpublic;
-          conainerPost.innerHTML = contenido;
-          // Funcionalidad a like
-          const likeImagen = document.querySelectorAll('.like');
-          likeImagen.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-              const docId = e.target.dataset.id;
-              const docPost = doc.data();
-              // console.log(id);
-              console.log(docPost.likes);
-              if (docPost.likes.includes(id)) {
-                const filterLikes = docPost.likes.filter((idLike) => idLike !== id);
-                console.log(filterLikes);
-                updateLike(docId, filterLikes);
-                console.log('siin like p ');
-              } else {
-                const arrayLikes = docPost.likes.concat(id);
-                updateLike(docId, arrayLikes);
-                console.log('incluyendo like');
-              }
-            });
+      `; return postContent;
+  };
+
+  const queryPosts = () => {
+    getPosts()
+      .then((postsRef) => {
+        let content = '';
+
+        postsRef.forEach((postR) => {
+          content += generatePostContent(postR);
+          containerPosts.innerHTML = content;
+
+          const likeBtns = document.querySelectorAll('.like');
+
+          const countingLikesOfPost = async (e) => {
+            const idLikeBtn = e.currentTarget.dataset.id;
+            const postDoc = await getPost(idLikeBtn);
+            const likesOfPost = postDoc.data().likes;
+            const idUser = getCurrentUser().uid;
+
+            if (likesOfPost.includes(idUser)) {
+              const compareIdLikesUsers = likesOfPost.filter((idLikeData) => idLikeData !== idUser);
+              updatePost(idLikeBtn, { likes: compareIdLikesUsers });
+            } else {
+              updatePost(idLikeBtn, { likes: likesOfPost.concat(idUser) });
+            }
+          };
+
+          likeBtns.forEach((btn) => {
+            btn.addEventListener('click', countingLikesOfPost);
           });
         });
-    });
-  });
-  // const id = getCurrentUser().uid;
-  const perfilNombre = document.querySelector('.secc-perfilName');
-  getDatoUser(id)
-    .then((doc) => {
-      // muestra el nombre del usuario en el home y perfil
-      const nombreUser = doc.data().nombre.toUpperCase();
-      const contenedorName =/* Html */ `
-      <p>HOLA <span id="nameProfile">${nombreUser}</span></p>
-     `;
-      perfilNombre.innerHTML = contenedorName;
-    });
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  };
+  // Actualizar
+  onGetPosts(queryPosts);
+  // const containerInfo = () => {
+  //   const perfilNombre = document.querySelector('.secc-perfilName');
+  // }
+  // // const id = getCurrentUser().uid;
+  // const perfilNombre = document.querySelector('.secc-perfilName');
+  // getDatoUser(id)
+  //   .then((doc) => {
+  //     // muestra el nombre del usuario en el home y perfil
+  //     const nombreUser = doc.data().nombre.toUpperCase();
+  //     const contenedorName =/* Html */ `
+  //     <!--User info es el div que contiene la imagen y el nombre-->
+  //     <div class="userInfo">
+  //       <div id="perfilPerson"> <!--User Image -->
+  //         <img src="imagenes/usuario.png">
+  //       </div>
+  //       <p>¡ HOLA <span id="nameProfile">${nombreUser} </span> !</p>
+  //     </div>
+  //    `;
+  //     perfilNombre.innerHTML = contenedorName;
+  //   });
 
-  const descripcion = document.querySelector('#descripcion');
-  // const imagen = document.querySelector('#imgSeleccionada');
-  const btnPublicar = document.querySelector('#btn-publicar');
-  const ventanaModal = document.querySelector('.container-modal');
-  const btnAgregar = document.querySelector('#agregar');
-  const btnCerrar = document.querySelector('#btn-cerrar');
   btnModales(btnAgregar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');
-  btnPublicar.addEventListener('click', () => {
-    // Creando los campos de savePost()cuando le demos al btn publicar
-    const like = [];
-    createPost(id, descripcion.value, fechaPost, like);
+
+  buttonPost.addEventListener('click', () => {
+    // const postContainer = document.querySelector('.descripcion');
+    // evaluar contenido que ingresó el usuario en textarea
+    if (userPost.value !== '') {
+      msg.classList.remove('errorMessage');
+      msg.textContent = '';
+      // Creando los campos de savePost()cuando le demos al btn publicar
+      createPost({
+        userName: getCurrentUser().displayName,
+        content: userPost.value,
+        userId: getCurrentUser().uid,
+        fechaPost,
+        likes: [],
+        photoUser: getCurrentUser().photoURL,
+      })
+        .then((docRef) => {
+          // eslint-disable-next-line no-console
+          console.log(docRef);
+          // postContainer.reset();
+        })// eslint-disable-next-line no-console
+        .catch((e) => {
+          // eslint-disable-next-line no-console
+          console.log(e);
+        });
+    } else {
+      msg.textContent = 'Por favor, escribe un comentario';
+      msg.classList.add('errorMessage');
+    }
     ventanaModal.style.display = 'none';
     const descripcionText = document.querySelector('.textArea');
     descripcionText.value = '';

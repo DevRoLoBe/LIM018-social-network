@@ -1,4 +1,5 @@
-import { loginExistent, googleInicioSesion, createUser } from '../firebaseconfig/firebase.js';
+import { logInWithEmail, signUpWithGmail, GoogleAuthProvider } from '../firebaseconfig/auth.js';
+import { userInfoFirestore } from '../firebaseconfig/post.js';
 import { validateEmpty } from './utils.js';
 
 export const loginview = () => {
@@ -29,6 +30,13 @@ export const loginview = () => {
             <a href="#/registro" class="text">Registrate</a>
           </div>
         </form>
+        <div class='modalContainer'>
+      <div class='modal'>
+        <img src='./imagenes/animals.jpg'>
+        <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
+        <button class='modalButton'>Aceptar</button>
+      </div>
+    </div>   
       </div>`;
 
   const sectionLogin = document.createElement('section');
@@ -37,6 +45,8 @@ export const loginview = () => {
   return sectionLogin;
 };
 export const loginDom = () => {
+  const modalContainer = document.querySelector('.modalContainer');
+  const closeModal = document.querySelector('.modalButton');
   const btnLogin = document.querySelector('#btn-login');
   const btnGoogle = document.querySelector('#btn-google');
   const gmailInput = document.querySelector('#userGmail');
@@ -50,12 +60,16 @@ export const loginDom = () => {
     sessionStorage.clear();
     validateEmpty(gmailInput.value, alertGmail, 'ingrese su correo electronico');
     validateEmpty(passwordInput.value, alertPassword, 'ingrese su contraseña');
-    loginExistent(gmailInput.value, passwordInput.value)
+    logInWithEmail(gmailInput.value, passwordInput.value)
       .then((userCredential) => {
         const user = userCredential.user;
         sessionStorage.setItem('idUser', JSON.stringify(user.uid));
-        window.location.hash = '#/home';
-      // ...
+        if (user.emailVerified === false) {
+          modalContainer.classList.add('reveilModal');
+        } else {
+          sessionStorage.setItem('USER', JSON.stringify(user.uid));
+          window.location.hash = '#/home';
+        }
       })
       .catch((error) => {
         if (error.code === 'auth/user-not-found') {
@@ -69,15 +83,36 @@ export const loginDom = () => {
         }
       });
   });
+
+  closeModal.addEventListener('click', () => {
+    modalContainer.classList.remove('reveilModal');
+  });
+
   btnGoogle.addEventListener('click', (event) => {
     event.preventDefault();
-    sessionStorage.clear();
-    googleInicioSesion()
+    signUpWithGmail()
       .then((userGoogle) => {
-        const usuario = userGoogle.user;
-        createUser(usuario.displayName, usuario.email, usuario.uid);
-        sessionStorage.setItem('idUser', JSON.stringify(usuario.uid));
-        window.location.hash = '#/home';
+        // Esto le da un token de acceso de Google. Puede usarlo para acceder a la API de Google.
+        sessionStorage.clear();
+        GoogleAuthProvider.credentialFromResult(userGoogle);
+        const user = userGoogle.user;
+        sessionStorage.setItem('USER', JSON.stringify(user.uid));
+        userInfoFirestore(user.uid, {
+          email: user.email,
+          name: user.displayName,
+          photo: user.photoURL,
+        });
+        // redireccionar y ruteo
+        window.location.href = '#/home';
+      }).catch((error) => {
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // eslint-disable-next-line no-console
+        console.log(errorMessage, email);
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
       });
   });
 };
