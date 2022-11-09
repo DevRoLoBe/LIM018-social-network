@@ -13,7 +13,7 @@ const components = {
   registro: registroview,
   registroF: registroDom,
   // profile: profileView,
-  // profileF: profileDom, /
+  // profileF: profileDom,
   servicio: servicioView,
   servicioF: servicioDom,
 };
