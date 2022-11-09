@@ -18,6 +18,7 @@ export const homeView = () => {
   <section class="secc-perfilName"> 
     <div id="perfilPerson"> 
       <img src="imagenes/usuario.png">
+      <p>¡ Hola !</p>
     </div>
   </section>
   <section class="secc-publicacionFoto">
@@ -54,7 +55,7 @@ export const homeView = () => {
   sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
   const userInfoContainer = sectionHome.querySelector('.secc-perfilName');
-  userInfoView(userInfoContainer);
+  userInfoView(userInfoContainer, '🐕 Hola 🐈 ');
   return sectionHome;
 };
 export const homeDom = () => {
