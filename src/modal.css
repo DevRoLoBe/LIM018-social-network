@@ -201,11 +201,12 @@
   align-items: center;
 }
 
-.modal {
+.modalVerification {
   max-width: 20rem;
   max-height: 30rem;
   overflow: hidden;
-  background: white;
+  background-image: url(./imagenes/animals.jpg);
+  background-size: contain;
   box-shadow: 0px 6px 6px rgba(0,0,0,0.25);
   border-radius: 10px;
   padding: 1rem;
@@ -217,12 +218,12 @@
   align-items: center;
 }
 
-.modal img {
+.modalVerification img {
   width: 30%;
   align-content: center;
 }
 
-.modal p {
+.modalVerification p {
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
   padding: 10px;
@@ -231,7 +232,9 @@
 }
 
 .modalButton {
-  background: rgba(152, 182, 110, 1);
+  background: rgb(3, 3, 3);
+  color:white;
+  font-weight: 600;
   font-size: 0.7rem;
   width: 5rem;
   height: 1.5rem;
@@ -240,7 +243,9 @@
 }
 
 .modalButton:hover {
-  background: rgba(196, 167, 71, 0.8);
+  background: rgb(94, 252, 3);
+  color:#000;
+  font-weight: 600;
 }
 
 .reveilModal {

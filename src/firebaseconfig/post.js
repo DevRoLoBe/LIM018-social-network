@@ -9,6 +9,8 @@ import {
   deleteDoc,
   updateDoc,
   setDoc,
+  query,
+  orderBy,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js';
 
@@ -32,7 +34,8 @@ export const getPost = (id) => getDoc(doc(db, 'post', id));
 export const createPost = (post) => addDoc(collection(db, 'post'), post);
 
 export const onGetPosts = async (callback) => {
-  await onSnapshot(collection(db, 'post'), (callback));
+  const queryPost = query(collection(db, 'post'), orderBy('fechaPost', 'desc'));
+  await onSnapshot(queryPost, (callback));
 };
 
 export const deletePost = (id) => deleteDoc(doc(db, 'post', id));

@@ -8,10 +8,10 @@ export const userInfoView = (templateElement) => {
     .then((userRef) => {
       const userTemplate = `
         <div class='userInfo'>
-        <div class='userImage'>
+        <div class='perfilPerson'>
             <img src='${userRef.data().photo !== undefined ? userRef.data().photo : '../imagenes/usuario.png'}' class='icon-profile' referrerpolicy='no-referrer'>
         </div>
-        <p>${userRef.data().name}</p>
+        <p>¡ Hola ${userRef.data().name} !</p>
         </div>
       `;
       userContainer.innerHTML = userTemplate;

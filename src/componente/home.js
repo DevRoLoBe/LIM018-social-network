@@ -15,9 +15,8 @@ export const homeView = () => {
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
     <span id="agregar" class="btn-img">Crear <img src="imagenes/agregar.png"></span>
   </header> 
-  <section class="secc-perfilName"> <!--Container Info-->
-  <!--User info es el div que contiene la imagen y el nombre-->
-    <div id="perfilPerson"> <!--User Image -->
+  <section class="secc-perfilName"> 
+    <div id="perfilPerson"> 
       <img src="imagenes/usuario.png">
     </div>
   </section>
@@ -46,7 +45,6 @@ export const homeView = () => {
   <footer class="menu">
     <nav class="menuInferior ">
       <a href='#/home'><img src="imagenes/home.png"></a>
-      <!--<a href='#'><img src="imagenes/buscar.png"></a>-->
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
@@ -55,7 +53,7 @@ export const homeView = () => {
   const sectionHome = document.createElement('section');
   sectionHome.classList.add('seccionPrincipal');
   sectionHome.innerHTML = home;
-  const userInfoContainer = sectionHome.querySelector('secc-perfilName');
+  const userInfoContainer = sectionHome.querySelector('.secc-perfilName');
   userInfoView(userInfoContainer);
   return sectionHome;
 };
@@ -70,7 +68,6 @@ export const homeDom = () => {
   const msg = document.querySelector('#msg');
 
   const generatePostContent = (post) => {
-    console.log(post.data());
     const likeActive = post.data().likes.includes(getCurrentUser().uid);
     const userImage = post.data().photoUser !== null ? post.data().photoUser : './imagenes/usuario.png';
     const postContent = `
@@ -117,7 +114,7 @@ export const homeDom = () => {
               const compareIdLikesUsers = likesOfPost.filter((idLikeData) => idLikeData !== idUser);
               updatePost(idLikeBtn, { likes: compareIdLikesUsers });
             } else {
-              updatePost(idLikeBtn, { likes: likesOfPost.concat(idUser) });
+              updatePost(idLikeBtn, { likes: [...likesOfPost, idUser] });
             }
           };
 
@@ -132,26 +129,6 @@ export const homeDom = () => {
   };
   // Actualizar
   onGetPosts(queryPosts);
-  // const containerInfo = () => {
-  //   const perfilNombre = document.querySelector('.secc-perfilName');
-  // }
-  // // const id = getCurrentUser().uid;
-  // const perfilNombre = document.querySelector('.secc-perfilName');
-  // getDatoUser(id)
-  //   .then((doc) => {
-  //     // muestra el nombre del usuario en el home y perfil
-  //     const nombreUser = doc.data().nombre.toUpperCase();
-  //     const contenedorName =/* Html */ `
-  //     <!--User info es el div que contiene la imagen y el nombre-->
-  //     <div class="userInfo">
-  //       <div id="perfilPerson"> <!--User Image -->
-  //         <img src="imagenes/usuario.png">
-  //       </div>
-  //       <p>¡ HOLA <span id="nameProfile">${nombreUser} </span> !</p>
-  //     </div>
-  //    `;
-  //     perfilNombre.innerHTML = contenedorName;
-  //   });
 
   btnModales(btnAgregar, ventanaModal, 'flex');
   btnModales(btnCerrar, ventanaModal, 'none');

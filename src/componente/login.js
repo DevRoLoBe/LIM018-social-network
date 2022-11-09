@@ -31,8 +31,7 @@ export const loginview = () => {
           </div>
         </form>
         <div class='modalContainer'>
-      <div class='modal'>
-        <img src='./imagenes/animals.jpg'>
+      <div class='modalVerification'>
         <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
         <button class='modalButton'>Aceptar</button>
       </div>
