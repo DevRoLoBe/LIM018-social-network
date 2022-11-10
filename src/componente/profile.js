@@ -58,10 +58,6 @@ export const profileView = () => {
 };
 
 export const profileDom = () => {
-  // const id = getCurrentUser().uid;
-  // const id = JSON.parse(sessionStorage.getItem('idUser'));
-
-  // const nombreModal = document.querySelector('.nombreModal');
   const containerPostPerfil = document.querySelector('.publicaciones');
   const ventanaModal = document.querySelector('.container-modal');
   const contenidoModal = document.querySelector('.contenidoPerfil');
