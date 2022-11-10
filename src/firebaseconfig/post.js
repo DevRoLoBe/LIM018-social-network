@@ -45,5 +45,4 @@ export const updatePost = (id, post) => updateDoc(doc(db, 'post', id), post);
 
 export const serverTime = serverTimestamp();
 
-// export const getUser = (id) => query(collection(db, 'usuarios'), where('uid', '==', id));
 export const getUser = (id) => getDoc(doc(db, 'usuarios', id));
