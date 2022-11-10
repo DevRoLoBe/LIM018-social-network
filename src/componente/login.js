@@ -31,11 +31,11 @@ export const loginview = () => {
           </div>
         </form>
         <div class='modalContainer'>
-      <div class='modalVerification'>
-        <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
-        <button class='modalButton'>Aceptar</button>
-      </div>
-    </div>   
+          <div class='modalVerification'>
+            <p>Cuenta no verificada, porfavor revise su bandeja de correo electrónico</p>
+            <button class='modalButton'>Aceptar</button>
+          </div>
+        </div>   
       </div>`;
 
   const sectionLogin = document.createElement('section');

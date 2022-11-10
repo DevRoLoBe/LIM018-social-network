@@ -9,7 +9,7 @@ const changeView = (route) => {
   // Asignando los componentes a las rutas
   switch (route) {
     case '': {
-      container.appendChild(components.login()); components.loginF();
+      container.appendChild(components.welcome());
       break;
     }
     case '#/login':
