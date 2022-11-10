@@ -13,9 +13,10 @@ import { btnModales, limpiarInputs, limpiarLabels } from './utils.js';
 
 export const homeView = () => {
   const home = /* Html */`
+  <section class="inicio">
   <header class="header">
     <img class="logo-top" src="imagenes/titulo.png" class="logo hidden" alt="perro y gato abrazadose">
-    <span id="agregar" class="btn-img">Crear <img src="imagenes/agregar.png"></span>
+    <span id="agregar" class="btn-img"><p>Crear</p><img src="imagenes/agregar.png"></span>
   </header> 
   <section class="secc-perfilName"> 
     <div id="perfilPerson"> 
@@ -53,6 +54,7 @@ export const homeView = () => {
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
   </footer>
+  </section>
     `;
   const sectionHome = document.createElement('section');
   sectionHome.classList.add('seccionPrincipal');
@@ -87,13 +89,10 @@ export const homeDom = () => {
           </span>
         </section>
           <p id=${post.id} class="descripcion-texto">${post.data().content}</p>
-          <nav class="secc-like">
-            <span data-id=${post.id} class="spanLikeComent">
-              <button data-id ="${post.id}" class="licogu like"> <img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>${post.data().likes.length}</span> Me gusta</p>
+          <span data-id=${post.id} class="spanLikeComent spanLike">
+            <button data-id ="${post.id}" class="like"> <img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
+            <p class="cantidad-likes"><span id= 'numeroLikes'>${post.data().likes.length}</span> Me gusta</p>
           </span>
-        <!-- <button class="licogu guardar"><img src="imagenes/guardar.png"></button> -->
-        </nav>
       </section>
       `; return postContent;
   };

@@ -11,6 +11,7 @@ import { userInfoView } from '../lib/index.js';
 
 export const profileView = () => {
   const profile = /* html */ ` 
+  <section class="perfil">
     <header class="logo-perfil">
       <a href =""><img src="imagenes/bar.png"></a>
     </header>
@@ -48,6 +49,7 @@ export const profileView = () => {
         <a href='#/profile'><img src="imagenes/usuario.png"></a>
       </nav>
     </footer>
+    </section>
     `;
   const sectionProfile = document.createElement('section');
   sectionProfile.classList.add('seccionPrincipal');
@@ -103,7 +105,7 @@ export const profileDom = () => {
               </span>
               <span class="btnEditarBorrar">
                 <span class="editPost" data-id='${post.id}'>
-                  <img  src="imagenes/editar.png" alt="boton de editar">
+                  <img  src="imagenes/editarRaya.png" alt="boton de editar">
                 </span>
                 <span class='deleteButton' data-id='${post.id}'>
                   <img src="imagenes/eliminar.png" alt="boton de eliminar">
@@ -115,12 +117,10 @@ export const profileDom = () => {
           </section>
         </section>
         <p class="texto">${post.data().content}</p>
-        <nav class="secc-like">
-            <span data-id=${post.id} class="spanLikeComent">
-              <button data-id ="${post.id}" class="licogu like"> <img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
-              <p class="cantidad-likes"><span id= 'numeroLikes'>${post.data().likes.length}</span> Me gusta</p>
-          </span>
-        </nav>
+        <span data-id=${post.id} class="spanLikeComent spanLike">
+          <button data-id ="${post.id}" class="like"> <img src='${likeActive ? './imagenes/likeRojo.png' : './imagenes/like.png'}'></button>
+          <p class="cantidad-likes"><span id= 'numeroLikes'>${post.data().likes.length}</span> Me gusta</p>
+        </span>
         <div class="container-modal" data-id='${post.id}'>
           <div class="content-modal postModal">
             <div class="tituloPublicacion">

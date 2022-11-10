@@ -3,8 +3,9 @@ import { btnModales } from './utils.js';
 
 export const servicioView = () => {
   const servicios = /* html */ ` 
+  <section class="servicios">
   <header class="logo-perfil veterinaria">
-  <!--<a href =""><img src="imagenes/agregarFoto.png"></a>-->
+  <p>Nuevo Servicio</p>
   <a href =""><img src="imagenes/agregarFoto.png"></a>
 </header>
     <section class="serviciosContainer">
@@ -35,7 +36,8 @@ export const servicioView = () => {
       <a href='#/servicio'><img src="imagenes/donarMano.png"></a>
       <a href='#/profile'><img src="imagenes/usuario.png"></a>
     </nav>
-  </footer>`;
+  </footer>
+  </section>`;
   const sectionServicios = document.createElement('section');
   sectionServicios.innerHTML = servicios;
   sectionServicios.classList.add('seccionPrincipal');

@@ -6,8 +6,10 @@
 body{
   margin: 0;
   padding: 0;
-  height:100vh;
-  background-color: #e9e6e1;
+  /* height:100vh;
+  background-color: #e9e6e1; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./imagenes/fondoGreen.jpg);
+  background-size: cover;
 }
 /* .container{
   box-shadow: 0 5px 10px rgb(0, 0, 0, 0.1);
@@ -136,8 +138,13 @@ span.text{
 
 .seccionPrincipal{
   margin: auto;
-  max-width: 800px;
-  background: #fff;
+  /* max-width: 800px; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./imagenes/fondoGreen.jpg);
+  background-size: cover;
+  background-repeat: repeat-x;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 .seccVeterinaria{
   height: 100vh;
@@ -155,6 +162,10 @@ span.text{
   left: 7px;
   top: 14px;
 }
+#agregar{
+  display: flex;
+  align-items: center;
+}
 .header .btn-img img{
   width: 25px;
   max-width:100%;
@@ -163,8 +174,14 @@ span.text{
   top: 18px;
   cursor: pointer;
 }
+
+#agregar p {
+  font-weight: 500;
+  padding-right: 10px;
+}
 .secc-nombre{
-  background-color: #e7b982;
+  background-color: #ffffff;
+  border-radius: 10px;
   align-items: center;
   display: flex;
 }
@@ -174,6 +191,9 @@ span.text{
 }
 .descripcion-texto{
   font-weight: 500;
+  padding: 4px;
+  border-bottom: solid 1px #00000052;
+  margin-bottom: 8px
 }
 .secc-nombre div img , .secc-nombre2 .fotoPostPerfil img{
   display: flex;
@@ -189,7 +209,8 @@ span.text{
 }
 /*Perfil botones en el post de Editar y Eliminar*/
 .secc-nombre2{
-  background-color: #e7b982;
+  background-color: #ffffff;
+  border-radius: 10px;
   align-items: center;
   display: flex;
 }
@@ -228,14 +249,15 @@ span.text{
   background-color: rgb(182, 175, 153);
   height: 200px;/* height: 80%; */
 }
-.secc-like{
+.spanLikeComent{
  display: flex;
  justify-content: space-between;
- padding: 3px;
- border-top: solid 1px #00000052;
 }
-.licogu img{
-  width: 25px;
+.spanLike{
+  max-width: 120px;
+}
+.like img{
+  width: 30px;
   /* max-width:100%;
   height: 25px;
   left: 260px;
@@ -271,9 +293,6 @@ span.text{
 }
 /*FOOTER*/
 .menu{
-  /* display: flex;
-  height: 30px;
-  justify-content: space-around; */
   width: 800px;
   max-width: 100%;
   position: fixed;
@@ -282,13 +301,10 @@ span.text{
 .menuInferior{
   display: flex;
   justify-content: space-evenly;
-  background: #fff;
+  background: #a8c5ba;
   padding-top: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.39);
 }
-/* .menuInferior a{
-  display: flex;
-  padding: 0 40px 4px 15px;
-} */
 .menuInferior img{
   width: 25px;
   max-width: 100%;
@@ -300,7 +316,7 @@ span.text{
   justify-content: flex-end;
 }
 .logo-perfil a img{
-  width: 25px;
+  width: 30px;
   max-width:100%;
   margin-top: 8px;
 }
@@ -308,10 +324,18 @@ span.text{
   padding-right: 10px;
 }
 .veterinaria{
-  background-color: #8b4812;;
+  background-color: #3A8891;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.veterinaria p{
+  color:white;
+  font-weight: 500;
+  margin-right: 10px;
 }
 .secc-perfilName{
-  background-color: #8b4812;
+  background-color: #3A8891;
   color: white;
 }
 .secc-perfilName div img {
@@ -344,29 +368,17 @@ span.text{
 }
 .editProfile button{
   align-items: center;
-  background-color: #e7b982;
+  background-color: #DEF5E5;;
   border-radius: 10px;
   width: 70%;
   font-size: 16px;
 }
-/* .historias{
-  display: flex;
-  margin: .5rem 2rem;
-  gap: 2rem;
-  margin-top: 2rem;
-  padding-bottom: 15px;
-}
-.historias *{
-  width: 50px;
-  height: 50px;
-  border:1px solid #000;
-  border-radius: 50%;
-} */
+
 .menuIntermedio{
   display: flex;
   justify-content: space-evenly;
   padding: 2px;
-  background-color: #894b1a;;
+  background-color: #3a8891;
   height: 20px;
   margin-top: 10px;
 }
@@ -385,8 +397,13 @@ span.text{
   border-bottom:1px solid #000000;
   cursor: pointer;
 }
+.div-veterinaria .nombre{
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 .div-veterinaria .lugar{
   font-size:13px;
+  letter-spacing: 4px;
 }
 /*Input File*/
 #fichero{
@@ -394,9 +411,9 @@ span.text{
 }
 .input-fileProfile{
   display: flex;
-  background-color: rgb(219, 205, 205);
-  padding: 1px 3px;
-  border-radius: 20px;
+  background-color: #BCEAD5;
+  padding: 1px 5px;
+  border-radius: 10px;
   margin-bottom: 3px;
   cursor: pointer;
 }
@@ -406,7 +423,7 @@ span.text{
 .postContainer{
   display: flex;
   flex-direction: column;
-  background-color: #f7c89c;
+  background-color: #e4e9e5;
   margin: 5px 0px;
   padding: 10px;
 }
@@ -414,4 +431,9 @@ span.text{
   display: flex;
   justify-content: space-evenly;
   height: 100px;
+}
+
+.perfil, .inicio, .servicios{
+    width: 800px;
+    background-color: #fff;
 }
