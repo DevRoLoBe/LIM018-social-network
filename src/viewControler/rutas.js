@@ -27,11 +27,11 @@ const changeView = (route) => {
       container.appendChild(components.home()); components.homeF();
       break;
     }
-    // case '#/profile':
-    // {
-    // container.appendChild(components.profile()); components.profileF();
-    // break;
-    // }
+    case '#/profile':
+    {
+      container.appendChild(components.profile()); components.profileF();
+      break;
+    }
     case '#/servicio':
     {
       container.appendChild(components.servicio()); components.servicioF();

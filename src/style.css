@@ -163,20 +163,14 @@ span.text{
   top: 18px;
   cursor: pointer;
 }
-/* .header a{
-  padding-right: 10px;
-} */
-
-/*Seccion de noticias*/
-/* .secc-noticias{
-  background-color: #f0e7e7;
-  height: 9%;
-} */
-/*Seccion de nombre con los tres puntos*/
 .secc-nombre{
   background-color: #e7b982;
   align-items: center;
   display: flex;
+}
+.descripcion{
+  height: 70%;
+  margin-bottom: 10px;
 }
 .descripcion-texto{
   font-weight: 500;
@@ -327,6 +321,11 @@ span.text{
   border: 1px solid #000;
   border-radius: 50%;
 }
+#perfilPerson{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .userInfo{
   display: flex;
   justify-content:space-evenly;
@@ -390,31 +389,19 @@ span.text{
   font-size:13px;
 }
 /*Input File*/
-.input-file::-webkit-file-upload-button {
-  visibility: hidden;
+#fichero{
+  display: none;
 }
-.input-file::before {
-  content: 'Select some files';
-  display: inline-block;
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
+.input-fileProfile{
+  display: flex;
+  background-color: rgb(219, 205, 205);
+  padding: 1px 3px;
+  border-radius: 20px;
+  margin-bottom: 3px;
   cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.input-file:hover::before {
-  border-color: black;
-}
-.input-file:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 /*Fianl del input File*/
+
 /*Post container*/
 .postContainer{
   display: flex;
@@ -426,4 +413,5 @@ span.text{
 .post-imagen-msj{
   display: flex;
   justify-content: space-evenly;
+  height: 100px;
 }

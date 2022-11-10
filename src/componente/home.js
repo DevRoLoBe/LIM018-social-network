@@ -4,7 +4,9 @@ import {
   createPost,
   onGetPosts,
   updatePost,
+  serverTime,
 } from '../firebaseconfig/post.js';
+import { dateTime } from './fechaPost.js';
 import { getCurrentUser } from '../firebaseconfig/auth.js';
 import { userInfoView } from '../lib/index.js';
 import { btnModales, limpiarInputs, limpiarLabels } from './utils.js';
@@ -38,7 +40,8 @@ export const homeView = () => {
         <textarea id="descripcion"class="textArea"></textarea>
       </div>
       <section class= "botonesPost">
-        <input type="file" class="input-file"> 
+      <input id="fichero" type="file">
+      <label for="fichero" class="input-fileProfile">Agregar Imagen</label>
         <button id="btn-publicar">Publicar</button> 
       </section>
     </div>
@@ -64,11 +67,12 @@ export const homeDom = () => {
   const ventanaModal = document.querySelector('.container-modal');
   const btnAgregar = document.querySelector('#agregar');
   const btnCerrar = document.querySelector('#btn-cerrar');
-  const fechaPost = new Date().toLocaleString();
+  // const fechaPost = new Date().toLocaleString();
   const containerPosts = document.querySelector('.secc-publicacionFoto');
   const msg = document.querySelector('#msg');
-
   const generatePostContent = (post) => {
+    // Fecha
+
     const likeActive = post.data().likes.includes(getCurrentUser().uid);
     const userImage = post.data().photoUser !== null ? post.data().photoUser : './imagenes/usuario.png';
     const postContent = `
@@ -98,7 +102,6 @@ export const homeDom = () => {
     getPosts()
       .then((postsRef) => {
         let content = '';
-
         postsRef.forEach((postR) => {
           content += generatePostContent(postR);
           containerPosts.innerHTML = content;
@@ -139,7 +142,6 @@ export const homeDom = () => {
   limpiarLabels(btnCerrar, msg);
 
   buttonPost.addEventListener('click', () => {
-    // const postContainer = document.querySelector('.descripcion');
     // evaluar contenido que ingresó el usuario en textarea
     if (descripcionText.value !== '') {
       msg.classList.remove('errorMessage');
@@ -149,14 +151,14 @@ export const homeDom = () => {
         userName: getCurrentUser().displayName,
         content: descripcionText.value,
         userId: getCurrentUser().uid,
-        fechaPost,
+        time: serverTime,
+        fechaPost: dateTime(),
         likes: [],
         photoUser: getCurrentUser().photoURL,
       })
         .then((docRef) => {
           // eslint-disable-next-line no-console
           console.log('que es ', docRef);
-          // postContainer.reset();
         })// eslint-disable-next-line no-console
         .catch((e) => {
           // eslint-disable-next-line no-console
