@@ -11,7 +11,7 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ### Producto Final de la red social 
 
 
-![pantalla de login](imgReadme/login.Final.jpeg) 
+![pantalla de bienvenida](![image](https://user-images.githubusercontent.com/105659228/201446902-382a363f-6674-47e6-81f6-1a07a95a2c77.png) 
 ![pantalla de registro](imgReadme/registro.f.jpeg) 
 ![pantalla de home](imgReadme/home.f.jpeg)
 ![pantalla de posteo](imgReadme/postear.f.jpeg)
