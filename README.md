@@ -17,9 +17,11 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ![pantalla de home](https://user-images.githubusercontent.com/105659228/201447098-1c2cd4c4-be30-4741-b672-c93acf5c25d2.png)
 ![pantalla de posteo](https://user-images.githubusercontent.com/105659228/201447133-a1d29feb-ba78-42ff-86a7-b2df2f985e95.png)
 ![pantalla de servicios](https://user-images.githubusercontent.com/105659228/201449746-d3cad434-adae-4265-93dc-d7f15a41ec49.png)
-![pantalla de perfil](https://user-images.githubusercontent.com/105659228/201447178-f4f5222a-9a5a-4f24-9fe8-00725a84d604.png)
-![pantalla de editar y borrar](https://user-images.githubusercontent.com/105659228/201447207-c6cac874-3fe1-41dd-8240-7d31768ea96b.png)
-![Cuenta no verificada](https://user-images.githubusercontent.com/105659228/201447326-610d2de0-7534-457f-8da0-613019f533bd.png)
+![pantalla de perfil](https://user-images.githubusercontent.com/105659228/201449774-810a492b-cc04-415c-943a-445a9e8de3b9.png)
+![pantalla de editar y borrar](https://user-images.githubusercontent.com/105659228/201449838-e40f7fa8-357c-4022-85ee-762d32c7db8d.png)
+![Cuenta no verificada](https://user-images.githubusercontent.com/105659228/201449867-98688272-d90c-4991-b66b-805a5cdeaa2e.png)
+
+
 
 #### Version Mobile
 ![versión mobile](https://user-images.githubusercontent.com/105659228/201449485-07bb437f-f991-4487-8cd3-e49801963a0e.png)
@@ -186,4 +188,4 @@ Criterios de aceptación:
  ![Cuidemos a los animalitos ♥](imgReadme/entrada.png)
  
  Link de la página 
- 
+ https://anaisvapolinario.github.io/LIM018-social-network/
