@@ -21,9 +21,11 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ![pantalla de editar y borrar](https://user-images.githubusercontent.com/105659228/201447207-c6cac874-3fe1-41dd-8240-7d31768ea96b.png)
 ![Cuenta no verificada](https://user-images.githubusercontent.com/105659228/201447326-610d2de0-7534-457f-8da0-613019f533bd.png)
 
+#### Version Mobile
+![versión mobile](https://user-images.githubusercontent.com/105659228/201449485-07bb437f-f991-4487-8cd3-e49801963a0e.png)
 
-![versión mobile](imgReadme/versionmovile.1.jpeg)
-![version mobile ](imgReadme/versionmovile.2.jpeg)
+![version mobile ](https://user-images.githubusercontent.com/105659228/201449446-6ca98026-9825-46b0-928b-68dd8537258f.png)
+
 
 #### ¿Quiénes son los principales usuarios del producto?
 
