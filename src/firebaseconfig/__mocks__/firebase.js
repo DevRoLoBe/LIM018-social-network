@@ -1,7 +1,7 @@
 /* eslint-disable no-else-return */
 /* eslint-disable prefer-promise-reject-errors */
 // export const loginExistent = jest.fn(() => Promise.resolve());
-export const loginExistent = (gmail, pass) => {
+export const userLogin = (gmail, pass) => {
   if (gmail === 'email@gmail.com' && pass === '123456') {
     return Promise.resolve({
       user: {
@@ -21,7 +21,7 @@ export const loginExistent = (gmail, pass) => {
   });
 };
 // Mock de la propiedad que necesitamos de UserCredential, el uid
-export const createRegister = (gmail, password) => {
+export const userRegister = (gmail, password) => {
   if (gmail === 'ander@gmail.com' && password === '11111111') {
     return Promise.resolve({
       user: {

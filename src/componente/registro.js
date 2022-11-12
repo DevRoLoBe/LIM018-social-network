@@ -1,5 +1,6 @@
-import { createRegister, createUser } from '../firebaseconfig/firebase.js';
-import { validateEmpty } from './utils.js';
+import { signUpWithEmail, emailVerification, completeUserInfo } from '../firebaseconfig/auth.js';
+import { userInfoFirestore } from '../firebaseconfig/post.js';
+import { validateEmpty, showError } from './utils.js';
 
 export const registroview = () => {
   const registro = /* html */`
@@ -37,7 +38,15 @@ export const registroview = () => {
           <span class="text">¿Ya tienes una cuenta?</span>
           <a href="#/login" class="text">Inicia Sesion</a>
         </div>
-      </div>`;
+      </div>
+      <div class='modalContainer'>
+      <div class='modalVerification entradaR'>
+        <img src='./imagenes/verificacion.jpg'>
+        <p>Se envió un código de verificación a su correo electrónico</p>
+        <button class='modalButton'>Aceptar</button>
+      </div>
+    </div>    
+      `;
 
   // Creando la seccion que contendra al registro
   const sectionRegistro = document.createElement('section');
@@ -47,7 +56,9 @@ export const registroview = () => {
 };
 export const registroDom = () => {
   const btnRegistrar = document.querySelector('#btn-registrar');
-  // Variablesde los inputs
+  const modalContainer = document.querySelector('.modalContainer');
+  const closeModal = document.querySelector('.modalButton');
+  // Variables de los inputs
   const usernameInput = document.querySelector('#userName');
   const emailInput = document.querySelector('#userEmail');
   const passwordInput = document.querySelector('#userPassword');
@@ -59,28 +70,38 @@ export const registroDom = () => {
   const alertPassword = document.querySelector('#alertPassword');
   const alertConfirmPassword = document.querySelector('#alertConfirmPassword');
 
-  btnRegistrar.addEventListener('click', () => {
+  btnRegistrar.addEventListener('click', (event) => {
+    event.preventDefault();
     validateEmpty(usernameInput.value, alertName, 'Ingrese su usuario');
     validateEmpty(emailInput.value, alertEmail, 'Ingrese su e-mail');
     validateEmpty(passwordInput.value, alertPassword, 'Ingrese su contraseña');
     validateEmpty(confirmPasswordInput.value, alertConfirmPassword, 'Ingrese la confirmacion de su contraseña');
     // uiserNameInput.reset()
-    createRegister(emailInput.value, passwordInput.value)
+    signUpWithEmail(emailInput.value, passwordInput.value)
       .then((userCredential) => {
-        // Signed in
+        emailVerification().then(() => {
+          modalContainer.classList.add('reveilModal');
+        });
+        const uName = usernameInput.value;
         const user = userCredential.user;
-        createUser(usernameInput.value, emailInput.value, user.uid);
-        window.location.hash = '#/home';
+        completeUserInfo({ displayName: `${uName}` });
+        userInfoFirestore(user.uid, {
+          email: user.email,
+          name: uName,
+          uid: user.uid,
+        });
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
-          alertEmail.textContent = 'Email existente, prueba con otro';
+          showError(alertEmail, 'Email existente, prueba con otro');
         }
         if (error.code === 'auth/weak-password') {
-          alertPassword.textContent = 'La contraseña debe tener al menos 6 caracteres';
+          showError(alertEmail, 'La contraseña debe tener al menos 6 caracteres');
         }
-        // console.log(error.code);
-        // console.log(error.message);
       });
+    closeModal.addEventListener('click', () => {
+      modalContainer.classList.remove('reveilModal');
+      window.location.hash = '#/login';
+    });
   });
 };

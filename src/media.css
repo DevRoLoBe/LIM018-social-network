@@ -28,4 +28,15 @@
   .campo-entrada input{
     height: 100%;
   }
+  .welcome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .derechaW p {
+    font-family: 'Ephesis', cursive;
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+  }
 }
