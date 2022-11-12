@@ -18,7 +18,7 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ![pantalla de posteo](https://user-images.githubusercontent.com/105659228/201447133-a1d29feb-ba78-42ff-86a7-b2df2f985e95.png)
 ![pantalla de servicios](https://user-images.githubusercontent.com/105659228/201449746-d3cad434-adae-4265-93dc-d7f15a41ec49.png)
 ![pantalla de perfil](https://user-images.githubusercontent.com/105659228/201449774-810a492b-cc04-415c-943a-445a9e8de3b9.png)
-![pantalla de editar y borrar](https://user-images.githubusercontent.com/105659228/201449838-e40f7fa8-357c-4022-85ee-762d32c7db8d.png)
+![pantalla de editar y borrar](https://user-images.githubusercontent.com/105659228/201449947-0f2c6c2f-5b68-470a-adee-e2129ce2b0bd.png)
 ![Cuenta no verificada](https://user-images.githubusercontent.com/105659228/201449867-98688272-d90c-4991-b66b-805a5cdeaa2e.png)
 
 
