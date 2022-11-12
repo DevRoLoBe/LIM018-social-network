@@ -11,13 +11,14 @@ home donde el usuario puede ; crear, editar,borrar, likear, ver la fecha de la p
 ### Producto Final de la red social 
 
 
-![pantalla de bienvenida](![image](https://user-images.githubusercontent.com/105659228/201446902-382a363f-6674-47e6-81f6-1a07a95a2c77.png) 
-![pantalla de registro](imgReadme/registro.f.jpeg) 
-![pantalla de home](imgReadme/home.f.jpeg)
-![pantalla de posteo](imgReadme/postear.f.jpeg)
-![pantalla de servicios](imgReadme/ref.f.jpeg)
-![pantalla de perfil](imgReadme/perfil.f.jpeg) 
-![pantalla de editar y borrar](imgReadme/editar%20y%20borrar.f.jpeg)
+![pantalla de bienvenida](https://user-images.githubusercontent.com/105659228/201446902-382a363f-6674-47e6-81f6-1a07a95a2c77.png)
+![pantalla de login](https://user-images.githubusercontent.com/105659228/201446972-3eb984e0-6ecb-420d-bd93-366f9217f72a.png)
+![pantalla de registro](https://user-images.githubusercontent.com/105659228/201447049-b435e927-854a-43d4-8448-30738bb3192b.png)
+![pantalla de home](https://user-images.githubusercontent.com/105659228/201447098-1c2cd4c4-be30-4741-b672-c93acf5c25d2.png)
+![pantalla de posteo](https://user-images.githubusercontent.com/105659228/201447133-a1d29feb-ba78-42ff-86a7-b2df2f985e95.png)
+![pantalla de servicios](https://user-images.githubusercontent.com/105659228/201447156-ef6a9a5b-909d-44bd-b673-83fc1609b524.png)
+![pantalla de perfil](https://user-images.githubusercontent.com/105659228/201447178-f4f5222a-9a5a-4f24-9fe8-00725a84d604.png)
+![pantalla de esditar y borrar](https://user-images.githubusercontent.com/105659228/201447207-c6cac874-3fe1-41dd-8240-7d31768ea96b.png)
 
 ![versión mobile](imgReadme/versionmovile.1.jpeg)
 ![version mobile ](imgReadme/versionmovile.2.jpeg)
